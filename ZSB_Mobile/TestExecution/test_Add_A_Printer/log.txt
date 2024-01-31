@@ -1,0 +1,2 @@
+{"tag": "function", "depth": 1, "time": 1705388054.6667817, "data": {"name": "connect_device", "call_args": {"uri": "ios:///http+usbmux://00008101-00051D400144001E"}, "start_time": 1705388054.485656, "ret": "<IOS 'http+usbmux://00008101-00051D400144001E'>", "end_time": 1705388054.6667817}}
+{"tag": "function", "depth": 1, "time": 1705388054.766995, "data": {"name": "start_app", "call_args": {"package": "com.zebra.soho", "activity": null}, "start_time": 1705388054.6677835, "ret": null, "end_time": 1705388054.766995}}
