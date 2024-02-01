@@ -55,7 +55,7 @@ class Add_A_Printer_Screen:
         self.ZSB_Printer_images = (
             Template(r"tpl1706510933463.png", record_pos=(-0.334, -0.229), resolution=(1080, 2400)))
         self.Show_All_Printers = "Show all printers"
-        self.Added_Printer = "ZSB-DP1264CD4B"
+        self.Added_Printer = "ZSB-DP12C710B9"
 
     def disable_bluetooth(self):
         try:
@@ -200,12 +200,12 @@ class Add_A_Printer_Screen:
             print("ZSB Printers are not present for all items.")
 
     def Verify_Already_Added_Printer_IS_Not_Displaying(self):
-        sleep(3)
-        if assert_not_exists(self.Added_Printer, "Added Printer is not displaying"):
-            print("Added Printer is not displaying.")
-        else:
-            print("Added Printer is displaying.")
+        sleep(5)
+        assert not self.poco(self.Added_Printer).exists(), "Added Printer is still displaying"
 
     def click_Show_All_Printers(self):
+        sleep(2)
         Show_All_Printers = self.poco(self.Show_All_Printers)
         Show_All_Printers.click()
+
+

@@ -658,7 +658,7 @@ common_method = Common_Method(poco)
 
 # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-#
+
 # def test_AppSettings_TestcaseID_47880():
 #     """""Verify "Done" Button and text "LED light Behavior Support" position is correct in Printer LED Guide dialog."""""
 #
@@ -771,49 +771,49 @@ common_method = Common_Method(poco)
 # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_AppSettings_TestcaseID_47913():
-#     """Verify ZSB app doesn't stuck in Printer registration process when there is a network drop."""
-#
-#
-# """start the app"""
-# start_app("com.zebra.soho_app")
-# sleep(3)
-# """click on the hamburger icon"""
-# login_page.click_Menu_HamburgerICN()
-# """"click on add a printer"""
-# add_a_printer_screen.click_Add_A_Printer()
-# """"click on start button"""
-# add_a_printer_screen.click_Start_Button()
-# """verify searching for your printer text"""
-# add_a_printer_screen.Verify_Searching_for_your_printer_Text()
-# """"Verify Select your printer text"""
-# add_a_printer_screen.Verify_Select_your_printer_Text()
-# """click on the printer name to select the printer"""
-# add_a_printer_screen.Click_The_Printer_Name_To_Select()
-# """click on select button"""
-# add_a_printer_screen.click_Select_Button()
-# """""verify pairing your printer text"""
-# add_a_printer_screen.Verify_Pairing_Your_Printer_Text()
-# """""""Allow Bluetooth pairing popup 1 & 2"""""""
-# add_a_printer_screen.click_Bluetooth_pairing_Popup1()
-# add_a_printer_screen.click_Bluetooth_pairing_Popup2()
-# """"Searching for wifi networks text is displaying"""
-# add_a_printer_screen.Verify_Searching_for_wifi_networks_Text()
-# """""Click on select different Network"""
-# add_a_printer_screen.click_Select_Different_Network()
-# """click on zebra network"""
-# add_a_printer_screen.click_Zebra_Network()
-# """"enter password"""""
-# add_a_printer_screen.Enter_Password()
-# poco(name="Submit").click()
-# poco(name="Connecting to Wi-Fi Network").exists()
-# sleep(7)
-# poco(name="Registering your Printer").exists()
-# poco(name="Connected!").exists()
-# poco(name="Finish Setup").click()
-# sleep(3)
-# """"stop the app"""
-# stop_app("com.zebra.soho_app")
+def test_AppSettings_TestcaseID_47913():
+    """Verify ZSB app doesn't stuck in Printer registration process when there is a network drop."""
+
+
+"""start the app"""
+start_app("com.zebra.soho_app")
+sleep(3)
+"""click on the hamburger icon"""
+login_page.click_Menu_HamburgerICN()
+""""click on add a printer"""
+add_a_printer_screen.click_Add_A_Printer()
+""""click on start button"""
+add_a_printer_screen.click_Start_Button()
+"""verify searching for your printer text"""
+add_a_printer_screen.Verify_Searching_for_your_printer_Text()
+""""Verify Select your printer text"""
+add_a_printer_screen.Verify_Select_your_printer_Text()
+"""click on the printer name to select the printer"""
+add_a_printer_screen.Click_The_Printer_Name_To_Select()
+"""click on select button"""
+add_a_printer_screen.click_Select_Button()
+"""""verify pairing your printer text"""
+add_a_printer_screen.Verify_Pairing_Your_Printer_Text()
+"""""""Allow Bluetooth pairing popup 1 & 2"""""""
+add_a_printer_screen.click_Bluetooth_pairing_Popup1()
+add_a_printer_screen.click_Bluetooth_pairing_Popup2()
+""""Searching for wifi networks text is displaying"""
+add_a_printer_screen.Verify_Searching_for_wifi_networks_Text()
+"""""Click on select different Network"""
+add_a_printer_screen.click_Select_Different_Network()
+"""click on zebra network"""
+add_a_printer_screen.click_Zebra_Network()
+""""enter password"""""
+add_a_printer_screen.Enter_Password()
+poco(name="Submit").click()
+poco(name="Connecting to Wi-Fi Network").exists()
+sleep(7)
+poco(name="Registering your Printer").exists()
+poco(name="Connected!").exists()
+poco(name="Finish Setup").click()
+sleep(3)
+""""stop the app"""
+stop_app("com.zebra.soho_app")
 # """""""""done"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -844,8 +844,9 @@ common_method = Common_Method(poco)
 
 
 # def test_AppSettings_TestcaseID_47915():
-#     """Printer Bluetooth List displays printers which have already been added even if "Show All Printers" is not selected."""
-# """start the app"""
+#   """""Printer Bluetooth List displays printers which have already been added even if "Show All Printers" is not selected."""
+#
+# """start the app"""""
 # start_app("com.zebra.soho_app")
 # sleep(3)
 # """"verify home text is displaying on the home screen"""
@@ -861,11 +862,10 @@ common_method = Common_Method(poco)
 # """click on Show all printers"""
 # add_a_printer_screen.click_Show_All_Printers()
 # """Verify the already added printer is not displaying"""
-# # add_a_printer_screen.Verify_Already_Added_Printer_IS_Not_Displaying()
+# add_a_printer_screen.Verify_Already_Added_Printer_IS_Not_Displaying()
 # """"stop the app"""
 # common_method.Stop_The_App()
 # # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 
 # def test_AppSettings_TestcaseID_47917():
@@ -905,7 +905,6 @@ common_method = Common_Method(poco)
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
 # def test_AppSettings_TestcaseID_47924():
 #     """Verify Should not allow same printer name in all the clients.."""
 # """start the app"""
@@ -921,11 +920,10 @@ common_method = Common_Method(poco)
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
 # def test_AppSettings_TestcaseID_50031():
 #     """Check the error message prompted when print test page and printer head open or offline"""
-#
-#  """start the app"""
+#     """printer should be online"""
+# """start the app"""
 # common_method.Start_The_App()
 # sleep(3)
 # """"verify home text is displaying on the home screen"""
@@ -951,10 +949,69 @@ common_method = Common_Method(poco)
 # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+def test_AppSettings_TestcaseID_50325():
+    """Manage Network-Check able to add/delete/sort network when printer bt paired/unpaired in device"""
+    """"App should be in logged in condition & printer should be added """
+
+
+""""start the app"""
+common_method.Start_The_App()
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_Printer_Settings()
+app_settings_page.click_PrinterName_On_Printersettings()
+app_settings_page.click_wifi_tab()
+app_settings_page.click_Manage_Networks_Btn()
+app_settings_page.click_Continue_Btn_on_Bluetooth_Connection_Required()
+app_settings_page.click_Add_Network()
+app_settings_page.get_text_Add_Network()
+app_settings_page.click_Manually
+
+
+
+
+
+
+
+
+# """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+# def test_AppSettings_TestcaseID_50326():
+#     """Manage Network- Check able to add/delete/sort network when printer bt paired/unpaired in device""""""
+# """"App should be in logged in condition & printer should be added """"
+# """"""connect with Anyother wifi Network except NESTWIFI"""
+
+
+# """"start the app"""
+# common_method.Start_The_App()
+# """"click on the hamburger icon"""
+# login_page.click_Menu_HamburgerICN()
+# app_settings_page.click_Printer_Settings()
+# app_settings_page.click_PrinterName_On_Printersettings()
+# app_settings_page.click_wifi_tab()
+# app_settings_page.click_Manage_Networks_Btn()
+# app_settings_page.click_Continue_Btn_on_Bluetooth_Connection_Required()
+# app_settings_page.click_Add_Network()
+# app_settings_page.get_text_Add_Network()
+# app_settings_page.click_NESTWIFI_Network()
+# app_settings_page.click_Network_Password_Field()
+# # app_settings_page.Enter_Network_Password()
+# app_settings_page.click_Network_Submit_Btn()
+# app_settings_page.Verify_NestWIFI_Network_Name_In_Network_List()
+# app_settings_page.click_Red_Icon_to_remove_network()
+# app_settings_page.Verify_NestWIFI_In_Network_List()
+# login_page.click_Menu_HamburgerICN()
+# app_settings_page.click_Home_Tab()
+# app_settings_page.Verify_Printer_is_already_added()
+# """stop the app"""""
+# common_method.Stop_The_App()
+# """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 # def test_AppSettings_TestcaseID_50333():
-#     """Android only- Check it will back to manage network after clicking device’s back button""""""
+#  """Android only- Check it will back to manage network after clicking device’s back button"""""
 # """"App should be in logged in condition & printer should be added""""
-#
+
 # ""start the app"""
 # common_method.Start_The_App()
 # """click on the hamburger icon"""
@@ -1045,35 +1102,54 @@ common_method = Common_Method(poco)
 # """"App should be in logged in condition & printer should be added""""
 #
 # ""start the app"""
-common_method.Start_The_App()
-login_page.click_Menu_HamburgerICN()
-app_settings_page.click_pen_Icon_near_UserName()
-app_settings_page.Is_Present_User_Settings_Text()
-app_settings_page.click_upload_photo()
-app_settings_page.click_Mobile_Camera()
-app_settings_page.Click_Allow_popup()
-
-om.google.android.GoogleCamera:id/shutter_button
-
-
-
-def test_AppSettings_TestcaseID_51788():
-    """Check clicking the photo taken by camera will not affect uploading photo as user avatar""""""
-""""App should be in logged in condition & printer should be added""""
-
-""start the app"""
+#
+#
 # common_method.Start_The_App()
+# """"click on the hamburger icon"""
 # login_page.click_Menu_HamburgerICN()
+# """"click on pen icon"""
 # app_settings_page.click_pen_Icon_near_UserName()
+# """"Verify User settings text in user settings page"""
+# app_settings_page.Is_Present_User_Settings_Text()
+# """""click on upload photo"""
+# app_settings_page.click_User_upload_photo()
+# """click on camera option"""
+# app_settings_page.click_Mobile_Camera()
+# """""click allow if it is present"""
+# app_settings_page.Click_Allow_popup()
+# """"click on click picture icon"""
+# app_settings_page.click_picture()
+# """"Verify photo uploaded message"""""
+# app_settings_page.Verify_Photo_Uploaded_Message()
+# """"click user photo remove image"""
+# app_settings_page.click_User_Photo_Remove_Image()
+# """stop the app"""
+# common_method.Stop_The_App()
+
+
+# def test_AppSettings_TestcaseID_51788():
+#     """Sign in with existing Non-Zebra User Account, then sign out""""""
+# """"App should be in logged in condition & printer should be added""""
+#
+# ""start the app"""
+#
+#
+# common_method.Start_The_App()
+# """"click on the hamburger menu icon"""
+# login_page.click_Menu_HamburgerICN()
+# """click on the pen icon"""
+# app_settings_page.click_pen_Icon_near_UserName()
+# """"scroll till delete account """
 # app_settings_page.Scroll_till_Delete_Account()
+# """click on logout """
 # app_settings_page.click_Logout_Btn()
-login_page.click_loginBtn()
-login_page.click_Login_With_Email_Tab()
-login_page.click_UserName_TextField()
-login_page.Enter_UserName()
-login_page.click_Password_TextField()
-login_page.Enter_Password()
-login_page.click_SignIn_Button()
-login_page.click_loginBtn()
-
-
+# """"click on login page"""
+# login_page.click_loginBtn()
+# """""""select the login with google option"""""""""
+# login_page.click_Loginwith_Google()
+# sleep(2)
+# """verify home text is present on home page"""
+# app_settings_page.Home_text_is_present_on_homepage()
+# ""'stop the app'
+# common_method.Stop_The_App()
+# """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

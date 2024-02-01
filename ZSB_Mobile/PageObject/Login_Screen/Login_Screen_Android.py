@@ -56,7 +56,7 @@ class Login_Screen:
         sleep(3)
         google_login = self.poco(self.Google_Login)
         google_login.click()
-        sleep(4)
+        sleep(6)
 
     def click_GoogleID_Field(self):
         sleep(3)

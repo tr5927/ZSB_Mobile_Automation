@@ -19,6 +19,8 @@ class App_Settings_Screen:
         self.WiFi_Tab = (Template(r"tpl1704782805207.png", record_pos=(0.232, -0.626), resolution=(1080, 2400)))
         self.Current_Network_Txt = "Current Networks"
         self.Network_Name_Txt = "NESTWIFI"
+        self.NESTWIFI_Network = "NESTWIFI"
+        self.Network_Password_Field = (Template(r"tpl1706704195474.png", record_pos=(0.009, 0.083), resolution=(1080, 2400)))
         self.Network_Status_Txt = "Network Status"
         self.Network_Status_Result_Txt = "Connected"
         self.IPAddress_Txt = "IP Address"
@@ -138,7 +140,7 @@ class App_Settings_Screen:
         self.Notification_Settings_Messages_Toggle_Btn = (
             Template(r"tpl1706596892577.png", record_pos=(0.006, -0.235), resolution=(1080, 2400)))
         self.Messages_Tab = (Template(r"tpl1706609710905.png", record_pos=(0.278, -0.768), resolution=(1080, 2400)))
-        # (Template(r"tpl1706603969105.png", record_pos=(0.285, -0.759), resolution=(1080, 2400)))
+
         self.Messages_Text_AND_Toggle_Btn = (
             Template(r"tpl1706596588283.png", record_pos=(0.005, -0.104), resolution=(1080, 2400)))
         self.Notifications_Header_Text = "Notifications"
@@ -149,8 +151,14 @@ class App_Settings_Screen:
         self.Logout_Btn = "Log Out"
         self.Mobile_Camera = "Camera"
         self.Allow_Popup = "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
-
-
+        self.Picture = "com.google.android.GoogleCamera:id/shutter_button"
+        self.User_Upload_Photo = Template(r"tpl1706697485876.png", record_pos=(-0.309, -0.437), resolution=(1080, 2400))
+        self.Photo_Uploaded_Message = "Avatar changed successfully"
+        self.User_Photo_Remove_Image = (Template(r"tpl1706698934855.png", record_pos=(0.071, -0.433), resolution=(1080, 2400)))
+        self.Continue_Btn_on_Bluetooth_Connection_Required = "Continue"
+        self.Nework_Submit_Btn = "Submit"
+        self.NestWifi_Text = (Template(r"tpl1706704936088.png", record_pos=(-0.244, 0.167), resolution=(1080, 2400)))
+        self.Enter_Network_Manually = "Enter Network Manually..."
 
 
     def click_Printer_Settings(self):
@@ -317,9 +325,11 @@ class App_Settings_Screen:
         return cancel_btn_text
 
     def click_Red_Icon_to_remove_network(self):
+        sleep(2)
         touch(self.Red_Icon_to_remove_network)
 
     def click_Add_Network(self):
+        sleep(3)
         add_network = self.poco(self.Add_Network)
 
         if add_network.exists():
@@ -332,6 +342,7 @@ class App_Settings_Screen:
             return False
 
     def get_text_Add_Network(self):
+        sleep(4)
         add_network_txt = self.poco(self.Add_Network_Txt)
         add_network_txt.get_text()
         print("Text of Cancel button:", add_network_txt)
@@ -571,6 +582,7 @@ class App_Settings_Screen:
         inches_Text.click()
 
     def click_upload_photo(self):
+        sleep(2)
         upload_photo = self.poco(self.Upload_Photo)
         upload_photo.click()
 
@@ -597,6 +609,7 @@ class App_Settings_Screen:
         first_pic.click()
 
     def click_Remove_Image(self):
+        sleep(2)
         remove_image = self.poco(self.Remove_Image)
         remove_image.click()
 
@@ -1000,12 +1013,10 @@ class App_Settings_Screen:
     def Verify_ErrorMessage_Text(self):
         assert_exists(self.ErrorMessage_Text, "ErrorMessage Text is Present")
 
-
     def Verify_Bluetooth_Connection_Failed_Popup(self):
 
         self.Bluetooth_Connection_Failed_Popup.wait_for_appearance(20)
         assert_exists(self.Bluetooth_Connection_Failed_Popup, "Bluetooth Connection Failed popup is Present")
-
 
     def Verify_Wifi_Tab_Text(self):
         assert_exists(self.WiFi_Tab, "Wifi Text is Present")
@@ -1023,7 +1034,6 @@ class App_Settings_Screen:
             # Swipe left on the ScrollView
             scroll_view.swipe("left", duration=0.5)
 
-
     def Verify_NotificationSettings_Toggle_Buttons_Text_Present(self):
         assert_exists(self.Notification_Settings_Messages_Toggle_Btn,
                       "Notification settings text and toggle buttons are Present according to the theme")
@@ -1036,8 +1046,6 @@ class App_Settings_Screen:
         for _ in range(max_swipes):
             # Swipe up on the ScrollView
             scroll_view.swipe("left", duration=0.9)
-
-
 
     def Verify_Messages_Text_And_Toggle_Buttons(self):
 
@@ -1053,6 +1061,7 @@ class App_Settings_Screen:
     def click_Mesages_Tab(self):
         touch(self.Messages_Tab)
         sleep(2)
+
     def Verify_Notifications_Text_IS_Displaying(self):
         sleep(3)
         Notifications_Header_Text = self.poco(self.Notifications_Header_Text)
@@ -1091,9 +1100,73 @@ class App_Settings_Screen:
         sleep(2)
 
     def click_Mobile_Camera(self):
+        sleep(2)
         moibile_camera = self.poco(self.Mobile_Camera)
         moibile_camera.click()
 
     def Click_Allow_popup(self):
         allow_popup = self.poco(self.Allow_Popup)
-        allow_popup.click()
+        if allow_popup.exists():
+            allow_popup.click()
+        else:
+            pass
+
+    def click_picture(self):
+        sleep(2)
+        picture = self.poco(self.Picture)
+        picture.click()
+        picture.click()
+
+
+    def click_User_upload_photo(self):
+        touch(self.User_Upload_Photo)
+
+    def Verify_Photo_Uploaded_Message(self):
+        photo_uploaded_message = self.poco(self.Photo_Uploaded_Message)
+        if photo_uploaded_message.exists():
+            photo_uploaded_message.get_text()
+        else:
+            pass
+
+    def click_User_Photo_Remove_Image(self):
+        touch(self.User_Photo_Remove_Image)
+
+    def click_Continue_Btn_on_Bluetooth_Connection_Required(self):
+        sleep(4)
+        continue_btn = self.poco(self.Continue_Btn_on_Bluetooth_Connection_Required)
+        continue_btn.click()
+
+    def click_NESTWIFI_Network(self):
+        sleep(9)
+        nestwifi = self.poco(self.NESTWIFI_Network)
+        nestwifi.click()
+
+    def click_Network_Password_Field(self):
+        sleep(2)
+        touch(self.Network_Password_Field)
+        text("123456789")
+
+    def Enter_Network_Password(self):
+        sleep(3)
+        # enter_netwoek_password = self.poco(self.Network_Password_Field)
+        # enter_netwoek_password.set_text("123456789")
+        self.poco(self.Network_Password_Field).text("123456789")
+
+    def click_Network_Submit_Btn(self):
+        sleep(3)
+        network_submit_btn = self.poco(self.Nework_Submit_Btn)
+        network_submit_btn.click()
+
+    def Verify_NestWIFI_Network_Name_In_Network_List(self):
+        sleep(9)
+        assert_exists(self.NestWifi_Text, "NESTWIFI text is displaying")
+
+    def click_Delete_NESTWIFI_Network_Name(self):
+        sleep(3)
+        Delete_NESTWIFI_Network_Name = self.poco(self.Delete_NESTWIFI_Network_Name)
+        Delete_NESTWIFI_Network_Name.click()
+
+    def Verify_NestWIFI_In_Network_List(self):
+        sleep(3)
+
+        assert_not_exists(self.NestWifi_Text, "NESTWIFI text is not displaying")
