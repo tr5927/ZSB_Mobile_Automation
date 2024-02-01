@@ -1,9 +1,13 @@
 # from poco.drivers.ios import iosPoco
+import uuid
+
+import logdir
 import poco.drivers.ios
 from airtest.core.api import *
 # from test.body import poco
 from airtest.core.api import connect_device, sleep
 from airtest.core.api import start_app
+from poco.drivers.ios import iosPoco
 
 
 # Specify the device's platform (Android or iOS) and other details
@@ -11,25 +15,31 @@ from airtest.core.api import start_app
 class Add_A_PrinterScreen:
     pass
 
-auto_setup(__file__)
-
 
 device_info = {
     # specify the device ID or name
 
     "platform": "iOS",  # or "iOS"
-    "device": "00008101-00051D400144001E",
-
+    "uuid": "00008101-00051D400144001E",
 }
+print(f"device_info: {device_info}")
+print(f"device function result: {device()}")
+uuid = "00008101-00051D400144001E"
+Bonding = connect_device("ios:///http+usbmux://"+uuid)
+poco = iosPoco(device= Bonding)
 
-connect_device("iOS:///" + device_info["device"])
+auto_setup(logdir=logdir, compress=3,
+           devices=[f"ios:///http+usbmux://{uuid}"])
 start_app("com.zebra.soho_app")
-sleep(2.0)
-poco = poco.iosPoco()
+# sleep(2.0)
+# poco = poco.iosPoco()
+# poco = iosPoco()
+
 
 
 def test_Addprinter_TestcaseID_45656():
     """"Adding the moneybadger while the mobile devices bluetooth is disabled"""
+
 
 poco("Login").click()
 sleep(1)
@@ -857,7 +867,7 @@ sleep(2)
 # def test_Addprinter_TestcaseID_45674():
 #     """connect printer with Open ESSID manually, then cancel."""
 
- # login_page = Login_Screen(poco)
+# login_page = Login_Screen(poco)
 # add_a_printer_screen = Add_A_Printer_Screen(poco)
 # """""""""click on the login button"""""""""""
 # login_page.click_loginBtn()
@@ -917,11 +927,10 @@ sleep(2)
 # poco(name="Select your Wi-Fi network").exists()
 
 
-
 # def test_Addprinter_TestcaseID_45675():
 #     """Connect printer with Open Essid manually when it's status is media out"""
 
- # login_page = Login_Screen(poco)
+# login_page = Login_Screen(poco)
 # add_a_printer_screen = Add_A_Printer_Screen(poco)
 # """""""""click on the login button"""""""""""
 # login_page.click_loginBtn()
@@ -971,4 +980,3 @@ sleep(2)
 # poco.scroll()
 # sleep(2)
 # poco(name="Log Out", type="android.widget.Button").click()
-

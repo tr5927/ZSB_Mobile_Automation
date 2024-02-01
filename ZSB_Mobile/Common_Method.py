@@ -11,9 +11,12 @@ from pipes import Template
 from platform import platform
 from time import sleep
 
+import package_name
 from airtest.core.api import swipe, exists, touch, keyevent, shell, start_app, stop_app, uninstall, install
 from airtest.core.assertions import assert_true
 from poco.exceptions import PocoNoSuchNodeException
+from pocoui_lib.android.kotoComponent import poco
+from shell import Shell
 from smb.SMBConnection import SMBConnection
 from airtest.report.report import LogToHtml
 # from common.baseValue import *
@@ -21,6 +24,7 @@ from airtest.report.report import LogToHtml
 
 from airtest.core.android.android import ADB
 import tidevice
+from airtest.core.api import *
 
 
 # from test.body import poco
@@ -29,7 +33,8 @@ import tidevice
 class Common_Method():
     pass
 
-
+    def __init__(self, poco):
+        self.poco = poco
 
         # longSleep = 60
 
@@ -879,11 +884,73 @@ class Common_Method():
         with open(file_path, 'w') as file:
             file.writelines(lines)
 
-# ///////////////////////
-# try:
-#     # Your Poco operation here
-#    poco("your_poco_query").click()
-# except PocoNoSuchNodeException as e:
-#  print(f"PocoNoSuchNodeException: {e}")
-#     # Add additional logging or error handling as needed
-#     # You might want to capture a screenshot or print the current screen state for debugging
+    # ///////////////////////
+    # try:
+    #     # Your Poco operation here
+    #    poco("your_poco_query").click()
+    # except PocoNoSuchNodeException as e:
+    #  print(f"PocoNoSuchNodeException: {e}")
+    #     # Add additional logging or error handling as needed
+    #     # You might want to capture a screenshot or print the current screen state for debugging
+
+    def check_text_presence(text_to_check):
+        # Search for the text on the screen
+        text_element = poco(text=text_to_check)
+
+        if text_element.exists():
+            print(f"Text '{text_to_check}' is present on the screen.")
+            return True
+        else:
+            print(f"Text '{text_to_check}' is not present on the screen.")
+            return False
+
+    # Example usage
+    text_present = check_text_presence("YourTextToCheck")
+
+    if text_present:
+        # Perform actions when the text is present
+        pass
+    else:
+        # Perform actions when the text is not present
+        pass
+
+    def drag_bar(element, direction='right', duration=1.0):
+        # Get the position of the element
+        global start_point, end_point
+        element_pos = element.get_position()
+
+        if direction == 'right':
+            start_point = element_pos[0]
+            end_point = element_pos[0] + 200  # Adjust the distance as needed
+        elif direction == 'left':
+            start_point = element_pos[0] + 200
+            end_point = element_pos[0]
+
+        # Perform the drag
+        poco.swipe([start_point, element_pos[1]], [end_point, element_pos[1]], duration=duration)
+
+    def Stop_The_App(self):
+        sleep(2)
+        stop_app("com.zebra.soho_app")
+
+    def Start_The_App(self):
+        start_app("com.zebra.soho_app")
+        sleep(4)
+
+
+    def relaunch_app(self):
+        app_package = "com.zebra.soho_app"
+        stop_app(app_package)
+        sleep(2)
+        start_app(app_package)
+        sleep(2)
+
+    # def Open_Google_Search_for_ZSBApp(self):
+    #
+    #     start_app("com.android.chrome")
+    # sleep(5)
+    # touch(Template(r"tpl1706523292994.png", record_pos=(0.028, 0.918), resolution=(1080, 2400)))
+    # sleep(4)
+    # touch(Template(r"tpl1706523705888.png", record_pos=(0.006, -0.894), resolution=(1080, 2400)))
+    # text("https://zsbportal.zebra.com/")
+    # sleep(5)

@@ -1,14 +1,6 @@
-from turtle import up
-
-import self
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from airtest.core.api import connect_device, device
-import unittest
-from ZSB_Mobile.Common_Method import Common_Method
-
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
-from ZSB_Mobile.PageObject.Add_A_Printer_Screen import Add_A_Printer_Screen
+from airtest.core.api import connect_device
 
 
 class Add_A_Printer:
