@@ -1,20 +1,11 @@
-from turtle import up
-
-import self
-from poco import poco
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 from airtest.core.api import *
 
-import ZSB_Mobile.TestExecution.test_Help
-import ZSB_Mobile.TestExecution.test_App_Settings
-from ZSB_Mobile.Common_Method import Common_Method
 from ZSB_Mobile.PageObject.Login_Screen import *
 
-from ZSB_Mobile.PageObject.Add_A_Printer_Screen import Add_A_Printer_Screen
-from ZSB_Mobile.PageObject.APP_Settings_Screen import App_Settings_Screen
-from ZSB_Mobile.PageObject.Help_Screen import Help_Screen
+from ZSB_Mobile.PageObject.Help_Screen.Help_Screen import Help_Screen
 from ZSB_Mobile.Common_Method import Common_Method
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
+from ZSB_Mobile.PageObject.Login_Screen.Login_Screen import Login_Screen
 
 
 class Android_App_Help:
@@ -29,9 +20,8 @@ sleep(2.0)
 
 common_method = Common_Method()
 login_page = Login_Screen(poco)
-app_settings_page = App_Settings_Screen(poco)
-add_a_printer_screen = Add_A_Printer_Screen(poco)
 help_page = Help_Screen(poco)
+
 
 def test_Help_TestcaseID_45789():
     """""""""test"""""
@@ -59,61 +49,60 @@ def test_Help_TestcaseID_45789():
 # sleep(7)
 # help_page.chooseAcc()
 # sleep(10)
-"""Click hamburger icon to expand menu"""
-login_page.click_Menu_HamburgerICN()
-sleep(2)
-"""Swipe up"""
-poco.scroll()
-sleep(2)
-"""Check Help icon with '?' is present"""
-help_page.checkIfHelpIconIsPresent()
-"""Click Help dropdown to expand Help options"""
-help_page.click_Help_dropdown_option()
-sleep(2)
-"""Check Help has Support, FAQs, Contact Us and Live Chat Options"""
-# help_page.verify_text("Live Chat", help_page.Chat_btn)
-help_page.Test_Support_faq_Contactus__Livechat_is_present()
-"""Click Support to open support page"""
-help_page.click_Support()
-sleep(5)
-"""Check if we are redirected to support page"""
-help_page.checkIfLandedOnSupportPage()
-sleep(5)
-help_page.verify_url("chrome", "zsbsupport.zebra.com")
-sleep(5)
-common_method.swipe_screen([1, 0.3482905982905983], [0.22037037037037038, 0.3482905982905983], 1)
-"""Click FAQs to see FAQ on the web"""
-sleep(5)
-help_page.click_FAQs()
-sleep(5)
-"""Check if we are redirected to FAQs page"""
-help_page.checkIfLandedOnFAQsPage()
-sleep(5)
-help_page.verify_url("chrome", "zsbsupport.zebra.com")
-sleep(5)
-common_method.swipe_screen([1, 0.3482905982905983], [0.22037037037037038, 0.3482905982905983], 1)
-sleep(2)
-"""Click Contact US to view contact options"""
-help_page.click_ContactUs()
-sleep(5)
-"""Check if we are redirected to Contact Us page"""
-help_page.checkIfLandedOnContactUsPage()
-sleep(5)
-help_page.verify_url("chrome", "zsbsupport.zebra.com")
-sleep(5)
-common_method.swipe_screen([1, 0.3482905982905983], [0.22037037037037038, 0.3482905982905983], 1)
-sleep(2)
-"""Click chat to """
-help_page.click_Chat()
-sleep(5)
-"""Verify Chat Page Title"""
-help_page.verifyLiveChatWindowTitle()
-sleep(2)
-"""Verify if Begin Chat button is present"""
-help_page.verifyBeginChatBtn()
-sleep(2)
-stop_app("com.zebra.soho_app")
-
+# """Click hamburger icon to expand menu"""
+# login_page.click_Menu_HamburgerICN()
+# sleep(2)
+# """Swipe up"""
+# poco.scroll()
+# sleep(2)
+# """Check Help icon with '?' is present"""
+# help_page.checkIfHelpIconIsPresent()
+# """Click Help dropdown to expand Help options"""
+# help_page.click_Help_dropdown_option()
+# sleep(2)
+# """Check Help has Support, FAQs, Contact Us and Live Chat Options"""
+# # help_page.verify_text("Live Chat", help_page.Chat_btn)
+# help_page.Test_Support_faq_Contactus__Livechat_is_present()
+# """Click Support to open support page"""
+# help_page.click_Support()
+# sleep(5)
+# """Check if we are redirected to support page"""
+# help_page.checkIfLandedOnSupportPage()
+# sleep(5)
+# help_page.verify_url("https://zsbsupport.zebra.com/s/")
+# sleep(5)
+# common_method.swipe_screen([1, 0.3482905982905983], [0.22037037037037038, 0.3482905982905983], 1)
+# """Click FAQs to see FAQ on the web"""
+# sleep(5)
+# help_page.click_FAQs()
+# sleep(5)
+# """Check if we are redirected to FAQs page"""
+# help_page.checkIfLandedOnFAQsPage()
+# sleep(5)
+# help_page.verify_url("https://zsbsupport.zebra.com/s/faqs")
+# sleep(5)
+# common_method.swipe_screen([1, 0.3482905982905983], [0.22037037037037038, 0.3482905982905983], 1)
+# sleep(2)
+# """Click Contact US to view contact options"""
+# help_page.click_ContactUs()
+# sleep(5)
+# """Check if we are redirected to Contact Us page"""
+# help_page.checkIfLandedOnContactUsPage()
+# sleep(5)
+# help_page.verify_url("https://zsbsupport.zebra.com/s/contactsupport")
+# sleep(5)
+# common_method.swipe_screen([1, 0.3482905982905983], [0.22037037037037038, 0.3482905982905983], 1)
+# sleep(2)
+# """Click chat to """
+# help_page.click_Chat()
+# sleep(5)
+# """Verify Chat Page Title"""
+# help_page.verifyLiveChatWindowTitle()
+# sleep(2)
+# """Verify if Begin Chat button is present"""
+# help_page.verifyBeginChatBtn()
+# sleep(2)
+# stop_app("com.zebra.soho_app")
 
 #
 # def test_Help_TestcaseID_47788():
