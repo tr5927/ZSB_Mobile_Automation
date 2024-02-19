@@ -167,7 +167,7 @@ class Add_A_Printer_Screen:
         bluetooth_pairing_popup1.click()
 
     def click_Bluetooth_pairing_Popup2(self):
-        bluetooth_pairing_popup2 = self.poco(self.Bluetooth_pairing_Popup2)
+        bluetooth_pairing_popup2 = self.poco(self.Bluetooth_pairing_Popup2).wait_for_appearance(timeout=3)
         bluetooth_pairing_popup2.click()
 
     def Verify_Searching_for_wifi_networks_Text(self):

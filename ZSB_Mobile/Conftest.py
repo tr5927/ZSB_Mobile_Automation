@@ -39,34 +39,6 @@ def tc_setup():
     print("Logoff")
     print("close browser")
 
-"""---------------------------------------------------------------------------------------------------------------------"""
-
-#file_path = 'path to text file.txt'
-#
-# udid_array = []
-#
-# # Open the file and read lines
-# with open(file_path, 'r') as file:
-#     for line in file:
-#         # Append each line to the list, removing newline characters
-#         udid_array.append(line.strip())
-
-import openpyxl
-
-excel_file_path = 'Book1.xlsx'
-udid_list = []
-
-workbook = openpyxl.load_workbook(excel_file_path)
-sheet = workbook.active
-
-for udid in sheet.iter_rows(min_col=1, max_col=1, values_only=True):
-    udid_list.append(udid[0])
-
-for i in udid_list:
-    connect_device(f"iOS:///{i}")
-    poco = iosPoco
-
-"""---------------------------------------------------------------------------------------------------------------------"""
 
 def pytest_addoption(parser):
     parser.addoption("--Android", action="store", default="default_value", help="Specify the Android option.")
