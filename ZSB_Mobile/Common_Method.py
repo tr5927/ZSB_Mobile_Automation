@@ -3,19 +3,19 @@ import logging
 import os
 import re
 import shutil
-import subprocess
 import ipaddress
 import random
 import time
 from pipes import Template
 from platform import platform
 from time import sleep
-
+import subprocess
+import airtest
 import package_name
 from airtest.core.api import swipe, exists, touch, keyevent, shell, start_app, stop_app, uninstall, install
 from airtest.core.assertions import assert_true
 from poco.exceptions import PocoNoSuchNodeException
-from pocoui_lib.android.kotoComponent import poco
+# from pocoui_lib.android.kotoComponent import poco
 from shell import Shell
 from smb.SMBConnection import SMBConnection
 from airtest.report.report import LogToHtml
@@ -25,18 +25,20 @@ from airtest.report.report import LogToHtml
 from airtest.core.android.android import ADB
 import tidevice
 from airtest.core.api import *
+# from test.body import poco
+from poco import poco
 
 
 # from test.body import poco
 
 
-class Common_Method():
+class Common_Method:
     pass
 
     def __init__(self, poco):
         self.poco = poco
 
-        # longSleep = 60
+        longSleep = 60
 
     shortSleep = 15
 
@@ -537,7 +539,7 @@ class Common_Method():
     def get_random_element(self, my_list):
         return random.choice(my_list)
 
-    def uninstall_App(self):
+    def uninstall_App(self, zsbPackageName=None, uiud=None):
         if platform == 'Android':
             try:
                 uninstall(zsbPackageName)
@@ -588,7 +590,7 @@ class Common_Method():
 
         conn.close()
 
-    def check_App_Version(self, zsbPackageName=None):
+    def check_App_Version(self, zsbPackageName=None, uiud=None):
         if platform == 'Android':
             return ADB(serialno=uiud).get_package_version(zsbPackageName)
         else:
@@ -601,7 +603,7 @@ class Common_Method():
                     if version_match:
                         return version_match.group(0)
 
-    def check_App_if_Install(self):
+    def check_App_if_Install(self, zsbPackageName=None, uiud=None):
         if platform == 'Android':
             try:
                 result = ADB(serialno=uiud).check_app(zsbPackageName)
@@ -661,7 +663,7 @@ class Common_Method():
         cmd = "logcat -c"
         shell(cmd)
 
-    def get_adblog(self, dev, path):
+    def get_adblog(self, dev, path, uiud=None):
         u'''  获取app adb日志
         :param  adb_log_path  adb日志存储的绝对路径
         :return  None
@@ -675,7 +677,7 @@ class Common_Method():
     def recoverAirtestProcessAndGenerateAirtestReport(self, Bonding, logdir,
                                                       caseFail, caseErrorLog, test_name,
                                                       test_class, test_file, ScriptFileName,
-                                                      export_dir, poplog, generateReport=True):
+                                                      export_dir, poplog, generateReport=True, uiud=None):
         reports_item = ""
         try:
             # actually the android and iPhone can use the same api to generate the video,
@@ -718,7 +720,8 @@ class Common_Method():
                     finally:
                         return reports_item
 
-    def generateAirtestReport(self, test_name, test_class, test_file, script_root, log_root, export_dir, logfile):
+    def generateAirtestReport(self, test_name, test_class, test_file, script_root, log_root, export_dir, logfile,
+                              uiud=None):
         try:
             one_report_dict = {
                 "script": test_name,
@@ -813,7 +816,7 @@ class Common_Method():
                 device_info[key] = None
         return device_info["MarketName"].strip()
 
-    def get_iOS_info(self, key):
+    def get_iOS_info(self, key, uiud=None):
         """
         key option:
         ['ActivationState', 'ActivationStateAcknowledged', 'BasebandStatus', 'BluetoothAddress', 'BoardId', 'BrickState', 'BuildVersion', 'CPUArchitecture', 'ChipID', 'DeviceClass', 'DeviceColor', 'DeviceName',
@@ -893,26 +896,26 @@ class Common_Method():
     #     # Add additional logging or error handling as needed
     #     # You might want to capture a screenshot or print the current screen state for debugging
 
-    def check_text_presence(text_to_check):
-        # Search for the text on the screen
-        text_element = poco(text=text_to_check)
-
-        if text_element.exists():
-            print(f"Text '{text_to_check}' is present on the screen.")
-            return True
-        else:
-            print(f"Text '{text_to_check}' is not present on the screen.")
-            return False
+    # def check_text_presence(text_to_check):
+    #     # Search for the text on the screen
+    #     text_element = poco
+    #
+    #     if text_element.exists():
+    #         print(f"Text '{text_to_check}' is present on the screen.")
+    #         return True
+    #     else:
+    #         print(f"Text '{text_to_check}' is not present on the screen.")
+    #         return False
 
     # Example usage
-    text_present = check_text_presence("YourTextToCheck")
+    # text_present = check_text_presence("YourTextToCheck")
 
-    if text_present:
-        # Perform actions when the text is present
-        pass
-    else:
-        # Perform actions when the text is not present
-        pass
+    # if text_present:
+    #     # Perform actions when the text is present
+    #     pass
+    # else:
+    #     # Perform actions when the text is not present
+    #     pass
 
     def drag_bar(element, direction='right', duration=1.0):
         # Get the position of the element
@@ -932,14 +935,21 @@ class Common_Method():
     def Stop_The_App(self):
         sleep(2)
         stop_app("com.zebra.soho_app")
+        sleep(2)
 
     def Start_The_App(self):
         start_app("com.zebra.soho_app")
         sleep(4)
 
-
     def relaunch_app(self):
         app_package = "com.zebra.soho_app"
+        stop_app(app_package)
+        sleep(2)
+        start_app(app_package)
+        sleep(2)
+
+    def relaunch_iOSapp(self):
+        app_package = "com.zebra.soho"
         stop_app(app_package)
         sleep(2)
         start_app(app_package)
@@ -954,3 +964,84 @@ class Common_Method():
     # touch(Template(r"tpl1706523705888.png", record_pos=(0.006, -0.894), resolution=(1080, 2400)))
     # text("https://zsbportal.zebra.com/")
     # sleep(5)
+    def Start_The_iOSApp(self):
+        start_app("com.zebra.soho")
+        sleep(5)
+
+    def Stop_The_iOSApp(self):
+        sleep(2)
+        stop_app("com.zebra.soho")
+        sleep(3)
+
+    # def Install_The_iOSApp(self):
+    #     sleep(2)
+    #     airtest install - p
+    #     sleep(2)
+
+    import subprocess
+
+    def uninstall_iOS_app(self):
+        sleep(3)
+        bundle_id = "com.zebra.soho"
+        try:
+            subprocess.run(['ideviceinstaller', '--udid', 'your_device_udid', '--uninstall', bundle_id], check=True)
+            print("App uninstalled successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error: {e}")
+        sleep(3)
+
+    def install_iOS_app(self):
+        sleep(3)
+        app_link = ""
+        install.app_link()
+        sleep(6)
+
+    def insatll_Android_App(self):
+        apk_path = r"C:\Users\rk1277\Pictures\Android App\ZsbMobile-stage-NEW 4619.apk"
+        adb_command = ["adb", "install", "-r", apk_path]  # "-r" flag replaces existing application
+        try:
+            # Execute the adb command
+            subprocess.check_call(adb_command)
+            print("APK installed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error: Failed to install APK. {e}")
+
+    def Upgrade_Android_App(self):
+
+        old_apk_path = r"C:\Users\rk1277\Pictures\Android App\ZsbMobile-stageOLD-4614.apk"
+        new_apk_path = r"C:\Users\rk1277\Pictures\Android App\ZsbMobile-stage-NEW 4619.apk"
+
+        # Uninstall the existing app
+        uninstall_command = ["adb", "uninstall",
+                             "com.example.app"]  # Replace "com.example.app" with your app's package name
+        subprocess.check_call(uninstall_command)
+
+        # Install the new version of the app
+        install_command = ["adb", "install", "-r", new_apk_path]  # "-r" flag replaces existing application
+        subprocess.check_call(install_command)
+        print("App upgrade successful.")
+
+    def upgrade_app(self):
+
+        old_apk_path = r"C:\Users\rk1277\Pictures\Android App\ZsbMobile-stageOLD-4614.apk"
+        new_apk_path = r"C:\Users\rk1277\Pictures\Android App\ZsbMobile-stage-NEW 4619.apk"
+        package_name = "com.example.app"  # Replace with your app's package name
+
+        try:
+            # Uninstall the existing app
+            uninstall_command = ["adb", "uninstall", package_name]
+            subprocess.check_call(uninstall_command)
+            self.logger.info("Uninstalled the existing app.")
+
+            # Install the new version of the app
+            install_command = ["adb", "install", "-r", new_apk_path]
+            subprocess.check_call(install_command)
+            self.logger.info("Installed the new version of the app. Upgrade successful.")
+        except subprocess.CalledProcessError as e:
+            self.logger.error(f"Error during app upgrade: {e}")
+
+    def install_iOS_Newapp(self):
+
+        install()
+
+
