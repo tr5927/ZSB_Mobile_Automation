@@ -145,5 +145,8 @@ class Login_Screen:
         signin.click()
         sleep(7)
 
+    def choose_a_google_account(self,gmail):
+        a = self.poco(text=gmail).click()
+
 
 

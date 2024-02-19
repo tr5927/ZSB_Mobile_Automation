@@ -1,10 +1,8 @@
-from poco import poco
-import time
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 # from ZSB_Automation.ZSB_Mobile.Common_Method import Common_Method
 # from ZSB_Automation.ZSB_Mobile.PageObject.APP_Settings_Screen import App_Settings_Screen
-from ZSB_Mobile.PageObject.Feed_on_HeadClose import Feed_on_HeadClose
+from ZSB_Mobile.PageObject.Feed_on_Head_Close.Feed_on_HeadClose import Feed_on_HeadClose
 from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
 
 

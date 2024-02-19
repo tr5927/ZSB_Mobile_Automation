@@ -2,8 +2,8 @@
 import time
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
-from ZSB_Mobile.PageObject.Others import Others
+from ZSB_Mobile.PageObject.Login_Screen.Login_Screen_Android import Login_Screen
+from ZSB_Mobile.PageObject.Others.Others import Others
 from ZSB_Mobile.Common_Method import *
 import os
 
