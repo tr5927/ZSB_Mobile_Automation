@@ -8,7 +8,7 @@ from poco import poco
 from ZSB_Mobile.Common_Method import Common_Method
 from airtest.core.api import device as current_device
 import os
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen_Android
+# from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
 
 
 
@@ -764,8 +764,8 @@ class Others:
         a = self.poco("Home").exists()
         return a
 
-    def run_the_command(self, path):
-        cmd = path
+    def run_the_command(self, command):
+        cmd = command
 
         # Using os.system() method
         a = os.system(cmd)

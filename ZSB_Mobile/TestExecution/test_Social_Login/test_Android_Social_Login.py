@@ -3,9 +3,10 @@ import time
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 from ZSB_Mobile.PageObject.Login_Screen.Login_Screen_Android import Login_Screen
-from ZSB_Mobile.PageObject.Social_Login import Social_Login
+from ZSB_Mobile.PageObject.Social_Login.Social_Login import Social_Login
 from ZSB_Mobile.Common_Method import *
 import os
+from ZSB_Mobile.PageObject.Add_A_Printer_Screen.Add_A_Printer_Screen_Android import Add_A_Printer_Screen
 
 class test_Others():
     pass
@@ -19,6 +20,8 @@ connect_device("Android:///")
 
 login_page = Login_Screen(poco)
 social_login = Social_Login(poco)
+add_a_printer_page = Add_A_Printer_Screen(poco)
+common_method = Common_Method(poco)
 
 def test_Social_Login_TestcaseID_48464():
     pass
@@ -199,6 +202,7 @@ def test_Social_Login_TestcaseID_48474():
 # except:
 #     raise Exception("Second step dint work")
 #
+# """Enter Verification code"""
 # verification_code = "SLS9820000"
 # social_login.enter_the_verification_code(verification_code)
 # social_login.click_on_next()
@@ -231,7 +235,7 @@ def test_Social_Login_TestcaseID_48474():
 # except:
 #     raise Exception("home page dint show up")
 #
-# login_page.click_loginBtn()
+# login_page.click_Menu_HamburgerICN()
 # social_login.click_on_profile_edit()
 # social_login.scroll_down(1)
 # social_login.click_log_out_button()
@@ -422,29 +426,967 @@ def test_Social_Login_TestcaseID_48483():
 def test_Social_Login_TestcaseID_48485():
     pass
 
-login_page.click_loginBtn()
-
-"""Enter the email and password"""
-email = ""
-password = ''
-
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance("Continue with Google")
 # social_login.click_on_sign_in_with_email()
-social_login.complete_sign_in_with_email(email,password,1)
-if not social_login.check_for_blank_value_error_of_both():
-    raise Exception("Error not displayed for blank values")
+# """Incorrect password but correct email"""
+# """Enter the email and password"""
+# email = "zebratest852@gmail.com"
+# password = 'Zebra#1234567890'
+#
+# # social_login.click_on_sign_in_with_email()
+# social_login.complete_sign_in_with_email(email,password,1)
+# if not social_login.check_for_incorrect_user_name_or_password_sign_in_with_email():
+#     raise Exception("Error not displayed for incorrect password values")
+#
+# sleep(1)
+# """Incorrect Email but correct password"""
+# email = "zebratest85@gmail.com"
+# password = 'Zebra#123456789'
+#
+# social_login.click_on_sign_in_with_email()
+#
+# social_login.complete_sign_in_with_email(email,password,1,1)
+# if not social_login.check_for_incorrect_user_name_or_password_sign_in_with_email():
+#     raise Exception("Error not displayed for incorrect email")
+#
+# sleep(1)
+# social_login.click_on_sign_in_with_email()
+#
+# """Correct password and email"""
+# email = "zebratest852@gmail.com"
+# password = "Zebra#123456789"
+# social_login.complete_sign_in_with_email(email,password,1,1)
+# if social_login.wait_for_element_appearance("Home",10):
+#     raise Exception('did not sign in properly')
 
-email = "zebratest852@gmail.com"
-social_login.complete_sign_in_with_email(email,password,1,0)
-if not social_login.check_for_blank_value_error_of_password():
-    raise Exception("Error not displayed for blank values")
 
-password = "Zebra#123456789"
-social_login.complete_sign_in_with_email(email,password,1,0)
-if not social_login.wait_for_element_appearance("Home",10):
-    raise Exception('did not sign in properly')
+def test_Social_Login_TestcaseID_48479():
+    pass
+
+"""Enter invalid user name in google id feild"""
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance("Continue with Google")
+# login_page.click_Loginwith_Google()
+# social_login.sign_in_with_google()
+# social_login.wait_for_element_appearance("identifierId")
+#
+# social_login.enter_user_name_in_google("zsb@gmail.com")
+# social_login.click_on_next_in_google_sing_in()
+# if not social_login.check_for_incorrect_username_in_google():
+#     raise Exception("error not found for incorrect email")
+
+"""Select a proper gmail account"""
+# social_login.go_back()
+# social_login.go_back()
+# login_page.click_loginBtn()
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance("Continue with Google")
+# login_page.click_Loginwith_Google()
+#
+# social_login.choose_a_google_account("zebratest850@gmail.com")
+
+
+# social_login.wait_for_element_appearance("Home",10)
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# social_login.wait_for_element_appearance("Login",10)
+
+
+def test_Social_Login_TestcaseID_48470():
+    pass
+
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+# login_page.click_Loginwith_Google()
+# email="zebratest852@gmail.com"
+# social_login.choose_a_google_account(email)
+#
+# try:
+#     social_login.click_on_continue()
+#     social_login.click_on_check_boxes_in_google_first_time_login()
+#     social_login.click_on_check_boxes_in_google_first_time_login()
+#     social_login.click_on_submit()
+#     social_login.click_on_continue()
+# except:
+#     pass
+
+
+# if not social_login.check_EULA():
+#     raise Exception("EULA Not displayed")
+#
+# social_login.accept_EULA_agreement()
+# social_login.wait_for_element_appearance("Home",10)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# """Pass the first name last name and email to be expected"""
+# first_name = "Zebra"
+# last_name = "Zebra"
+# social_login.validate_the_details_of_account(first_name, last_name, email)
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+#
+#
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+#
+# if social_login.check_EULA():
+#     raise Exception("Eula is dispayed")
+
+def test_Social_Login_TestcaseID_48472():
+    pass
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+
+# try:
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+# social_login.wait_for_element_appearance_text("Submit",10)
+#
+# try:
+#     social_login.click_on_both_check_boxes_in_google_first_time_login()
+#     social_login.click_on_submit_in_facebook()
+#     social_login.wait_for_element_appearance_text("Continue",10)
+#     social_login.click_on_continue()
+# except:
+#     pass
+
+# try:
+#     social_login.wait_for_element_appearance("End User\n License Agreement",10)
+# except:
+#     pass
+#
+# if not social_login.check_EULA():
+#     raise Exception("EULA Not displayed")
+#
+# social_login.accept_EULA_agreement()
+# social_login.wait_for_element_appearance("Home",10)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# """Pass the first name last name and email to be expected"""
+# first_name = "Zebra"
+# last_name = "Zebra"
+# # social_login.validate_the_details_of_account(first_name, last_name, email)
+# email="testswdvt@gmail.com"
+# if not social_login.check_the_email_in_profile_page(email):
+#     raise Exception("email not matching")
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+# try:
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+#     sleep(3)
+#
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+#
+# social_login.wait_for_element_appearance("Home",10)
+#
+# if social_login.check_EULA():
+#     raise Exception("Eula is dispayed")
+
+
+def test_Social_Login_TestcaseID_48481():
+    pass
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+# social_login.wait_for_element_appearance_text("Log In",10)
+#
+# email = "wrongemail.com"
+# password = "Zebra#123456789"
+# social_login.enter_username_and_password_in_facebook(email,password)
+# social_login.click_element_by_text("Log In")
+# sleep(3)
+# social_login.go_back()
+#
+# if not social_login.check_wrong_user_name_error_in_facebook():
+#     raise Exception("error not shown for wrong user name")
+#
+# email = "testswdvt@gmail.com"
+# password = "Zebra#1234567"
+# social_login.enter_username_and_password_in_facebook(email,password)
+# social_login.click_element_by_text("Log In")
+# sleep(3)
+#
+# social_login.go_back()
+#
+# if not social_login.check_wrong_password_error_in_facebook():
+#     raise Exception("error not shown for wrong password")
+
+
+# try:
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+#     sleep(3)
+#
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+
+# social_login.wait_for_element_appearance("Home",20)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# """Pass the first name last name and email to be expected"""
+# first_name = "Zebra"
+# last_name = "Zebra"
+# # social_login.validate_the_details_of_account(first_name, last_name, email)
+# email="testswdvt@gmail.com"
+# if not social_login.check_the_email_in_profile_page(email):
+#     raise Exception("email not matching")
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+
+def test_Social_Login_TestcaseID_48469():
+    pass
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+#
+# try:
+#     social_login.wait_for_element_appearance_text("Log In", 10)
+#
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+#     sleep(3)
+#
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+#
+# social_login.wait_for_element_appearance("Home",20)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# """Pass the first name last name and email to be expected"""
+# first_name = "Zebra"
+# last_name = "Zebra"
+# # social_login.validate_the_details_of_account(first_name, last_name, email)
+# email = "testswdvt@gmail.com"
+# if not social_login.check_the_email_in_profile_page(email):
+#     raise Exception("email not matching")
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+
+def test_Social_Login_TestcaseID_48478():
+    pass
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+#
+# try:
+#     social_login.wait_for_element_appearance_text("Log In", 10)
+#
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+#     sleep(3)
+#
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+#
+# social_login.wait_for_element_appearance("Home",20)
+
+
+# login_page.click_Menu_HamburgerICN()
+# add_a_printer_page.click_Add_A_Printer()
+
+# add_a_printer_page.click_Start_Button()
+# add_a_printer_page.click_Show_All_Printers()
+# sleep(4)
+#
+# social_login.selectPrinter("ZSB-DP12\n6CC28F")
+# social_login.clickSelect()
+# try:
+#     add_a_printer_page.click_Bluetooth_pairing_Popup1()
+# except:
+#     pass
+# try:
+#     social_login.click_Bluetooth_pairing_Popup2()
+# except:
+#     pass
+#
+# social_login.clickConnect()
+# sleep(2)
+# social_login.Enter_Password_Join_Network("123456789")
+# sleep(2)
+# poco(text("123456789"))
+# #
+# common_method.wait_for_element_appearance("Submit")
+#
+# social_login.clickSubmit()
+# social_login.clickFinishSetup()
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_Printer_Settings()
+# social_login.click_on_first_printer()
+# social_login.click_test_print()
+# sleep(3)
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_home_button()
+# social_login.click_three_dots_in_printer()
+# social_login.click_delete_button()
+# social_login.click_delete_button()
+
+# social_login.confirm_delete_printer()
+# add_a_printer_page.disable_bluetooth()
+
+# try:
+#     social_login.click_element_by_text("ALLOW")
+# except:
+#     pass
+# sleep(2)
+#
+# social_login.click_done_enabled()
+# sleep(3)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+#
+# try:
+#     social_login.wait_for_element_appearance_text("Log In", 10)
+#
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+#     sleep(3)
+#
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+#
+# social_login.wait_for_element_appearance("Home",20)
+
+# if not social_login.check_printer_not_there_in_home_page():
+#     raise Exception("printer found in home page")
+
+def test_Social_Login_TestcaseID_48480():
+    pass
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+
+# apple_id = "testzebra101@gmail.com"
+# password = "Zebra#12345678"
+# social_login.enter_apple_id_and_password(apple_id,password)
+#
+# social_login.click_element_by_text("Apple\xa0ID")
+# sleep(1)
+
+# if not social_login.check_for_incorrect_error_in_apple():
+#     raise Exception("No error raised for wrong password or username")
+#
+# apple_id = "testzebra101@gmail.com"
+# password = "Zebra#123456789"
+# social_login.enter_apple_id_and_password(apple_id,password)
+#
+# social_login.click_on_continue()
+# social_login.wait_for_element_appearance("Home")
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+#
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+def test_Social_Login_TestcaseID_48471():
+    pass
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+# try:
+#     apple_id = "testzebra101@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_apple_id_and_password(apple_id,password)
+# except:
+#     pass
+#
+# try:
+#     social_login.click_on_continue()
+# except:
+#     pass
+#
+# """Enter the two factor authentication code sent in phone """
+# a = "183795"
+# try:
+#     social_login.two_factor_authentication_for_apple(a)
+# except:
+#     pass
+#
+# social_login.apple_trust_this_browser()
+# social_login.continue_steps_in_apple()
+#
+# try:
+#     social_login.click_on_both_check_boxes_in_google_first_time_login()
+#     sleep(1)
+#     social_login.click_on_submit_button()
+# except:
+#     pass
+#
+# social_login.click_on_continue()
+
+# social_login.wait_for_element_appearance("End User\n License Agreement",20)
+#
+# if not social_login.check_EULA():
+#     raise Exception("EULA Not displayed")
+#
+# social_login.accept_EULA_agreement()
+# social_login.wait_for_element_appearance("Home",10)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# """Pass the first name last name and email to be expected"""
+# first_name = "Zebra"
+# last_name = "Zebra"
+# email = "testzebra101@gmail.com"
+# social_login.validate_the_details_of_account(first_name, last_name, email)
+# """if you hide email in the first time sign in process email cannot be validated"""
+# if not social_login.check_the_email_in_profile_page(email):
+#     print("email did not match")
+#
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+#
+#
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+# try:
+#     apple_id = "testzebra101@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_apple_id_and_password(apple_id,password)
+# except:
+#     pass
+#
+# try:
+#     social_login.click_on_continue()
+# except:
+#     pass
+# social_login.wait_for_element_appearance("Home")
+#
+#
+# if social_login.check_EULA():
+#     raise Exception("Eula is dispayed")
+
+
+def test_Social_Login_TestcaseID_48468():
+    pass
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+#
+# """Sign in"""
+# apple_id = "testzebra101@gmail.com"
+# password = "Zebra#123456789"
+# social_login.enter_apple_id_and_password(apple_id,password)
+#
+# social_login.click_on_continue()
+# social_login.wait_for_element_appearance("Home")
+#
+# """Log out"""
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# first_name = "swdvt"
+# last_name = "test"
+# if not social_login.validate_the_details_of_account(first_name, last_name):
+#     raise Exception("credentials not matching")
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+
+def test_Social_Login_TestcaseID_test_48477():
+    pass
+#
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+
+
+# apple_id = "testzebra101@gmail.com"
+# password = "Zebra#123456789"
+# social_login.enter_apple_id_and_password(apple_id,password)
+
+# try:
+#     code="259063"
+#     social_login.two_factor_authentication_for_apple(code)
+# except:
+#     pass
+
+# try:
+#     social_login.apple_trust_this_browser()
+# except:
+#     pass
+#
+#
+# social_login.click_on_continue()
+# social_login.wait_for_element_appearance("Home",30)
+#
+# login_page.click_Menu_HamburgerICN()
+# add_a_printer_page.click_Add_A_Printer()
+
+# add_a_printer_page.click_Start_Button()
+# add_a_printer_page.click_Show_All_Printers()
+# sleep(4)
+#
+# social_login.selectPrinter("ZSB-DP12\n6CC28F")
+# social_login.clickSelect()
+# try:
+#     add_a_printer_page.click_Bluetooth_pairing_Popup1()
+# except:
+#     pass
+# try:
+#     social_login.click_Bluetooth_pairing_Popup2()
+# except:
+#     pass
+#
+# social_login.clickConnect()
+# sleep(2)
+# social_login.Enter_Password_Join_Network("123456789")
+# sleep(2)
+# poco(text("123456789"))
+# #
+# common_method.wait_for_element_appearance("Submit")
+#
+# social_login.clickSubmit()
+# social_login.clickFinishSetup()
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_Printer_Settings()
+# social_login.click_on_first_printer()
+# social_login.click_test_print()
+# sleep(3)
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_home_button()
+# social_login.click_three_dots_in_printer()
+# social_login.click_delete_button()
+# social_login.click_delete_button()
+
+# social_login.confirm_delete_printer()
+# add_a_printer_page.disable_bluetooth()
+
+# try:
+#     social_login.click_element_by_text("ALLOW")
+# except:
+#     pass
+# sleep(2)
+#
+# social_login.click_done_enabled()
+
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+
+
+# apple_id = "testzebra101@gmail.com"
+# password = "Zebra#123456789"
+# social_login.enter_apple_id_and_password(apple_id,password)
+
+# try:
+#     code="259063"
+#     social_login.two_factor_authentication_for_apple(code)
+# except:
+#     pass
+
+# try:
+#     social_login.apple_trust_this_browser()
+# except:
+#     pass
+#
+#
+# social_login.click_on_continue()
+# social_login.wait_for_element_appearance("Home",30)
+
+# if not social_login.check_printer_not_there_in_home_page():
+#     raise Exception("printer found in home page")
+
+
+
+def test_Social_Login_TestcaseID_50223():
+    pass
+
+# login_page.click_loginBtn()
+# login_page.click_Loginwith_Google()
+# social_login.choose_a_google_account("testzebra101@gmail.com")
+#
+# try:
+#     social_login.click_on_continue()
+# except:
+#     pass
+#
+# try:
+#     social_login.click_on_both_check_boxes_in_google_first_time_login()
+#     social_login.click_on_submit_button()
+# except:
+#     pass
+
+# try:
+#     social_login.click_on_continue()
+# except:
+#     pass
+#
+# social_login.wait_for_element_appearance("End User\n License Agreement",20)
+#
+# if not social_login.check_EULA():
+#     raise Exception("EULA Not displayed")
+#
+# social_login.decline_EULA_agreement()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+#
+# login_page.click_loginBtn()
+# login_page.click_Loginwith_Google()
+# social_login.choose_a_google_account("zebratest850@gmail.com")
+# social_login.wait_for_element_appearance("Home",10)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+#
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+#
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+#
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance("Continue with Google",10)
+
+# login_page.click_Loginwith_Google()
+# social_login.choose_a_google_account("testzebra101@gmail.com")
+
+# if not social_login.check_EULA():
+#     raise Exception("EULA Not displayed")
+#
+# social_login.accept_EULA_agreement()
+# social_login.wait_for_element_appearance("Home",10)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+#
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance("Continue with Google",10)
+#
+# login_page.click_Loginwith_Google()
+# social_login.choose_a_google_account("testzebra101@gmail.com")
+# sleep(5)
+# if social_login.check_EULA():
+#     raise Exception("EULA  displayed")
+
+def test_Social_Login_TestcaseID_48484():
+    pass
+
+"""Sign in with email"""
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+# social_login.click_on_sign_in_with_email()
+#
+# """Provide the email and password"""
+# email = "zebratest852@gmail.com"
+# password = "Zebra#123456789"
+# social_login.complete_sign_in_with_email(email,password)
+#
+# try:
+#     social_login.wait_for_element_appearance("Home",20)
+# except:
+#     raise Exception("home page dint show up")
+
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+#
+# """Google sign in"""
+#
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+# login_page.click_Loginwith_Google()
+#
+# """Enter the email"""
+# email = "zebratest850@gmail.com"
+# social_login.choose_a_google_account(email)
+# social_login.wait_for_element_appearance("Home",10)
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+#
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",10)
+# except:
+#     raise Exception("Did not redirect to the login page")
+#
+# """Apple sign in"""
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_apple()
+# social_login.wait_for_element_appearance_text("Forgot ",10)
+#
+# """Sign in"""
+# apple_id = "testzebra101@gmail.com"
+# password = "Zebra#123456789"
+# social_login.enter_apple_id_and_password(apple_id,password)
+#
+# social_login.click_on_continue()
+# social_login.wait_for_element_appearance("Home")
+#
+# """Log out"""
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+#
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+"""Facebook Sign in"""
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+#
+# social_login.click_login_with_facebook()
+#
+# try:
+#     social_login.wait_for_element_appearance_text("Log In", 10)
+#
+#     email = "testswdvt@gmail.com"
+#     password = "Zebra#123456789"
+#     social_login.enter_username_and_password_in_facebook(email,password)
+#     social_login.click_element_by_text("Log In")
+#     sleep(3)
+#
+# except:
+#     pass
+#
+# social_login.continue_in_facebook()
+#
+# social_login.wait_for_element_appearance("Home",20)
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",5)
+# except:
+#     raise Exception("Did not redirect to the login page")
 
 
 
 
+def test_Social_Login_TestcaseID_48476():
+    pass
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+# login_page.click_Loginwith_Google()
+#
+# """Enter the email"""
+# email = "testzebra101@gmail.com"
+# social_login.choose_a_google_account(email)
+# social_login.wait_for_element_appearance("Home",10)
+
+# login_page.click_Menu_HamburgerICN()
+# add_a_printer_page.click_Add_A_Printer()
+
+# add_a_printer_page.click_Start_Button()
+# add_a_printer_page.click_Show_All_Printers()
+# sleep(4)
+#
+# social_login.selectPrinter("ZSB-DP12\n6CC28F")
+# social_login.clickSelect()
+# try:
+#     add_a_printer_page.click_Bluetooth_pairing_Popup1()
+# except:
+#     pass
+# try:
+#     social_login.click_Bluetooth_pairing_Popup2()
+# except:
+#     pass
+#
+# social_login.clickConnect()
+# sleep(2)
+# social_login.Enter_Password_Join_Network("123456789")
+# sleep(2)
+# poco(text("123456789"))
+# #
+# common_method.wait_for_element_appearance("Submit")
+#
+# social_login.clickSubmit()
+# social_login.clickFinishSetup()
+#
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_Printer_Settings()
+# social_login.click_on_first_printer()
+# social_login.click_test_print()
+# sleep(3)
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_home_button()
+# social_login.click_three_dots_in_printer()
+# social_login.click_delete_button()
+# social_login.click_delete_button()
+
+# social_login.confirm_delete_printer()
+# add_a_printer_page.disable_bluetooth()
+
+# try:
+#     social_login.click_element_by_text("ALLOW")
+# except:
+#     pass
+# sleep(2)
+#
+# social_login.click_done_enabled()
 
 
+# login_page.click_Menu_HamburgerICN()
+# social_login.click_on_profile_edit()
+#
+# social_login.scroll_down(1)
+# social_login.click_log_out_button()
+# try:
+#     social_login.wait_for_element_appearance("Login",10)
+# except:
+#     raise Exception("Did not redirect to the login page")
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance_text("Continue with Google",10)
+# login_page.click_Loginwith_Google()
+#
+# """Enter the email"""
+# email = "testzebra101@gmail.com"
+# social_login.choose_a_google_account(email)
+# social_login.wait_for_element_appearance("Home",20)
+
+# if not social_login.check_printer_not_there_in_home_page():
+#     raise Exception("printer found in home page")
+
+
+
+def test_Social_Login_TestcaseID_50613():
+    pass
+
+# login_page.click_loginBtn()
+# social_login.wait_for_element_appearance("Continue with Google")
+# login_page.click_Loginwith_Google()
+# social_login.sign_in_with_google()
+# social_login.wait_for_element_appearance("identifierId")
+# #
+# social_login.enter_user_name_in_google("zebratest_o1@outlook.com")
+# social_login.click_on_next_in_google_sing_in()
+# if not social_login.check_for_incorrect_username_in_google():
+#     raise Exception("error not found for incorrect email")

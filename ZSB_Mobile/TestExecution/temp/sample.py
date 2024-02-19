@@ -1,8 +1,7 @@
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen_Android
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen_iOS
-from ZSB_Mobile.PageObject.Others import Others
+from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
+from ZSB_Mobile.PageObject.Others.Others import Other
 
 
 
