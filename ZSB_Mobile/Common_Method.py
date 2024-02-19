@@ -25,6 +25,7 @@ from airtest.report.report import LogToHtml
 from airtest.core.android.android import ADB
 import tidevice
 from airtest.core.api import *
+from airtest.core.api import device as current_device
 
 
 # from test.body import poco
@@ -45,6 +46,11 @@ class Common_Method():
         for i in pocoElemnt:
             e = e + 1
         return e
+
+    def run_the_command(self, command):
+        cmd = command
+
+        os.system(cmd)
 
     def getAttr(self, pocoElemnt, attr, shortSleep=shortSleep):
         """_summary_
@@ -110,6 +116,38 @@ class Common_Method():
         pattern = re.escape(keyword)
         match = re.search(pattern, text)
         return match
+
+    def wait_for_element_appearance(self,element, time_out=10):
+        self.poco(element).wait_for_appearance(timeout=time_out)
+
+    def wait_for_element_disappearance(self,element, time_out=20):
+        self.poco(element).wait_for_disappearance(timeout=time_out)
+
+    def wait_for_element_appearance_enabled(self,element, time_out=10):
+        self.poco(element,enabled=True).wait_for_appearance(timeout=time_out)
+
+    def wait_for_element_appearance_namematches(self,element, time_out=10):
+        self.poco(nameMatches=".*"+element+".*").wait_for_appearance(timeout=time_out)
+
+    def wait_for_element_appearance_textmatches(self,element, time_out=10):
+        self.poco(textMatches=".*"+element+".*").wait_for_appearance(timeout=time_out)
+
+    def swipe_by_positions(self,start_point,end_point):
+
+        self.poco.swipe(start_point, end_point, duration=0.5)
+
+    def swipe_screen(self, point1, point2, number_of_swipes):
+        disp = current_device().display_info
+        w, h = [disp['width'], disp['height']]
+        x1, y1 = point1
+        x2, y2 = point2
+        w1, h1 = x1 * w, y1 * h
+        w2, h2 = x2 * w, y2 * h
+        for i in range(number_of_swipes):
+            swipe([w1, h1], [w2, h2])
+
+    def wait_for_element_appearance_text(self,element, time_out=15):
+        self.poco(text=element).wait_for_appearance(timeout=time_out)
 
     def Click(self, pocoElemnt, timeSleep=shortSleep, pos=[0.5, 0.5], needfresh=True):
         try:
