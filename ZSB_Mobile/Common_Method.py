@@ -21,7 +21,7 @@ from smb.SMBConnection import SMBConnection
 from airtest.report.report import LogToHtml
 # from common.baseValue import *
 # from common.filepath import *
-
+from airtest.core.api import device as current_device
 from airtest.core.android.android import ADB
 import tidevice
 from airtest.core.api import *
@@ -954,3 +954,20 @@ class Common_Method():
     # touch(Template(r"tpl1706523705888.png", record_pos=(0.006, -0.894), resolution=(1080, 2400)))
     # text("https://zsbportal.zebra.com/")
     # sleep(5)
+
+    def wait_for_element_appearance_namematches(self, element, time_out=10):
+        self.poco(nameMatches="(?s).*" + element + "(?s).*").wait_for_appearance(timeout=time_out)
+
+    def swipe_screen(self, point1, point2, number_of_swipes):
+        disp = current_device().display_info
+        w, h = [disp['width'], disp['height']]
+        x1, y1 = point1
+        x2, y2 = point2
+        w1, h1 = x1 * w, y1 * h
+        w2, h2 = x2 * w, y2 * h
+        for i in range(number_of_swipes):
+            swipe([w1, h1], [w2, h2])
+
+    def run_the_command(self, command):
+        cmd = command
+        os.system(cmd)

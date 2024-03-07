@@ -501,8 +501,8 @@ common_method = Common_Method(poco)
 # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_AppSettings_TestcaseID_47810():
-#     """"Verify recently printer labels text shouldn't overlap on theme background picture."""""
+def test_AppSettings_TestcaseID_47810():
+    """"Verify recently printer labels text shouldn't overlap on theme background picture."""""
 #
 #
 # """""Install the latest production app on the phone & printer should be added with logged in condition"""""""""
@@ -698,7 +698,7 @@ common_method = Common_Method(poco)
 # 1. Registered a production user
 # 2. Install production Mobile App into test device
 # 3. Login Mobile App with user already added printer"""""
-#
+
 # """start the app"""
 # start_app("com.zebra.soho_app")
 # sleep(3)
@@ -819,8 +819,8 @@ common_method = Common_Method(poco)
 
 # def test_AppSettings_TestcaseID_47914():
 #     """Android Only- Verify there is no unknown printer appeared in the Bluetooth list."""
-
-
+#
+#
 # """start the app"""
 # start_app("com.zebra.soho_app")
 # sleep(3)
@@ -925,7 +925,7 @@ common_method = Common_Method(poco)
 # def test_AppSettings_TestcaseID_50031():
 #     """Check the error message prompted when print test page and printer head open or offline"""
 #
-#  """start the app"""
+# """start the app"""
 # common_method.Start_The_App()
 # sleep(3)
 # """"verify home text is displaying on the home screen"""
@@ -987,12 +987,12 @@ common_method = Common_Method(poco)
 #     """Check the UI of toggle buttons on Notification Settings""""""
 # """"App should be in logged in condition & printer should be added""""
 #
-# # ""start the app"""
-# # common_method.Start_The_App()
+# ""start the app"""
+# common_method.Start_The_App()
 # """click on the hamburger icon"""
-# # login_page.click_Menu_HamburgerICN()
+# login_page.click_Menu_HamburgerICN()
 # """"click on Notifications Tab"""
-# # app_settings_page.click_Notifications_Tab()
+# app_settings_page.click_Notifications_Tab()
 # """"Scroll till Notification Settings Tab"""
 # app_settings_page.Scroll_Till_Notification_Settings_Tab()
 # """click on notification settings tab"""
@@ -1009,34 +1009,34 @@ common_method = Common_Method(poco)
 # login_page.click_Menu_HamburgerICN()
 # """click on three dot icon"""
 # app_settings_page.click_Three_Dot_On_Workspace()
-# """""click change theme"""
-# app_settings_page.click_Change_Theme()
-# """"click on electic theme to change the theme"""
-# app_settings_page.check_Change_Electic_Theme()
-# """click on save & exit"""
-# app_settings_page.click_Save_Exit_Btn()
-# """verify notifications text is displaying"""
-# app_settings_page.Verify_Notifications_Text_IS_Displaying()
-# """"verify updated messages tab color"""
-# app_settings_page.Verify_Updated_MessagesTab_Color()
-# """scroll right till Notification settings"""
-# app_settings_page.Scroll_Right()
-# """click on Notification Settings tab"""
-# app_settings_page.click_Notification_Settings_Tab()
-# """verify updtaed Notification settings messages"""
-# app_settings_page.Verify_Updated_Notifications_SettingsTab_Messages_Color()
-# """click on hamburger menu"""
-# login_page.click_Menu_HamburgerICN()
-# """click on three dot icon"""
-# app_settings_page.click_Three_Dot_On_Workspace()
-# """click on change theme"""
-# app_settings_page.click_Change_Theme()
-# """"click on change modern theme"""
-# app_settings_page.check_Change_Modern_Theme()
-# """click on dsave & exit button"""
-# app_settings_page.click_Save_Exit_Btn()
-# """stop the app"""""
-# common_method.Stop_The_App()
+"""""click change theme"""
+app_settings_page.click_Change_Theme()
+""""click on electic theme to change the theme"""
+app_settings_page.check_Change_Electic_Theme()
+"""click on save & exit"""
+app_settings_page.click_Save_Exit_Btn()
+"""verify notifications text is displaying"""
+app_settings_page.Verify_Notifications_Text_IS_Displaying()
+""""verify updated messages tab color"""
+app_settings_page.Verify_Updated_MessagesTab_Color()
+"""scroll right till Notification settings"""
+app_settings_page.Scroll_Right()
+"""click on Notification Settings tab"""
+app_settings_page.click_Notification_Settings_Tab()
+"""verify updtaed Notification settings messages"""
+app_settings_page.Verify_Updated_Notifications_SettingsTab_Messages_Color()
+"""click on hamburger menu"""
+login_page.click_Menu_HamburgerICN()
+"""click on three dot icon"""
+app_settings_page.click_Three_Dot_On_Workspace()
+"""click on change theme"""
+app_settings_page.click_Change_Theme()
+""""click on change modern theme"""
+app_settings_page.check_Change_Modern_Theme()
+"""click on dsave & exit button"""
+app_settings_page.click_Save_Exit_Btn()
+"""stop the app"""""
+common_method.Stop_The_App()
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -1045,35 +1045,35 @@ common_method = Common_Method(poco)
 # """"App should be in logged in condition & printer should be added""""
 #
 # ""start the app"""
-common_method.Start_The_App()
-login_page.click_Menu_HamburgerICN()
-app_settings_page.click_pen_Icon_near_UserName()
-app_settings_page.Is_Present_User_Settings_Text()
-app_settings_page.click_upload_photo()
-app_settings_page.click_Mobile_Camera()
-app_settings_page.Click_Allow_popup()
+# common_method.Start_The_App()
+# login_page.click_Menu_HamburgerICN()
+# app_settings_page.click_pen_Icon_near_UserName()
+# app_settings_page.Is_Present_User_Settings_Text()
+# app_settings_page.click_upload_photo()
+# app_settings_page.click_Mobile_Camera()
+# app_settings_page.Click_Allow_popup()
+#
+# om.google.android.GoogleCamera:id/shutter_button
 
-om.google.android.GoogleCamera:id/shutter_button
 
 
-
-def test_AppSettings_TestcaseID_51788():
-    """Check clicking the photo taken by camera will not affect uploading photo as user avatar""""""
-""""App should be in logged in condition & printer should be added""""
-
-""start the app"""
+# def test_AppSettings_TestcaseID_51788():
+#     """Check clicking the photo taken by camera will not affect uploading photo as user avatar""""""
+# """"App should be in logged in condition & printer should be added""""
+#
+# ""start the app"""
 # common_method.Start_The_App()
 # login_page.click_Menu_HamburgerICN()
 # app_settings_page.click_pen_Icon_near_UserName()
 # app_settings_page.Scroll_till_Delete_Account()
 # app_settings_page.click_Logout_Btn()
-login_page.click_loginBtn()
-login_page.click_Login_With_Email_Tab()
-login_page.click_UserName_TextField()
-login_page.Enter_UserName()
-login_page.click_Password_TextField()
-login_page.Enter_Password()
-login_page.click_SignIn_Button()
-login_page.click_loginBtn()
+# login_page.click_loginBtn()
+# login_page.click_Login_With_Email_Tab()
+# login_page.click_UserName_TextField()
+# login_page.Enter_UserName()
+# login_page.click_Password_TextField()
+# login_page.Enter_Password()
+# login_page.click_SignIn_Button()
+# login_page.click_loginBtn()
 
 

@@ -1,11 +1,12 @@
-#from poco import poco
+# from poco import poco
 import time
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
+from ZSB_Mobile.PageObject.Login_Screen.Login_Screen import Login_Screen
 from ZSB_Mobile.PageObject.Others import Others
 from ZSB_Mobile.Common_Method import *
 import os
+
 
 class test_Others():
     pass
@@ -14,17 +15,20 @@ class test_Others():
 poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
 
 connect_device("Android:///")
-#start_app("com.zebra.soho_app")
+wake()
+# start_app("com.zebra.soho_app")
 sleep(3.0)
 
 login_page = Login_Screen(poco)
 others = Others(poco)
 
+
 #
 #
 def test_Others_TestcaseID_47972():
     pass
-#
+
+
 # login_page.click_Menu_HamburgerICN()
 #
 # sleep(1)
@@ -47,11 +51,12 @@ def test_Others_TestcaseID_47972():
 #
 # """Close The Demo Video"""
 # others.close_demo_video()
-#
-#
+
+
 def test_Others_TestcaseID_49203():
     pass
-#
+
+
 # """Click On the Three dots of the Home page Printer"""
 # others.click_three_dots()
 #
@@ -66,11 +71,12 @@ def test_Others_TestcaseID_49203():
 #
 # """cancel the delete printer dialogue"""
 # others.click_cancel_delete_printer()
-#
-#
-# def test_Others_TestcaseID_47946():
-#     pass
-#
+
+
+def test_Others_TestcaseID_47946():
+    pass
+
+
 # """take the prvious number of cartridges"""
 # previous = others.get_no_of_left_cartridge()
 # print(previous)
@@ -105,13 +111,14 @@ def test_Others_TestcaseID_49203():
 #     print("success")
 # else:
 #     print("Failed")
-
-
-"""BELOW NEED TO BE COMPLETED"""
+#
+#
+# """BELOW NEED TO BE COMPLETED"""
 
 
 def test_Others_TestcaseID_45793():
     pass
+
 
 # print("hello")
 # start_app("com.google.android.googlequicksearchbox")
@@ -154,7 +161,7 @@ def test_Others_TestcaseID_45793():
 # res = others.check_text_history()
 # if not res:
 #     others.scroll_up(1)
-#"""Clear The Notifications in google if present"""
+# """Clear The Notifications in google if present"""
 # google_notification = others.get_notification_text_in_google()
 #
 # print(google_notification)
@@ -178,6 +185,7 @@ def test_Others_TestcaseID_45793():
 def test_Others_TestcaseID_45874():
     pass
 
+
 # """Mention the vesrion number expected"""
 # expected_version_no = "1.4.4619"
 #
@@ -194,8 +202,9 @@ def test_Others_TestcaseID_45874():
 def test_Others_TestcaseID_47955():
     pass
 
+
 # # login_page.click_Menu_HamburgerICN()
-# # others.click_Printer_Settings()
+# others.click_Printer_Settings()
 # names, id = others.get_printer_names()
 # others.select_printer_1(id[1])
 # others.rename_printer(id[1],names[2])
@@ -203,13 +212,14 @@ def test_Others_TestcaseID_47955():
 # res = others.verify_text_update_printer_name()
 #
 # print(res)
-# # if res:
-# #     print("ok")
-# # else:
-# #     raise Exception("text dint match")
+# if res:
+#     print("ok")
+# else:
+#     raise Exception("text dint match")
 
 def test_Others_TestcaseID_45798():
     pass
+
 
 # login_page.click_Menu_HamburgerICN()
 # """Click on the profile edit"""
@@ -252,9 +262,10 @@ def test_Others_TestcaseID_45798():
 def test_Others_TestcaseID_47945():
     pass
 
+
 # login_page.click_Menu_HamburgerICN()
 # others.click_Printer_Settings()
-#
+
 # names, id = others.get_printer_names()
 # others.select_printer_1(id[1])
 #
@@ -279,7 +290,7 @@ def test_Others_TestcaseID_47945():
 def test_temp_2():
     pass
 
-# print("hello")
+
 # start_app("com.google.android.googlequicksearchbox")
 #
 # others.click_google_search_bar()
@@ -298,16 +309,16 @@ def test_temp_2():
 # sleep(1)
 #
 # others.verify_default_image()
-#
+
 # """PASS First letter of first name and last name as parameters with space"""
 # res = others.verify_default_image_in_google("Z T")
 # if not res:
 #     raise Exception("default image not found")
 
 
-
 def test_Others_TestcaseID_45796():
     pass
+
 
 # login_page.click_Menu_HamburgerICN()
 # others.click_on_profile_edit()
@@ -340,9 +351,9 @@ def test_Others_TestcaseID_45796():
 #     raise Exception("default image not found")
 
 
-
 def test_Others_TestcaseID_45797():
     pass
+
 
 # login_page.click_Menu_HamburgerICN()
 # others.click_on_profile_edit()
@@ -374,7 +385,9 @@ def test_Others_TestcaseID_45797():
 #
 #
 # sleep(1)
-others.capture_the_image_button()
+# others.capture_the_image_button()
+#
+#
 # others.retake_the_image_button()
 # others.capture_the_image_button()
 # others.use_the_image_button()
@@ -395,13 +408,13 @@ others.capture_the_image_button()
 #     raise Exception("default image not found")
 
 
-
 def test_Others_TestcaseID_45795():
     """need to complete"""
     pass
 
+
 # start_app("com.zebra.soho_app")
-#
+
 # others.wait_for_element_appearance("Home",10)
 #
 # login_page.click_Menu_HamburgerICN()
@@ -446,7 +459,7 @@ def test_Others_TestcaseID_45795():
 #
 # if not res:
 #     print("Notifications did not appear after reopening the app")
-#
+
 # others.uninstall_and_install_zsb_series_on_google_play()
 # others.open_the_zsb_series_app_in_play_store()
 # others.wait_for_element_appearance("Login",10)
@@ -460,7 +473,7 @@ def test_Others_TestcaseID_45795():
 #
 # login_page.click_Menu_HamburgerICN()
 # others.click_notifications_button()
-#
+
 # Android_notification_after_deleting_app = others.get_notification_text_in_Android()
 #
 # res = others.check_two_arrays_same(Android_notification,Android_notification_after_deleting_app)
@@ -468,11 +481,12 @@ def test_Others_TestcaseID_45795():
 #     print("Notifications did not disappear after deleting the app")
 
 
-
 def test_Others_TestcaseID_45800():
     """Need to complete"""
     pass
-#
+
+
+# "here"
 # login_page.click_Menu_HamburgerICN()
 # others.click_on_profile_edit()
 #
@@ -491,7 +505,7 @@ def test_Others_TestcaseID_45800():
 #     print("ok")
 # else:
 #     raise Exception("dint update")
-
+#
 # others.scroll_down()
 # others.change_password_for_user_account()
 # sleep(5)
@@ -512,6 +526,7 @@ def test_Others_TestcaseID_45800():
 
 def test_Others_TestcaseID_45803():
     pass
+
 
 # res = others.check_printer_online_status()
 # if res == "Online":
@@ -567,6 +582,7 @@ def test_Others_TestcaseID_45803():
 def test_Others_TestcaseID_45804():
     pass
 
+
 # res = others.check_printer_online_status()
 # if res == "Online":
 #     print("ok")
@@ -592,6 +608,7 @@ def test_Others_TestcaseID_45804():
 
 def test_Others_TestcaseID_45804():
     pass
+
 
 # res = others.check_printer_online_status()
 # if res == "Online":
@@ -628,6 +645,8 @@ def test_Others_TestcaseID_45804():
 
 def test_Others_TestcaseID_46963():
     pass
+
+
 # login_page.click_Menu_HamburgerICN()
 # others.click_Printer_Settings()
 # res = others.get_printers()
@@ -649,15 +668,15 @@ def test_Others_TestcaseID_46963():
 # others.scroll_down()
 # others.scroll_down()
 #
-
+#
 # others.click_enter_network_manually()
-
+#
 # others.enter_network_name("Zebra")
 # others.click_join_network()
 # sleep(3)
 # login_page.click_Menu_HamburgerICN()
 # others.click_home_button()
-
+#
 #
 # login_page.click_Menu_HamburgerICN()
 # others.click_Printer_Settings()
@@ -673,7 +692,7 @@ def test_Others_TestcaseID_46963():
 #
 # res = others.get_network_names()
 # others.swap_two_networks(res["NESTWIFI"], res["Zebra"])
-
+#
 # res = others.check_apply_changes_button_clickable()
 # if not res:
 #     raise Exception("Apply changes button not clickable")
@@ -686,7 +705,7 @@ def test_Others_TestcaseID_46963():
 #
 # others.delete_one_network(res["Zebra"])
 # sleep(10)
-
+#
 # res = others.check_network_present("Zebra")
 #
 # if res:
@@ -696,10 +715,9 @@ def test_Others_TestcaseID_46963():
 # others.click_home_button()
 
 
-
-
 def test_Others_TestcaseID_45802():
     pass
+
 
 # login_page.click_loginBtn()
 # sleep(2)
@@ -723,6 +741,8 @@ def test_Others_TestcaseID_45802():
 
 def test_Others_TestcaseID_45872():
     pass
+
+
 # login_page.click_loginBtn()
 # sleep(2)
 # others.click_on_sign_in_with_email()
@@ -748,6 +768,7 @@ def test_Others_TestcaseID_45872():
 def test_Others_TestcaseID_47948():
     pass
 
+
 # """login"""
 # login_page.click_loginBtn()
 # others.wait_for_element_appearance("Continue with Google",10)
@@ -757,8 +778,8 @@ def test_Others_TestcaseID_47948():
 # others.wait_for_element_appearance("Home")
 
 # """print a test printer"""
-#inp = int(input())
-
+# inp = int(input())
+#
 # login_page.click_Menu_HamburgerICN()
 # others.click_Printer_Settings()
 # others.select_printer_1("zsbdp12")
@@ -775,9 +796,9 @@ def test_Others_TestcaseID_47948():
 #     print("ok")
 
 
-
 def test_Others_TestcaseID_45801():
     pass
+
 
 # login_page.click_Menu_HamburgerICN()
 # others.click_common_designs_button()
@@ -826,9 +847,9 @@ def test_Others_TestcaseID_45801():
 # others.click_print_button()
 
 
-
 def test_Others_TestcaseID_45794():
     pass
+
 
 # """Generate less than 5 notifications"""
 # login_page.click_Menu_HamburgerICN()
@@ -838,7 +859,7 @@ def test_Others_TestcaseID_45794():
 # sleep(3)
 #
 # #others.add_id_to_child_elem(Android_notification_before)
-#
+
 # others.click_down_arrow_button()
 # others.click_dismiss_printer_notification()
 #
@@ -858,6 +879,7 @@ def test_Others_TestcaseID_45794():
 
 def test_Others_TestcaseID_51703():
     pass
+
 
 # others.install_zsb_series_on_google_play()
 # sleep(30)
@@ -882,7 +904,7 @@ def test_Others_TestcaseID_51703():
 # others.go_back()
 # others.go_back()
 # others.go_back()
-
+#
 # poco.swipe([0.5, 0.8], [0.5, 0.2], duration=0.01)
 #
 # while(1):
@@ -891,7 +913,7 @@ def test_Others_TestcaseID_51703():
 #         break
 #     else:
 #         poco.scroll()
-#
+
 # others.click_zsb_app_icon()
 # sleep(10)
 
@@ -911,6 +933,7 @@ def test_Others_TestcaseID_51703():
 
 def test_Others_TestcaseID_45799():
     pass
+
 
 # start_app("com.android.documentsui")
 #
@@ -1097,14 +1120,3 @@ def test_Others_TestcaseID_45807():
 # res = others.check_same_after_switching_network(netw_1_my_data,netw_2_my_data)
 # if not res:
 #     print("changing network not showing files properly")
-
-
-
-
-
-
-
-
-
-
-

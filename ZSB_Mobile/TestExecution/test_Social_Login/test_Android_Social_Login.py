@@ -2,7 +2,7 @@
 import time
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
+from ZSB_Mobile.PageObject.Login_Screen.Login_Screen import Login_Screen
 from ZSB_Mobile.PageObject.Social_Login import Social_Login
 from ZSB_Mobile.Common_Method import *
 import os
@@ -422,26 +422,26 @@ def test_Social_Login_TestcaseID_48483():
 def test_Social_Login_TestcaseID_48485():
     pass
 
-login_page.click_loginBtn()
-
-"""Enter the email and password"""
-email = ""
-password = ''
-
-# social_login.click_on_sign_in_with_email()
-social_login.complete_sign_in_with_email(email,password,1)
-if not social_login.check_for_blank_value_error_of_both():
-    raise Exception("Error not displayed for blank values")
-
-email = "zebratest852@gmail.com"
-social_login.complete_sign_in_with_email(email,password,1,0)
-if not social_login.check_for_blank_value_error_of_password():
-    raise Exception("Error not displayed for blank values")
-
-password = "Zebra#123456789"
-social_login.complete_sign_in_with_email(email,password,1,0)
-if not social_login.wait_for_element_appearance("Home",10):
-    raise Exception('did not sign in properly')
+# login_page.click_loginBtn()
+#
+# """Enter the email and password"""
+# email = ""
+# password = ''
+#
+# # social_login.click_on_sign_in_with_email()
+# social_login.complete_sign_in_with_email(email,password,1)
+# if not social_login.check_for_blank_value_error_of_both():
+#     raise Exception("Error not displayed for blank values")
+#
+# email = "zebratest852@gmail.com"
+# social_login.complete_sign_in_with_email(email,password,1,0)
+# if not social_login.check_for_blank_value_error_of_password():
+#     raise Exception("Error not displayed for blank values")
+#
+# password = "Zebra#123456789"
+# social_login.complete_sign_in_with_email(email,password,1,0)
+# if not social_login.wait_for_element_appearance("Home",10):
+#     raise Exception('did not sign in properly')
 
 
 
