@@ -14,11 +14,12 @@ from time import sleep
 import package_name
 from airtest.core.api import swipe, exists, touch, keyevent, shell, start_app, stop_app, uninstall, install
 from airtest.core.assertions import assert_true
-from poco.exceptions import PocoNoSuchNodeException
-from pocoui_lib.android.kotoComponent import poco
-from shell import Shell
-from smb.SMBConnection import SMBConnection
 from airtest.report.report import LogToHtml
+from poco.exceptions import PocoNoSuchNodeException
+# from pocoui_lib.android.kotoComponent import poco
+# from shell import Shell
+from smb.SMBConnection import SMBConnection
+# from airtest.report.report import LogToHtml
 # from common.baseValue import *
 # from common.filepath import *
 
@@ -26,7 +27,7 @@ from airtest.core.android.android import ADB
 import tidevice
 from airtest.core.api import *
 from airtest.core.api import device as current_device
-
+from poco import poco
 
 # from test.body import poco
 
@@ -576,7 +577,7 @@ class Common_Method():
     def get_random_element(self, my_list):
         return random.choice(my_list)
 
-    def uninstall_App(self):
+    def uninstall_App(self, zsbPackageName=None, uiud=None):
         if platform == 'Android':
             try:
                 uninstall(zsbPackageName)
@@ -627,7 +628,7 @@ class Common_Method():
 
         conn.close()
 
-    def check_App_Version(self, zsbPackageName=None):
+    def check_App_Version(self, zsbPackageName=None, uiud=None):
         if platform == 'Android':
             return ADB(serialno=uiud).get_package_version(zsbPackageName)
         else:
@@ -640,7 +641,7 @@ class Common_Method():
                     if version_match:
                         return version_match.group(0)
 
-    def check_App_if_Install(self):
+    def check_App_if_Install(self, zsbPackageName=None, uiud=None):
         if platform == 'Android':
             try:
                 result = ADB(serialno=uiud).check_app(zsbPackageName)
@@ -700,7 +701,7 @@ class Common_Method():
         cmd = "logcat -c"
         shell(cmd)
 
-    def get_adblog(self, dev, path):
+    def get_adblog(self, dev, path, uiud=None):
         u'''  获取app adb日志
         :param  adb_log_path  adb日志存储的绝对路径
         :return  None
@@ -714,7 +715,7 @@ class Common_Method():
     def recoverAirtestProcessAndGenerateAirtestReport(self, Bonding, logdir,
                                                       caseFail, caseErrorLog, test_name,
                                                       test_class, test_file, ScriptFileName,
-                                                      export_dir, poplog, generateReport=True):
+                                                      export_dir, poplog, generateReport=True, uiud=None):
         reports_item = ""
         try:
             # actually the android and iPhone can use the same api to generate the video,
@@ -757,7 +758,8 @@ class Common_Method():
                     finally:
                         return reports_item
 
-    def generateAirtestReport(self, test_name, test_class, test_file, script_root, log_root, export_dir, logfile):
+    def generateAirtestReport(self, test_name, test_class, test_file, script_root, log_root, export_dir, logfile,
+                              uiud=None):
         try:
             one_report_dict = {
                 "script": test_name,
@@ -852,7 +854,7 @@ class Common_Method():
                 device_info[key] = None
         return device_info["MarketName"].strip()
 
-    def get_iOS_info(self, key):
+    def get_iOS_info(self, key, uiud=None):
         """
         key option:
         ['ActivationState', 'ActivationStateAcknowledged', 'BasebandStatus', 'BluetoothAddress', 'BoardId', 'BrickState', 'BuildVersion', 'CPUArchitecture', 'ChipID', 'DeviceClass', 'DeviceColor', 'DeviceName',
@@ -932,26 +934,26 @@ class Common_Method():
     #     # Add additional logging or error handling as needed
     #     # You might want to capture a screenshot or print the current screen state for debugging
 
-    def check_text_presence(text_to_check):
-        # Search for the text on the screen
-        text_element = poco(text=text_to_check)
-
-        if text_element.exists():
-            print(f"Text '{text_to_check}' is present on the screen.")
-            return True
-        else:
-            print(f"Text '{text_to_check}' is not present on the screen.")
-            return False
+    # def check_text_presence(text_to_check):
+    #     # Search for the text on the screen
+    #     text_element = poco(text=text_to_check)
+    #
+    #     if text_element.exists():
+    #         print(f"Text '{text_to_check}' is present on the screen.")
+    #         return True
+    #     else:
+    #         print(f"Text '{text_to_check}' is not present on the screen.")
+    #         return False
 
     # Example usage
-    text_present = check_text_presence("YourTextToCheck")
-
-    if text_present:
-        # Perform actions when the text is present
-        pass
-    else:
-        # Perform actions when the text is not present
-        pass
+    # text_present = check_text_presence("YourTextToCheck")
+    #
+    # if text_present:
+    #     # Perform actions when the text is present
+    #     pass
+    # else:
+    #     # Perform actions when the text is not present
+    #     pass
 
     def drag_bar(element, direction='right', duration=1.0):
         # Get the position of the element
@@ -993,3 +995,18 @@ class Common_Method():
     # touch(Template(r"tpl1706523705888.png", record_pos=(0.006, -0.894), resolution=(1080, 2400)))
     # text("https://zsbportal.zebra.com/")
     # sleep(5)
+    def Start_The_iOSApp(self):
+        start_app("com.zebra.soho")
+        sleep(4)
+
+    def Stop_The_iOSApp(self):
+        sleep(2)
+        start_app("com.zebra.soho")
+        sleep(4)
+
+    def relaunch_iOSapp(self):
+        app_package = "com.zebra.soho"
+        stop_app(app_package)
+        sleep(2)
+        start_app(app_package)
+        sleep(2)

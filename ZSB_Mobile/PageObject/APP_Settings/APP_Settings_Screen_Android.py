@@ -1,6 +1,11 @@
+import requests
 import self
 from airtest.core.api import *
 from airtest.core.api import sleep
+from urllib3.util import url
+
+# from setuptools.config._validate_pyproject.formats import url
+
 from ZSB_Mobile.Common_Method import Common_Method
 from poco.exceptions import PocoNoSuchNodeException
 from pocoui_lib.android.kotoComponent import poco
@@ -10,32 +15,54 @@ class App_Settings_Screen:
     pass
 
     def __init__(self, poco):
-
         self.poco = poco
         self.Printer_Settings_Btn = "Printer Settings"
-        self.PrinterName_In_Printer_Settings = (
-            Template(r"tpl1704782766519.png", record_pos=(0.119, -0.768), resolution=(1080, 2400)))
+        self.PrinterName_In_Printer_Settings = Template(os.path.join(os.path.expanduser('~'),
+                                                                     "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                     "tpl1704782766519.png"),
+                                                        record_pos=(0.119, -0.768), resolution=(1080, 2400))
 
-        self.WiFi_Tab = (Template(r"tpl1704782805207.png", record_pos=(0.232, -0.626), resolution=(1080, 2400)))
+        self.WiFi_Tab = Template(os.path.join(os.path.expanduser('~'),
+                                                                     "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                     "tpl1704782805207.png"), record_pos=(0.232, -0.626), resolution=(1080, 2400))
+        # self.WiFi_Tab = "Wi-Fi\nTab 2 of 2"
+
         self.Current_Network_Txt = "Current Networks"
         self.Network_Name_Txt = "NESTWIFI"
+        self.NESTWIFI_Network = "NESTWIFI"
+        self.Network_Password_Field = Template(os.path.join(os.path.expanduser('~'),
+                                                            "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                            "tpl1706704195474.png"), record_pos=(0.009, 0.083),
+                                               resolution=(1080, 2400))
+
         self.Network_Status_Txt = "Network Status"
         self.Network_Status_Result_Txt = "Connected"
         self.IPAddress_Txt = "IP Address"
         self.IPAddress_Result_Txt = "192.168.86.175"
         self.Manage_Network = "Manage Networks"
         self.Save_Network_Message_Txt = "You can save up to 5 network profiles to your Saved Networks. If no saved networks are available, you will have to add a new one."
-        self.Threedot_On_Workspace = (
-            Template(r"tpl1704883228526.png", record_pos=(0.206, -0.724), resolution=(1080, 2400)))
+        self.Threedot_On_Workspace = Template(os.path.join(os.path.expanduser('~'),
+                                                           "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                           "tpl1704883228526.png"), record_pos=(0.206, -0.724),
+                                              resolution=(1080, 2400))
+
         self.Test_Print_Btn = "Test Print"
-        self.Bluetooth_Connection_Required_Msg = (
-            Template(r"tpl1706593483107.png", record_pos=(0.019, 0.016), resolution=(1080, 2400)))
+        self.Bluetooth_Connection_Required_Msg = Template(os.path.join(os.path.expanduser('~'),
+                                                                       "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                       "tpl1706593483107.png"),
+                                                          record_pos=(0.019, 0.016), resolution=(1080, 2400))
+
         self.Continue_Btn_on_Bluetooth_Connection_Failed_popup = "Continue"
         self.Cancel_Btn_n_Bluetooth_Connection_Failed_Popup = "Cancel"
-        self.Bluetooth_Connection_Failed_Popup = (
-            Template(r"tpl1706592659670.png", record_pos=(0.007, 0.003), resolution=(1080, 2400)))
-        self.Red_Icon_to_remove_network = (
-            Template(r"tpl1704879780106.png", record_pos=(0.424, 0.164), resolution=(1080, 2400)))
+        self.Bluetooth_Connection_Failed_Popup = Template(os.path.join(os.path.expanduser('~'),
+                                                                       "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                       "tpl1706592659670.png"),
+                                                          record_pos=(0.007, 0.003), resolution=(1080, 2400))
+
+        self.Red_Icon_to_remove_network = Template(os.path.join(os.path.expanduser('~'),
+                                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                "tpl1704879780106.png"), record_pos=(0.424, 0.164),
+                                                   resolution=(1080, 2400))
         self.Add_Network = "Add Network"
         self.Add_Network_Txt = "Add Network"
         self.Deleted_Network = "Zebra"
@@ -44,23 +71,44 @@ class App_Settings_Screen:
         self.Save_Exit_Btn = "Save & Exit"
         self.Home_text_on_homepage = "Home"
         self.Pen_Icon = "android.widget.Button"
-        self.Units_Of_Measurements_Text = (
-            Template(r"tpl1704965552396.png", record_pos=(-0.274, 0.128), resolution=(1080, 2400)))
-        self.Inches_Option = (Template(r"tpl1704965934868.png", record_pos=(-0.266, 0.236), resolution=(1080, 2400)))
-        self.Expand_Icon = (Template(r"tpl1704965795152.png", record_pos=(0.396, 0.236), resolution=(1080, 2400)))
+        self.Units_Of_Measurements_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                "tpl1704965552396.png"), record_pos=(-0.274, 0.128),
+                                                   resolution=(1080, 2400))
+
+        self.Inches_Option = Template(os.path.join(os.path.expanduser('~'),
+                                                   "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                   "tpl1704965934868.png"), record_pos=(-0.266, 0.236),
+                                      resolution=(1080, 2400))
+
+        self.Expand_Icon = Template(os.path.join(os.path.expanduser('~'),
+                                                 "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                 "tpl1704965795152.png"), record_pos=(0.396, 0.236),
+                                    resolution=(1080, 2400))
+
         self.Milimetres_Text = "Millimetres"
         self.Centimetres_Text = "Centimetres"
         self.Inches_Text = "Inches"
         self.Updated_Msg = "Units of Measurement updated successfully"
         self.Home_Text = "Home"
-        self.Size_In_Cm = (Template(r"tpl1704967494384.png", record_pos=(0.048, -0.391), resolution=(1080, 2400)))
+        self.Size_In_Cm = Template(os.path.join(os.path.expanduser('~'),
+                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                "tpl1704967494384.png"), record_pos=(0.048, -0.391),
+                                   resolution=(1080, 2400))
+
         self.My_Design = "My Designs"
-        self.Mydesign_Size_In_Cm = (
-            Template(r"tpl1704967715262.png", record_pos=(0.113, -0.126), resolution=(1080, 2400)))
+        self.Mydesign_Size_In_Cm = Template(os.path.join(os.path.expanduser('~'),
+                                                         "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                         "tpl1704967715262.png"), record_pos=(0.113, -0.126),
+                                            resolution=(1080, 2400))
+
         self.Upload_Photo = "Upload photo"
         self.Edit_Workspace = "Edit Workspace"
-        self.Profile_Avatar_Letter = (
-            Template(r"tpl1704971722085.png", record_pos=(-0.358, -0.644), resolution=(1080, 2400)))
+        self.Profile_Avatar_Letter = Template(os.path.join(os.path.expanduser('~'),
+                                                           "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                           "tpl1704971722085.png"), record_pos=(-0.358, -0.644),
+                                              resolution=(1080, 2400))
+
         self.Show_roots_Hamburger_Icn = "Show roots"
         self.Recent_Images = "android:id/title"
         self.Camera_Option = "androidx.cardview.widget.CardView"
@@ -71,20 +119,45 @@ class App_Settings_Screen:
         self.Edit_Workspace_Back_Icon = "android.widget.Button"
         self.Workspace_Name_Text = "Workspace name"
         self.Keyboard_back_Icon = "com.android.systemui:id/back"
-        self.Previous_Workspace_Name = (
-            Template(r"tpl1705043802427.png", record_pos=(0.005, -0.215), resolution=(1080, 2400)))
+        self.Previous_Workspace_Name = Template(os.path.join(os.path.expanduser('~'),
+                                                             "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                             "tpl1705043802427.png"), record_pos=(0.005, -0.215),
+                                                resolution=(1080, 2400))
+
         self.Workspace_Name_Update_update_message = ""
-        self.Updated_Workspace_Name = (
-            Template(r"tpl1705300826503.png", record_pos=(0.005, -0.194), resolution=(1080, 2400)))
+        self.Updated_Workspace_Name = Template(os.path.join(os.path.expanduser('~'),
+                                                            "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                            "tpl1705300826503.png"), record_pos=(0.005, -0.194),
+                                               resolution=(1080, 2400))
+
         self.Profile_Name = "My First Workspace"
-        self.First_Name_Text = (Template(r"tpl1705310266352.png", record_pos=(-0.369, -0.149), resolution=(1080, 2400)))
-        self.Last_Name_Text = (Template(r"tpl1705310274082.png", record_pos=(-0.338, 0.106), resolution=(1080, 2400)))
-        self.First_Name = (Template(r"tpl1705314757599.png", record_pos=(0.008, -0.09), resolution=(1080, 2400)))
-        self.Last_Name = (Template(r"tpl1705314814226.png", record_pos=(0.002, 0.159), resolution=(1080, 2400)))
+        self.First_Name_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                     "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                     "tpl1705310266352.png"), record_pos=(-0.369, -0.149),
+                                        resolution=(1080, 2400))
+
+        self.Last_Name_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                    "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                    "tpl1705310274082.png"), record_pos=(-0.338, 0.106),
+                                       resolution=(1080, 2400))
+
+        self.First_Name = Template(os.path.join(os.path.expanduser('~'),
+                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                "tpl1705314757599.png"), record_pos=(0.008, -0.09),
+                                   resolution=(1080, 2400))
+
+        self.Last_Name = Template(os.path.join(os.path.expanduser('~'),
+                                               "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                               "tpl1705314814226.png"), record_pos=(0.002, 0.159),
+                                  resolution=(1080, 2400))
+
         self.Recently_Printed_Labels_Text = "Recently Printed Labels"
         self.Firstone_In_Recently_Printed_Labels = "android.view.View"
-        self.Printer_is_present = (
-            Template(r"tpl1705314417017.png", record_pos=(-0.349, -0.5), resolution=(1080, 2400)))
+        self.Printer_is_present = Template(os.path.join(os.path.expanduser('~'),
+                                                        "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                        "tpl1705314417017.png"), record_pos=(-0.349, -0.5),
+                                           resolution=(1080, 2400))
+
         self.Name_Updated_Message = "Your changes have been saved"
         self.Buy_More_Labels = "Buy More Labels"
         self.Enter_First_Name_TextField = "android.widget.EditText"
@@ -98,61 +171,189 @@ class App_Settings_Screen:
         self.Delete_Account_Checkbox3_with_Text = "Ensure your printer is ON to factory reset your ZSB printer."
         self.Cancel_Delete_account = "Cancel"
         self.Security_Message_Txt = "For your security, you must immediately sign back in one last time to finalize and confirm the deletion of your account. Select ‘Continue’ to sign out."
-        self.Zebra_Logo_In_Login_Screen = (
-            Template(r"tpl1705569188191.png", record_pos=(0.016, -0.798), resolution=(1080, 2400)))
-        self.ZSB_Printer_Icon_In_Login_Screen = (
-            Template(r"tpl1705569305111.png", record_pos=(0.025, -0.151), resolution=(1080, 2400)))
+        self.Zebra_Logo_In_Login_Screen = Template(os.path.join(os.path.expanduser('~'),
+                                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                "tpl1705569188191.png"), record_pos=(0.016, -0.798),
+                                                   resolution=(1080, 2400))
+
+        self.ZSB_Printer_Icon_In_Login_Screen = Template(os.path.join(os.path.expanduser('~'),
+                                                                      "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                      "tpl1705569305111.png"),
+                                                         record_pos=(0.025, -0.151), resolution=(1080, 2400))
+
         self.Important_Message_In_Login_Page = "Important:For security purposes, please login one last time to finalize the deletion of your account. Failure to do so will result in your account still being active."
-        self.Delete_Account_Popup = (
-            Template(r"tpl1705577555232.png", record_pos=(0.007, 0.014), resolution=(1080, 2400)))
+        self.Delete_Account_Popup = Template(os.path.join(os.path.expanduser('~'),
+                                                          "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                          "tpl1705577555232.png"), record_pos=(0.007, 0.014),
+                                             resolution=(1080, 2400))
+
         self.Cancel_on_Delete_Account_Popup = "Cancel"
-        self.Continue_with_Google = (
-            Template(r"tpl1705577631362.png", record_pos=(0.014, -0.241), resolution=(1080, 2400)))
-        self.ThreeDot_On_Added_Printer_On_HomePage = (
-            Template(r"tpl1705915293017.png", record_pos=(0.402, -0.553), resolution=(1080, 2400)))
+        self.Continue_with_Google = Template(os.path.join(os.path.expanduser('~'),
+                                                          "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                          "tpl1705577631362.png"), record_pos=(0.014, -0.241),
+                                             resolution=(1080, 2400))
+
+        self.ThreeDot_On_Added_Printer_On_HomePage = Template(os.path.join(os.path.expanduser('~'),
+                                                                           "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                           "tpl1705915293017.png"),
+                                                              record_pos=(0.402, -0.553), resolution=(1080, 2400))
+
         self.Delete_Printer_Button = "Delete"
         # self.Delete_Printer_Button = ((name="Delete", type="android.view.View"))
-        self.Delete_Printer_Page = (
-            Template(r"tpl1705993965886.png", record_pos=(0.014, 0.009), resolution=(1080, 2400)))
-        self.Final_Delete_Printer_Page = (
-            Template(r"tpl1705993965886.png", record_pos=(0.014, 0.009), resolution=(1080, 2400)))
+        self.Delete_Printer_Page = Template(os.path.join(os.path.expanduser('~'),
+                                                         "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                         "tpl1705993965886.png"), record_pos=(0.014, 0.009),
+                                            resolution=(1080, 2400))
+
+        self.Final_Delete_Printer_Page = Template(os.path.join(os.path.expanduser('~'),
+                                                               "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                               "tpl1705993965886.png"), record_pos=(0.014, 0.009),
+                                                  resolution=(1080, 2400))
         self.Yes_Delete_Button = "Yes, Delete"
-        self.Unpair_Bluetooth_dropdown_list = ""
-        self.General_Tab_Text = (
-            Template(r"tpl1706003693540.png", record_pos=(-0.255, -0.644), resolution=(1080, 2400)))
+        self.Unpair_Bluetooth_dropdown_list = Template(os.path.join(os.path.expanduser('~'),
+                                                                    "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                    "tpl1706788194403.png"), record_pos=(0.329, 0.09),
+                                                       resolution=(1080, 2400))
+
+        self.General_Tab_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                      "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                      "tpl1706003693540.png"), record_pos=(-0.255, -0.644),
+                                         resolution=(1080, 2400))
+
         self.Printer_Name_Text = "Printer Name"
         self.Darkness_Level_Bar = "64%"
         self.Updated_Darkness_Level_Bar = "99%"
-        self.Darkness_Updated_Message = (
-            Template(r"tpl1706508391656.png", record_pos=(0.002, -0.807), resolution=(1080, 2400)))
-        self.Toggle_Button = (Template(r"tpl1706509159418.png", record_pos=(0.367, -0.189), resolution=(1080, 2400)))
+        self.Darkness_Updated_Message = Template(os.path.join(os.path.expanduser('~'),
+                                                              "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                              "tpl1706508391656.png"), record_pos=(0.002, -0.807),
+                                                 resolution=(1080, 2400))
+
+        self.Toggle_Button = Template(os.path.join(os.path.expanduser('~'),
+                                                   "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                   "tpl1706509159418.png"), record_pos=(0.367, -0.189),
+                                      resolution=(1080, 2400))
+
         self.Printer_Name_Text_Field = "android.widget.EditText"
         self.Exceeding_Characters_Message = "Your printer name can't exceed 30 characters."
         self.Test_Print_Button = "Test Print"
-        self.Printed_Successfully_Text = "Test label printed successfully to ZSB-DP12"
-        self.ErrorMessage_Text = "Printer has cover open. Print will start once cover is closed"
-        self.Notifications_Tab = "Notifications"
-        self.Notifications_Settings_Tab = (
-            Template(r"tpl1706599309382.png", record_pos=(-0.117, -0.768), resolution=(1080, 2400)))
+        self.Printed_Successfully_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                               "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                               "tpl1706790676674.png"), record_pos=(-0.006, -0.756),
+                                                  resolution=(1080, 2400))
 
-        self.Notification_Settings_Messages_Toggle_Btn = (
-            Template(r"tpl1706596892577.png", record_pos=(0.006, -0.235), resolution=(1080, 2400)))
-        self.Messages_Tab = (Template(r"tpl1706609710905.png", record_pos=(0.278, -0.768), resolution=(1080, 2400)))
-        # (Template(r"tpl1706603969105.png", record_pos=(0.285, -0.759), resolution=(1080, 2400)))
-        self.Messages_Text_AND_Toggle_Btn = (
-            Template(r"tpl1706596588283.png", record_pos=(0.005, -0.104), resolution=(1080, 2400)))
+        self.ErrorMessage_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                       "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                       "tpl1706790948345.png"), record_pos=(-0.065, 0.863),
+                                          resolution=(1080, 2400))
+
+        self.Notifications_Tab = "Notifications"
+        self.Notifications_Settings_Tab = Template(os.path.join(os.path.expanduser('~'),
+                                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                "tpl1706599309382.png"), record_pos=(-0.117, -0.768),
+                                                   resolution=(1080, 2400))
+
+        self.Notification_Settings_Messages_Toggle_Btn = Template(os.path.join(os.path.expanduser('~'),
+                                                                               "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                               "tpl1706596892577.png"),
+                                                                  record_pos=(0.006, -0.235), resolution=(1080, 2400))
+
+        self.Messages_Tab = Template(os.path.join(os.path.expanduser('~'),
+                                                  "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                  "tpl1706609710905.png"), record_pos=(0.278, -0.768),
+                                     resolution=(1080, 2400))
+
+        self.Messages_Text_AND_Toggle_Btn = Template(os.path.join(os.path.expanduser('~'),
+                                                                  "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                  "tpl1706596588283.png"), record_pos=(0.005, -0.104),
+                                                     resolution=(1080, 2400))
+
         self.Notifications_Header_Text = "Notifications"
-        self.Updated_Notification_Settings_Messages_Color = (
-            Template(r"tpl1706608399741.png", record_pos=(0.013, -0.256), resolution=(1080, 2400)))
-        self.Updated_Messages_Color = (
-            Template(r"tpl1706608445061.png", record_pos=(0.007, 0.017), resolution=(1080, 2400)))
+        self.Updated_Notification_Settings_Messages_Color = Template(os.path.join(os.path.expanduser('~'),
+                                                                                  "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                                  "tpl1706608399741.png"),
+                                                                     record_pos=(0.013, -0.256),
+                                                                     resolution=(1080, 2400))
+
+        self.Updated_Messages_Color = Template(os.path.join(os.path.expanduser('~'),
+                                                            "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                            "tpl1706608445061.png"), record_pos=(0.007, 0.017),
+                                               resolution=(1080, 2400))
+
         self.Logout_Btn = "Log Out"
         self.Mobile_Camera = "Camera"
         self.Allow_Popup = "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
+        self.Picture = "com.google.android.GoogleCamera:id/shutter_button"
+        self.User_Upload_Photo = Template(os.path.join(os.path.expanduser('~'),
+                                                       "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                       "tpl1706697485876.png"), record_pos=(-0.309, -0.437),
+                                          resolution=(1080, 2400))
 
+        self.Photo_Uploaded_Message = "Avatar changed successfully"
+        self.User_Photo_Remove_Image = Template(os.path.join(os.path.expanduser('~'),
+                                                             "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                             "tpl1706698934855.png"), record_pos=(0.071, -0.433),
+                                                resolution=(1080, 2400))
 
+        self.Continue_Btn_on_Bluetooth_Connection_Required = "Continue"
+        self.Nework_Submit_Btn = "Submit"
+        self.NestWifi_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                   "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                   "tpl1706704936088.png"), record_pos=(-0.244, 0.167),
+                                      resolution=(1080, 2400))
 
+        self.Enter_Network_Manually = "Enter Network Manually..."
+        self.Network_UserName = "android.widget.EditText"
+        self.Network_Password = Template(os.path.join(os.path.expanduser('~'),
+                                                      "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                      "tpl1706793220189.png"), record_pos=(0.006, 0.003),
+                                         resolution=(1080, 2400))
 
+        self.Join_Btn = "Join"
+        self.UI_Of_Unpair_Bluetooth_dropdown_list = Template(os.path.join(os.path.expanduser('~'),
+                                                                          "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                          "tpl1706789579755.png"),
+                                                             record_pos=(0.002, 0.0),
+                                                             resolution=(1080, 2400))
+
+        self.Cancel_Btn_on_Other_Network_Popup = "Cancel"
+        self.Security_Open = "Open"
+        self.WPA_PSK = "WPA PSK"
+        self.Added_Network = "android.view.View"
+        self.Printer_Name_Update_Failed_Message = Template(os.path.join(os.path.expanduser('~'),
+                                                                        "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                                        "tpl1707288469543.png"),
+                                                           record_pos=(0.013, 0.014), resolution=(1080, 2400))
+
+        self.Continue_Button_On_Printer_Update_Failed_Popup = "Continue"
+        self.Previous_PrinterName = Template(os.path.join(os.path.expanduser('~'),
+                                                          "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                          "tpl1707288777589.png"), record_pos=(0.152, -0.526),
+                                             resolution=(1080, 2400))
+
+        self.Long_Network_UserName = Template(os.path.join(os.path.expanduser('~'),
+                                                           "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                           "tpl1707296173547.png"), record_pos=(-0.032, 0.3),
+                                              resolution=(1080, 2400))
+
+        self.General_Tab = "General\nTab 1 of 2"
+        self.Continue_On_Failed_To_Connect_To_Wifi_Network = "Continue"
+        self.Apply_Changes = "Apply Changes"
+        self.Invalid_Network_Error_Message = ""
+        self.Change_Password_Btn = \
+            poco("android.widget.FrameLayout").child("android.view.View").child("android.view.View").child(
+                "android.view.View").child("android.view.View").child("android.view.View")[1].child(
+                "android.view.View").child("android.view.View")[2].child("Change")
+
+        self.Change_Password_Page = "com.android.chrome:id/url_bar"
+        self.Password_Recovery_Text = Template(os.path.join(os.path.expanduser('~'),
+                                                            "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                            "tpl1707307875194.png"), record_pos=(0.005, -0.55),
+                                               resolution=(1080, 2400))
+
+        self.Email_TextField_On_Password_Recovery_Screen = "email"
+        self.Submit_On_Password_Recovery_Screen = "android.widget.Button"
+
+    # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     def click_Printer_Settings(self):
         printer_settings = self.poco(self.Printer_Settings_Btn)
         printer_settings.click()
@@ -168,8 +369,9 @@ class App_Settings_Screen:
         touch(self.PrinterName_In_Printer_Settings)
 
     def click_wifi_tab(self):
-
-        touch(self.WiFi_Tab)
+        WiFi_Tab = self.poco(self.WiFi_Tab)
+        WiFi_Tab.click()
+        # touch(self.WiFi_Tab)
 
     def test_CurrentNetwork_Txt_is_present_on_printer_settings_page(self):
 
@@ -242,7 +444,7 @@ class App_Settings_Screen:
             assert False
 
     def get_text_Bluetooth_connection_required_Txt(self):
-        sleep(2)
+        sleep(12)
         assert_exists(self.Bluetooth_Connection_Required_Msg, "Connection Required popup is Present")
 
     def accept_Continue_popup(self):
@@ -317,9 +519,11 @@ class App_Settings_Screen:
         return cancel_btn_text
 
     def click_Red_Icon_to_remove_network(self):
+        sleep(2)
         touch(self.Red_Icon_to_remove_network)
 
     def click_Add_Network(self):
+        sleep(6)
         add_network = self.poco(self.Add_Network)
 
         if add_network.exists():
@@ -332,6 +536,7 @@ class App_Settings_Screen:
             return False
 
     def get_text_Add_Network(self):
+        sleep(4)
         add_network_txt = self.poco(self.Add_Network_Txt)
         add_network_txt.get_text()
         print("Text of Cancel button:", add_network_txt)
@@ -571,6 +776,7 @@ class App_Settings_Screen:
         inches_Text.click()
 
     def click_upload_photo(self):
+        sleep(2)
         upload_photo = self.poco(self.Upload_Photo)
         upload_photo.click()
 
@@ -597,6 +803,7 @@ class App_Settings_Screen:
         first_pic.click()
 
     def click_Remove_Image(self):
+        sleep(2)
         remove_image = self.poco(self.Remove_Image)
         remove_image.click()
 
@@ -916,15 +1123,13 @@ class App_Settings_Screen:
         Yes_Delete_Button.click()
 
     def Verify_And_click_Unpair_Bluetooth_dropdown_list(self):
-        try:
-            self.poco(self.Unpair_Bluetooth_dropdown_list).wait_for_appearance(timeout=10)
-            self.poco(self.Unpair_Bluetooth_dropdown_list).click()
-            print("Checked & Clicked on the Continue Button.")
-        except PocoNoSuchNodeException:
-            print("Continue Button not found. Test continues...")
+        sleep(3)
+        touch(self.Unpair_Bluetooth_dropdown_list)
 
     def Verify_UI_Of_Unpair_Bluetooth_dropdown_list(self):
-        pass
+        sleep(2)
+        assert_exists(self.UI_Of_Unpair_Bluetooth_dropdown_list,
+                      "UI Of Unpair Bluetooth dropdown list is displaying correctly")
 
     def Verify_General_Tab_Text(self):
         sleep(2)
@@ -987,25 +1192,17 @@ class App_Settings_Screen:
         sleep(2)
         Test_Print_Button = self.poco(self.Test_Print_Button)
         Test_Print_Button.click()
-        sleep(2)
 
     def Verify_Printed_Successfully_Text(self):
-        sleep(2)
-
-        if self.poco(self.Printed_Successfully_Text).assert_exists():
-            print("pass")
-        else:
-            print("fail")
+        sleep(1)
+        assert_exists(self.Printed_Successfully_Text, "Printed successfully Text is Present")
 
     def Verify_ErrorMessage_Text(self):
         assert_exists(self.ErrorMessage_Text, "ErrorMessage Text is Present")
 
-
     def Verify_Bluetooth_Connection_Failed_Popup(self):
-
-        self.Bluetooth_Connection_Failed_Popup.wait_for_appearance(20)
+        sleep(4)
         assert_exists(self.Bluetooth_Connection_Failed_Popup, "Bluetooth Connection Failed popup is Present")
-
 
     def Verify_Wifi_Tab_Text(self):
         assert_exists(self.WiFi_Tab, "Wifi Text is Present")
@@ -1023,7 +1220,6 @@ class App_Settings_Screen:
             # Swipe left on the ScrollView
             scroll_view.swipe("left", duration=0.5)
 
-
     def Verify_NotificationSettings_Toggle_Buttons_Text_Present(self):
         assert_exists(self.Notification_Settings_Messages_Toggle_Btn,
                       "Notification settings text and toggle buttons are Present according to the theme")
@@ -1037,11 +1233,9 @@ class App_Settings_Screen:
             # Swipe up on the ScrollView
             scroll_view.swipe("left", duration=0.9)
 
-
-
     def Verify_Messages_Text_And_Toggle_Buttons(self):
 
-        if self.Messages_Text_AND_Toggle_Btn.exist():
+        if self.Messages_Text_AND_Toggle_Btn.exists():
             print("Verification successful: Messages text and toggle buttons are present.")
         else:
             print("Verification failed: Messages text and toggle buttons are not present according to the theme.")
@@ -1053,6 +1247,7 @@ class App_Settings_Screen:
     def click_Mesages_Tab(self):
         touch(self.Messages_Tab)
         sleep(2)
+
     def Verify_Notifications_Text_IS_Displaying(self):
         sleep(3)
         Notifications_Header_Text = self.poco(self.Notifications_Header_Text)
@@ -1061,7 +1256,7 @@ class App_Settings_Screen:
 
     def Verify_Updated_Notifications_SettingsTab_Messages_Color(self):
 
-        if self.Updated_Notification_Settings_Messages_Color.exist():
+        if self.Updated_Notification_Settings_Messages_Color.exists():
             print("Verification successful: Correct color for Messages text and toggle buttons are present.")
         else:
             print(
@@ -1069,7 +1264,7 @@ class App_Settings_Screen:
 
     def Verify_Updated_MessagesTab_Color(self):
 
-        if self.Updated_Messages_Color.exist():
+        if self.Updated_Messages_Color.exists():
             print("Verification successful: Correct color for Messages text and toggle buttons are present.")
         else:
             print(
@@ -1091,9 +1286,226 @@ class App_Settings_Screen:
         sleep(2)
 
     def click_Mobile_Camera(self):
+        sleep(2)
         moibile_camera = self.poco(self.Mobile_Camera)
         moibile_camera.click()
 
     def Click_Allow_popup(self):
         allow_popup = self.poco(self.Allow_Popup)
-        allow_popup.click()
+        if allow_popup.exists():
+            allow_popup.click()
+        else:
+            pass
+
+    def click_picture(self):
+        sleep(2)
+        picture = self.poco(self.Picture)
+        picture.click()
+        picture.click()
+
+    def click_User_upload_photo(self):
+        touch(self.User_Upload_Photo)
+
+    def Verify_Photo_Uploaded_Message(self):
+        photo_uploaded_message = self.poco(self.Photo_Uploaded_Message)
+        if photo_uploaded_message.exists():
+            photo_uploaded_message.get_text()
+        else:
+            pass
+
+    def click_User_Photo_Remove_Image(self):
+        touch(self.User_Photo_Remove_Image)
+
+    def click_Continue_Btn_on_Bluetooth_Connection_Required(self):
+        sleep(4)
+        continue_btn = self.poco(self.Continue_Btn_on_Bluetooth_Connection_Required)
+        continue_btn.click()
+        sleep(7)
+
+    def click_NESTWIFI_Network(self):
+        sleep(9)
+        nestwifi = self.poco(self.NESTWIFI_Network)
+        nestwifi.click()
+
+    def click_Network_Password_Field(self):
+        sleep(2)
+        touch(self.Network_Password_Field)
+        text("123456789")
+
+    def Enter_Network_Password(self):
+        sleep(3)
+        # enter_netwoek_password = self.poco(self.Network_Password_Field)
+        # enter_netwoek_password.set_text("123456789")
+        self.poco(self.Network_Password_Field).text("123456789")
+
+    def click_Network_Submit_Btn(self):
+        sleep(3)
+        network_submit_btn = self.poco(self.Nework_Submit_Btn)
+        network_submit_btn.click()
+
+    def Verify_NestWIFI_Network_Name_In_Network_List(self):
+        sleep(9)
+        assert_exists(self.NestWifi_Text, "NESTWIFI text is displaying")
+
+    def click_Delete_NESTWIFI_Network_Name(self):
+        sleep(3)
+        Delete_NESTWIFI_Network_Name = self.poco(self.Delete_NESTWIFI_Network_Name)
+        Delete_NESTWIFI_Network_Name.click()
+
+    def Verify_NestWIFI_In_Network_List(self):
+        sleep(3)
+
+        assert_not_exists(self.NestWifi_Text, "NESTWIFI text is not displaying")
+
+    def Check_no_of_left_cartridge(self):
+        child_names = [child.get_name() for child in
+                       self.poco("android.widget.FrameLayout").offspring("android.widget.FrameLayout").child(
+                           "android.view.View").child("android.view.View").child("android.view.View").offspring(
+                           "android.widget.ScrollView").child("android.view.View")[0].child("android.view.View").child(
+                           "android.view.View")[0].children()]
+        modified_list = [item.split('\n') for item in child_names]
+        modified_list = modified_list[0][4].split(" ")
+
+        return int(modified_list[0])
+
+    def check_update_cartridge(self, previous, current, count):
+
+        return 1 if previous - count == current else 0
+
+    def click_Enter_Network_Manually(self):
+        sleep(10)
+        scroll_view = poco("android.widget.ScrollView")
+        # Set the maximum number of swipes to avoid an infinite loop
+        max_swipes = 200
+        for _ in range(max_swipes):
+            # Swipe up on the ScrollView
+            scroll_view.swipe("up", duration=0.1)
+            # Check if the "Accept" element is present and enabled
+            Enter_Network_Manually = poco(name="Enter Network Manually...")
+            if Enter_Network_Manually.exists() and Enter_Network_Manually.attr('enabled'):
+                Enter_Network_Manually.click()
+                # Accept button is visible and enabled, break out of the loop
+                break
+
+    def click_Network_UserName(self):
+        sleep(3)
+        enter_network_username = self.poco(self.Network_UserName)
+        enter_network_username.click()
+        enter_network_username.set_text("Zebra")
+        sleep(2)
+
+    def click_Join_Btn_On_Other_Network_Popup(self):
+        sleep(3)
+        join_Btn = self.poco(self.Join_Btn)
+        join_Btn.click()
+
+    def click_Cancel_Button_On_Other_Network_Popup(self):
+        sleep(2)
+        cancel_btn = self.poco(self.Cancel_Btn_on_Other_Network_Popup)
+        cancel_btn.click()
+
+    def click_Security_Open(self):
+        sleep(2)
+        security_option = self.poco(self.Security_Open)
+        security_option.click()
+
+    def click_WPA_PSK(self):
+        sleep(2)
+        WPA_PSK = self.poco(self.WPA_PSK)
+        WPA_PSK.click()
+
+    def Click_Enter_Password(self):
+        sleep(3)
+        touch(self.Network_Password).set_text("123456789")
+
+    def Verify_Added_Network(self):
+        sleep(15)
+        assert_exists(self.Added_Network, "Added Network Zebra text is displaying in the list")
+
+    def Rename_PrinterName_With_Same_Name(self):
+        printer_name = self.poco(self.Printer_Name_Text_Field)
+        printer_name.set_text("ZSB-DP12")
+
+    def Verify_Printer_Name_Update_Failed_Message(self):
+        assert_exists(self.Printer_Name_Update_Failed_Message,
+                      "Printer name update failed message pop up is displaying")
+
+    def click_Continue_Button_On_Printer_Update_Failed_Popup(self):
+        continue_btn = self.poco(self.Continue_Button_On_Printer_Update_Failed_Popup)
+        continue_btn.click()
+
+    def Verify_Previous_PrinterName_IS_Displaying(self):
+        sleep(3)
+        assert_exists(self.Previous_PrinterName, "Previous Printer Name is displaying")
+
+    def click_Long_Network_UserName(self):
+        sleep(3)
+        enter_network_username = self.poco(self.Network_UserName)
+        enter_network_username.click()
+        enter_network_username.set_text("Test-EnterNetwork-Manually-NameDisplay")
+        sleep(2)
+
+    def Verify_Long_Network_UserName(self):
+        sleep(3)
+        assert_exists(self.Long_Network_UserName, "Long Network UserName is displaying")
+
+    def click_General_Tab(self):
+        sleep(3)
+        General_Tab = self.poco(self.General_Tab)
+        General_Tab.click()
+
+    def click_Continue_On_Failed_To_Connect_To_Wifi_Network(self):
+        sleep(20)
+        Continue_On_Failed_To_Connect_To_Wifi_Network = self.poco(self.Continue_On_Failed_To_Connect_To_Wifi_Network)
+        if Continue_On_Failed_To_Connect_To_Wifi_Network.exists():
+            Continue_On_Failed_To_Connect_To_Wifi_Network.click()
+        else:
+            pass
+
+    def click_Apply_Chnages_Button(self):
+        sleep(3)
+        apply_changes = self.poco(self.Apply_Changes)
+        apply_changes.click()
+
+    def Verify_The_Invalid_Network_Error_Message(self):
+        sleep(3)
+        invalid_network_error = self.poco(self.Invalid_Network_Error_Message)
+        invalid_network_error.click()
+
+    def click_Change_Password_Btn(self):
+        sleep(3)
+        poco("android.widget.FrameLayout").child("android.view.View").child("android.view.View").child(
+            "android.view.View").child("android.view.View").child("android.view.View")[1].child(
+            "android.view.View").child("android.view.View")[2].child("Change").click()
+
+        sleep(20)
+
+    def Verify_The_Change_Password_URL(self):
+        try:
+            response = requests.get(url)
+            # Check if the request was successful (status code 200)
+            if response.status_code == 200:
+                return response.text
+            else:
+                print(f"Failed to fetch URL: {url}. Status code: {response.status_code}")
+                return None
+        except requests.RequestException as e:
+            print(f"An error occurred while fetching URL: {url}. Error: {e}")
+            return None
+
+    def Verify_Change_Password_PageURL_Is_Displaying(self):
+        sleep(20)
+        assert_exists(self.Change_Password_Page, "Change Password Page is displaying with correct URL")
+
+    def Verify_Password_Recovery_Text_Is_Displaying(self):
+        sleep(2)
+        assert_exists(self.Password_Recovery_Text, "Password Recovery Text is displaying")
+
+    def click_Password_Recovery_Email_TextField(self):
+        email_field = self.poco(self.Email_TextField_On_Password_Recovery_Screen)
+        email_field.click()
+        email_field.set_text("Zebra01.swdvt@icloud.com")
+
+    def click_Submit_On_Password_Recovery_Screen(self):
+        submit_btn = self.poco(self.Submit_On_Password_Recovery_Screen)
+        submit_btn.click()
