@@ -130,6 +130,7 @@ class Common_Method():
     def wait_for_element_appearance_namematches(self,element, time_out=10):
         self.poco(nameMatches=".*"+element+".*").wait_for_appearance(timeout=time_out)
 
+
     def wait_for_element_appearance_textmatches(self,element, time_out=10):
         self.poco(textMatches=".*"+element+".*").wait_for_appearance(timeout=time_out)
 
