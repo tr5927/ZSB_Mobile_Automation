@@ -10,7 +10,7 @@ from poco import poco
 from ZSB_Mobile.Common_Method import Common_Method
 from airtest.core.assertions import assert_exists, assert_equal
 from airtest.core.api import *
-from ZSB_Mobile.PageObject.Login_Screen import Login_Screen
+from ZSB_Mobile.PageObject.Login_Screen import Login_Screen_Android
 from airtest.core.api import device as current_device
 
 class Help_Screen:

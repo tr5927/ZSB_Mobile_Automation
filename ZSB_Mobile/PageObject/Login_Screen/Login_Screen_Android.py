@@ -2,6 +2,7 @@
 from platform import platform
 
 import pytest
+from _pytest.outcomes import skip
 from airtest.core.android import Android
 from airtest.core.api import exists, sleep
 from poco import poco
@@ -34,13 +35,21 @@ class Login_Screen:
         self.UserName = "username"
         self.Password_Field = "password"
         self.SignIn_Button = "submit_id"
+        self.Login_With_ZebraEmail = Template(os.path.join(os.path.expanduser('~'),
+                                                       "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+                                                     "tpl1707302769907.png"), record_pos=(-0.018, 0.215), resolution=(1080, 2400))
 
-
-
+    # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     def click_LoginAllow_Popup(self):
+        sleep(1)
         loginallow = self.poco(self.LoginAllow_Popup)
-        loginallow.click()
+        if loginallow.exists():
+            loginallow.click()
+        else:
+            # pytest.skip("Login allow popup does not exist, skipping test.")
+            print("Element not found, proceeding with the next part of the code.")
+
 
     def click_Bluetooth_Allow(self):
         bluetooth_allow = self.poco(self.Bluetooth_Allow)
@@ -56,7 +65,7 @@ class Login_Screen:
         sleep(3)
         google_login = self.poco(self.Google_Login)
         google_login.click()
-        sleep(4)
+        sleep(15)
 
     def click_GoogleID_Field(self):
         sleep(3)
@@ -91,6 +100,7 @@ class Login_Screen:
         sleep(2)
         password_nextbtn = self.poco(self.Password_Nextbtn)
         password_nextbtn.click()
+        sleep(8)
 
     def click_Menu_HamburgerICN(self):
         sleep(2)
@@ -98,8 +108,13 @@ class Login_Screen:
         hamburgerIcn.click()
 
     def click_Allow_ZSB_Series_Popup(self):
+        sleep(3)
         Allow_ZSB_Series_Popup = self.poco(self.Allow_ZSB_Series_Popup)
-        Allow_ZSB_Series_Popup.click()
+        if Allow_ZSB_Series_Popup.exists():
+            Allow_ZSB_Series_Popup.click()
+        else:
+            # pytest.skip("Allow ZSB Series Popup does not exist, skipping test.")
+            print("Element not found, proceeding with the next part of the code.")
 
     # def Verify_LoginAllow_Popup_IS_Not_Displaying(self):
     #     if assert_not_exists(self.poco(self.LoginAllow_Popup), "Login Allow pop up is not there"):
@@ -116,12 +131,13 @@ class Login_Screen:
 
     def click_Login_With_Email_Tab(self):
         sleep(7)
-        login_with_email = self.poco(self.Login_With_Email)
+        touch(self.Login_With_ZebraEmail)
+        # login_with_email = self.poco(self.Login_With_Email)
+        # # login_with_email.click()
+        # if login_with_email.exists():
         # login_with_email.click()
-        if login_with_email.exists():
-            login_with_email.click()
-        else:
-            print("Login with email element not found.")
+        # else:
+        #     print("Login with email element not found.")
 
     def click_UserName_TextField(self):
         username = self.poco(self.UserName)
@@ -145,5 +161,24 @@ class Login_Screen:
         signin.click()
         sleep(7)
 
+    def Check_loginBtn_IS_Present(self):
+        sleep(5)
+        login_btn = self.poco(self.loginBtn)
+        if login_btn.exists():
+            # Click on the "OK" or "Allow" button
+            login_btn.click()
+            print("Login Button is enabled.")
+            return True
+        else:
+            print("Login Button is not enabled.")
+            return False
 
+    def Enter_Zebra_UserName(self):
+        sleep(2)
+        username = self.poco(self.UserName)
+        username.set_text("Zebra01.swdvt@icloud.com")
+
+    def Enter_Zebra_Password(self):
+        password = self.poco(self.Password_Field)
+        password.set_text("Testing@1234")
 
