@@ -373,7 +373,7 @@ def test_Others_TestcaseID_45797():
 #
 #
 # sleep(1)
-others.capture_the_image_button()
+# others.capture_the_image_button()
 # others.retake_the_image_button()
 # others.capture_the_image_button()
 # others.use_the_image_button()
