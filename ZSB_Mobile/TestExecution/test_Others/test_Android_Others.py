@@ -160,7 +160,6 @@ def test_Others_TestcaseID_45793():
 # print(google_notification)
 # sleep(2)
 
-
 # start_app("com.zebra.soho_app")
 # others.wait_for_element_appearance("Home",15)
 # sleep(2)

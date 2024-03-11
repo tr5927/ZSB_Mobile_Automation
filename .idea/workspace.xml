@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1244442b-833c-495e-8251-d80a88813ad5" name="Changes" comment="" />
+    <list default="true" id="1244442b-833c-495e-8251-d80a88813ad5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Template_Management_Sceen_JK/Template_Management_Sceen_JK.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/search_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/search_files_link_files.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/11Elements.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/46016.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/Google_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/blank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/searchPlaceHolder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/search_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/search_design_placeholder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/test_Template_Management_Android_JK.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/test_Template_Management_ref.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/tpl1707978279280.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management_JK/tpl1708429167702.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/templates/tpl1708320351770.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/templates/tpl1708320370860.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/templates/tpl1708428872115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/templates/tpl1708428886221.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZSB_Mobile/templates/tpl1709729567307.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ZSB_Automation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ZSB_Automation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/Common_Method.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/Common_Method.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Data_Source_Screen/Data_Sources_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Data_Source_Screen/Data_Sources_Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Help_Screen/Help_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Help_Screen/Help_Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Login_Screen/Login_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Login_Screen/Login_Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Printer_Management_Screen/Printer_Management_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Printer_Management_Screen/Printer_Management_Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Registration_Screen/Registration_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Registration_Screen/Registration_Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Template_Management/Template_Management_Android.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/PageObject/Template_Management/Template_Management_Android.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/test_Data_Sources_Android.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/test_Data_Sources_Android.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/tpl1706078127145.png" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/Password.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Help/test_Help_Android.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Help/test_Help_Android.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Others/test_Android_Others.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Others/test_Android_Others.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Printer_Management/test_Printer_Management.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Printer_Management/test_Printer_Management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Registration/Apple_Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/Apple_Icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Registration/Facebook_Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/Facebook_Icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Registration/Google_Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Data_Sources/Google_Icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Registration/test_Registration_Android.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Registration/test_Registration_Android.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management/test_Android_Template_Management.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZSB_Mobile/TestExecution/test_Template_Management/test_Android_Template_Management.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,13 +70,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Ranjita__ZSB&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging Ranjita__ZSB"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\rk1277\Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\TestExecution\test_Smoke_Test" />
