@@ -13,7 +13,7 @@ from poco.exceptions import PocoNoSuchNodeException
 from ZSB_Mobile.Common_Method import Common_Method
 from ZSB_Mobile.PageObject.Login_Screen.Login_Screen import Login_Screen
 
-common_method = Common_Method()
+common_method = Common_Method(poco)
 
 
 class Data_Sources_Screen:

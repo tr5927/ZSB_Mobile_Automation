@@ -1441,7 +1441,7 @@ common_method = Common_Method(poco)
 # app_settings_page_ios.click_Save_Exit_Btn()
 # """stop the app"""""
 # common_method.Stop_The_iOSApp()
-# #
+#
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 #
 #

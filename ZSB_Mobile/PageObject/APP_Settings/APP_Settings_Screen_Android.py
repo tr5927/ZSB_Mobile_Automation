@@ -124,7 +124,7 @@ class App_Settings_Screen:
                                                              "tpl1705043802427.png"), record_pos=(0.005, -0.215),
                                                 resolution=(1080, 2400))
 
-        self.Workspace_Name_Update_update_message = ""
+        self.Workspace_Name_Update_update_message = "no need"
         self.Updated_Workspace_Name = Template(os.path.join(os.path.expanduser('~'),
                                                             "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
                                                             "tpl1705300826503.png"), record_pos=(0.005, -0.194),
@@ -339,10 +339,10 @@ class App_Settings_Screen:
         self.Continue_On_Failed_To_Connect_To_Wifi_Network = "Continue"
         self.Apply_Changes = "Apply Changes"
         self.Invalid_Network_Error_Message = ""
-        self.Change_Password_Btn = \
-            poco("android.widget.FrameLayout").child("android.view.View").child("android.view.View").child(
-                "android.view.View").child("android.view.View").child("android.view.View")[1].child(
-                "android.view.View").child("android.view.View")[2].child("Change")
+        # self.Change_Password_Btn = \
+        #     poco("android.widget.FrameLayout").child("android.view.View").child("android.view.View").child(
+        #         "android.view.View").child("android.view.View").child("android.view.View")[1].child(
+        #         "android.view.View").child("android.view.View")[2].child("Change")
 
         self.Change_Password_Page = "com.android.chrome:id/url_bar"
         self.Password_Recovery_Text = Template(os.path.join(os.path.expanduser('~'),
@@ -907,6 +907,7 @@ class App_Settings_Screen:
         assert_exists(self.Printer_is_present, "Printer is already added")
 
     def click_Firstone_In_Recently_Prtinted_Label(self):
+        sleep(3)
         firstone = self.poco(self.Firstone_In_Recently_Printed_Labels)
         firstone.click()
 
@@ -1509,3 +1510,14 @@ class App_Settings_Screen:
     def click_Submit_On_Password_Recovery_Screen(self):
         submit_btn = self.poco(self.Submit_On_Password_Recovery_Screen)
         submit_btn.click()
+
+    def Update_PrinterName_With_Different_Valid_Name(self):
+        printer_name = self.poco(self.Printer_Name_Text_Field)
+        printer_name.set_text("ZSB-DP1222")
+
+    def verify_Printer_Name_Updated_Message(self):
+        assert_exists(self.Printer_Name_Updated_Message, "Printer Name Updated Message Text is displaying")
+
+    def click_UsePhoto_Option(self):
+        UsePhoto_Option = self.poco(self.UsePhoto_Option)
+        UsePhoto_Option.click()

@@ -17,6 +17,7 @@ class Login_Screen:
 
     def __init__(self, poco):
         self.poco = poco
+
         self.LoginAllow_Popup = "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
         self.Allow_ZSB_Series_Popup = "com.android.permissioncontroller:id/permission_allow_button"
         self.loginBtn = "Login"

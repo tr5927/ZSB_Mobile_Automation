@@ -109,9 +109,9 @@ def test_AppSettings_TestcaseID_45688():
 
 """""Install the latest production app on the phone & printer should be added"""""""""
 """""""""Create the object for Login page & Common_Method page to reuse the methods"""""""""""
-login_page = Login_Screen(poco)
-app_settings_page = App_Settings_Screen(poco)
-add_a_printer_screen = Add_A_Printer_Screen(poco)
+# login_page = Login_Screen(poco)
+# app_settings_page = App_Settings_Screen(poco)
+# add_a_printer_screen = Add_A_Printer_Screen(poco)
 """""Check whether App is installed or not"""
 """" Allow pop up before login for the fresh installation"""""
 login_page.click_LoginAllow_Popup()
@@ -820,9 +820,6 @@ else:
 
 
 
-
-
-
 # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -941,12 +938,32 @@ app_settings_page.clear_First_Name()
 app_settings_page.Update_PrinterName()
 app_settings_page.click_Back_Icon()
 common_method.Stop_The_App()
-# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-#def test_AppSettings_TestcaseID_47923():
-#     """Verify changing password should log out all clients."""
+def test_AppSettings_TestcaseID_47923():
+    """Verify changing password should log out all clients."""
 
-#common_method.Open_Google_Search_for_ZSBApp()
+"""start the app"""
+common_method.Start_The_App()
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_pen_Icon_near_UserName()
+app_settings_page.Scroll_till_Delete_Account()
+app_settings_page.click_Logout_Btn()
+login_page.click_loginBtn()
+login_page.click_Login_With_Email_Tab()
+login_page.click_UserName_TextField()
+login_page.Enter_Zebra_UserName()
+login_page.click_Password_TextField()
+login_page.Enter_Zebra_Password()
+app_settings_page.click_Keyboard_back_Icon()
+login_page.click_SignIn_Button()
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_pen_Icon_near_UserName()
+app_settings_page.Scroll_till_Delete_Account()
+app_settings_page.click_Change_Password_Btn()
+app_settings_page.Verify_Password_Recovery_Text_Is_Displaying()
+common_method.Stop_The_App()
+"""""After changing the password, it should logged out. this needs to be validated Manually"""
 #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -1194,7 +1211,7 @@ app_settings_page.Scroll_till_Delete_Account()
 app_settings_page.click_Change_Password_Btn()
 app_settings_page.Verify_Password_Recovery_Text_Is_Displaying()
 common_method.Stop_The_App()
-#"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+##"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def test_AppSettings_TestcaseID_49961():
     """Check after change password, click return to login will navigate to login page and user able to login with new password success"""
@@ -1210,6 +1227,7 @@ app_settings_page.Verify_Password_Recovery_Text_Is_Displaying()
 app_settings_page.click_Password_Recovery_Email_TextField()
 app_settings_page.click_Submit_On_Password_Recovery_Screen()
 """"other steps are blocked due to SMBM-2234 & SMBM-1098"""
+""""After changing the password, login screen and login should be verified manually"""
 
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -1468,4 +1486,7 @@ sleep(2)
 app_settings_page.Home_text_is_present_on_homepage()
 ""'stop the app'
 common_method.Stop_The_App()
-#"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#""""""""""""""""""""""""""""""""End"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
