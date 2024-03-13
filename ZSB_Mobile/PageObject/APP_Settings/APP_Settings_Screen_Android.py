@@ -22,10 +22,10 @@ class App_Settings_Screen:
                                                                      "tpl1704782766519.png"),
                                                         record_pos=(0.119, -0.768), resolution=(1080, 2400))
 
-        self.WiFi_Tab = Template(os.path.join(os.path.expanduser('~'),
-                                                                     "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                                     "tpl1704782805207.png"), record_pos=(0.232, -0.626), resolution=(1080, 2400))
-        # self.WiFi_Tab = "Wi-Fi\nTab 2 of 2"
+        # self.WiFi_Tab = Template(os.path.join(os.path.expanduser('~'),
+        #                                                              "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+        #                                                              "tpl1704782805207.png"), record_pos=(0.232, -0.626), resolution=(1080, 2400))
+        self.WiFi_Tab = "Wi-Fi\nTab 2 of 2"
 
         self.Current_Network_Txt = "Current Networks"
         self.Network_Name_Txt = "NESTWIFI"
@@ -411,10 +411,16 @@ class App_Settings_Screen:
     #       print("Network Status is not present.")
     #       assert False
 
+    # def get_text_Network_Status_Result_Txt(self):
+    #     network_status_result_txt = self.poco("android.view.View")[2].child("android.view.View").child("android.view.View").child("Not Connected")[0]
+    #     text = network_status_result_txt.get_text()
+    #     return text
+
     def get_text_Network_Status_Result_Txt(self):
-        network_status_result_txt = self.poco(self.Network_Status_Result_Txt)
-        network_status_result_txt.get_text()
-        return network_status_result_txt
+        # Assuming self.poco is your UI automation object
+        element = self.poco("android:id/" + self.poco("android.view.View")[2].child("android.view.View").child("android.view.View").child("Not Connected")[0])
+        text = element.get_text()
+        return text
 
     def get_text_IPAddress_Txt(self):
         IPaddress_txt = self.poco(self.IPAddress_Txt)
