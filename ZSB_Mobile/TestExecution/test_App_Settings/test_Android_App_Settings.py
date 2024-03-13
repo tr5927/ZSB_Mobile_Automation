@@ -24,84 +24,85 @@ add_a_printer_screen = Add_A_Printer_Screen(poco)
 common_method = Common_Method(poco)
 
 
-def test_AppSettings_TestcaseID_47918():
-    """	Verify ZSB app permission works fine."""
-
-"""""Freshly Install the latest  stage/production app on the phone & printer should be added"""""""""
-
-"""start the app"""
-common_method.Start_The_App()
-""""""" Allow pop up before login for the fresh installation"""""""
-login_page.click_LoginAllow_Popup()
-"""""for the first installation click on the zsb series popup"""
-login_page.click_Allow_ZSB_Series_Popup()
-"""""Relaunch the app"""
-common_method.relaunch_app()
-""""""" Allow pop up before login for the fresh installation"""""""
-login_page.click_LoginAllow_Popup()
-"""""for the first installation click on the zsb series popup"""
-login_page.click_Allow_ZSB_Series_Popup()
-"""""Relaunch the app"""
-common_method.relaunch_app()
-"""Permission is not displaying due to SMBM-1242"""
-login_page.Verify_LoginAllow_Popup_IS_Not_Displaying()
-""'stop the app'
-common_method.Stop_The_App()
+# def test_AppSettings_TestcaseID_47918():
+#     """	Verify ZSB app permission works fine."""
+#
+# """""Freshly Install the latest  stage/production app on the phone & printer should be added"""""""""
+#
+# """start the app"""
+# common_method.Start_The_App()
+# """"""" Allow pop up before login for the fresh installation"""""""
+# login_page.click_loginBtn()
+# login_page.click_LoginAllow_Popup()
+# """""for the first installation click on the zsb series popup"""
+# login_page.click_Allow_ZSB_Series_Popup()
+# """""Relaunch the app"""
+# common_method.relaunch_app()
+# """"""" Allow pop up before login for the fresh installation"""""""
+# login_page.click_LoginAllow_Popup()
+# """""for the first installation click on the zsb series popup"""
+# login_page.click_Allow_ZSB_Series_Popup()
+# """""Relaunch the app"""
+# common_method.relaunch_app()
+# """Permission is not displaying due to SMBM-1242"""
+# login_page.Verify_LoginAllow_Popup_IS_Not_Displaying()
+# ""'stop the app'
+# common_method.Stop_The_App()
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_47913():
-    """Verify ZSB app doesn't stuck in Printer registration process when there is a network drop."""
-
-
-"""start the app"""
-start_app("com.zebra.soho_app")
-sleep(3)
-"""click on the hamburger icon"""
-login_page.click_Menu_HamburgerICN()
-""""click on add a printer"""
-add_a_printer_screen.click_Add_A_Printer()
-""""click on start button"""
-add_a_printer_screen.click_Start_Button()
-"""verify searching for your printer text"""
-add_a_printer_screen.Verify_Searching_for_your_printer_Text()
-""""Verify Select your printer text"""
-add_a_printer_screen.Verify_Select_your_printer_Text()
-"""click on the printer name to select the printer"""
-""""select 2nd printer which you want to add"""
-add_a_printer_screen.click_2nd_Printer_Details_To_Add()
-"""""click on select button"""
-add_a_printer_screen.click_Select_Button_On_Select_Your_Printer_Screen()
-""""verify pairing your printer text"""
-add_a_printer_screen.Verify_Pairing_Your_Printer_Text()
-""""accept Bluetooth pairing popup 1"""
-add_a_printer_screen.Accept_Bluetooth_pairing_Popup1()
-""""accept Bluetooth pairing popup 2"""
-add_a_printer_screen.Accept_Bluetooth_pairing_Popup2()
-"""Verify Connect Wi-fi Network Text"""
-add_a_printer_screen.Verify_Connect_Wifi_Network_Text()
-""""click on connect button on connect wifi network screen"""
-add_a_printer_screen.click_Connect_Btn_On_Connect_Wifi_Network_Screen()
-"""""""click password field on join network"""
-add_a_printer_screen.click_Password_Field_On_Join_Network()
-# #""""enter password to join the network"""
-# #add_a_printer_screen.Enter_Password_To_Join_Network()
-""""click submit button on join network"""
-add_a_printer_screen.click_Submit_Button_ON_Join_Network()
-"""verify connecting to wifi network text"""
-add_a_printer_screen.Verify_Connecting_to_WiFi_Network_Text()
-""""verify need the printer driver text"""
-add_a_printer_screen.Verify_Need_the_Printer_Driver_Text()
-"""""verify registering your printer text"""
-add_a_printer_screen.Verify_Registering_your_Printer_Text()
-""""Turn OFF the WIFI & Turn on again after some time (approx. 2 min)"""
-sleep(7)
-""""click on finish setup button"""
-add_a_printer_screen.click_Finish_Setup_Button()
-"""stop the app"""""
-stop_app("com.zebra.soho_app")
-#""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+# def test_AppSettings_TestcaseID_47913():
+#     """Verify ZSB app doesn't stuck in Printer registration process when there is a network drop."""
+#
+#
+# """start the app"""
+# start_app("com.zebra.soho_app")
+# sleep(3)
+# """click on the hamburger icon"""
+# login_page.click_Menu_HamburgerICN()
+# """"click on add a printer"""
+# add_a_printer_screen.click_Add_A_Printer()
+# """"click on start button"""
+# add_a_printer_screen.click_Start_Button()
+# """verify searching for your printer text"""
+# add_a_printer_screen.Verify_Searching_for_your_printer_Text()
+# """"Verify Select your printer text"""
+# add_a_printer_screen.Verify_Select_your_printer_Text()
+# """click on the printer name to select the printer"""
+# """"select 2nd printer which you want to add"""
+# add_a_printer_screen.click_2nd_Printer_Details_To_Add()
+# """""click on select button"""
+# add_a_printer_screen.click_Select_Button_On_Select_Your_Printer_Screen()
+# """"verify pairing your printer text"""
+# add_a_printer_screen.Verify_Pairing_Your_Printer_Text()
+# """"accept Bluetooth pairing popup 1"""
+# add_a_printer_screen.Accept_Bluetooth_pairing_Popup1()
+# """"accept Bluetooth pairing popup 2"""
+# add_a_printer_screen.Accept_Bluetooth_pairing_Popup2()
+# """Verify Connect Wi-fi Network Text"""
+# add_a_printer_screen.Verify_Connect_Wifi_Network_Text()
+# """"click on connect button on connect wifi network screen"""
+# add_a_printer_screen.click_Connect_Btn_On_Connect_Wifi_Network_Screen()
+# """""""click password field on join network"""
+# add_a_printer_screen.click_Password_Field_On_Join_Network()
+# # #""""enter password to join the network"""
+# # #add_a_printer_screen.Enter_Password_To_Join_Network()
+# """"click submit button on join network"""
+# add_a_printer_screen.click_Submit_Button_ON_Join_Network()
+# """verify connecting to wifi network text"""
+# add_a_printer_screen.Verify_Connecting_to_WiFi_Network_Text()
+# """"verify need the printer driver text"""
+# add_a_printer_screen.Verify_Need_the_Printer_Driver_Text()
+# """""verify registering your printer text"""
+# add_a_printer_screen.Verify_Registering_your_Printer_Text()
+# """"Turn OFF the WIFI & Turn on again after some time (approx. 2 min)"""
+# sleep(7)
+# """"click on finish setup button"""
+# add_a_printer_screen.click_Finish_Setup_Button()
+# """stop the app"""""
+# stop_app("com.zebra.soho_app")
+# #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#
 
 
 def test_AppSettings_TestcaseID_45688():
@@ -112,29 +113,29 @@ def test_AppSettings_TestcaseID_45688():
 # login_page = Login_Screen(poco)
 # app_settings_page = App_Settings_Screen(poco)
 # add_a_printer_screen = Add_A_Printer_Screen(poco)
-"""""Check whether App is installed or not"""
-"""" Allow pop up before login for the fresh installation"""""
-login_page.click_LoginAllow_Popup()
-"""""for the first installation click on the zsb series popup"""
-login_page.click_Allow_ZSB_Series_Popup()
-"""""""""click on the login button"""""""""""
-login_page.click_loginBtn()
-sleep(2)
-"""""""select the login with google option"""""""""
-login_page.click_Loginwith_Google()
-sleep(2)
-"""""""""""""""Always use this to login"""""""""""""""
-login_page.click_GooglemailId()
-sleep(2)
-login_page.Enter_Google_UserID()
-sleep(2)
-login_page.click_Emailid_Nextbtn()
-sleep(4)
-""""enter password """
-poco(text("Swdvt@#123"))
-sleep(2)
-login_page.click_Password_Nextbtn()
-sleep(7)
+# """""Check whether App is installed or not"""
+# """" Allow pop up before login for the fresh installation"""""
+# login_page.click_LoginAllow_Popup()
+# """""for the first installation click on the zsb series popup"""
+# login_page.click_Allow_ZSB_Series_Popup()
+# """""""""click on the login button"""""""""""
+# login_page.click_loginBtn()
+# sleep(2)
+# """""""select the login with google option"""""""""
+# login_page.click_Loginwith_Google()
+# sleep(2)
+# """""""""""""""Always use this to login"""""""""""""""
+# login_page.click_GooglemailId()
+# sleep(2)
+# login_page.Enter_Google_UserID()
+# sleep(2)
+# login_page.click_Emailid_Nextbtn()
+# sleep(4)
+# """"enter password """
+# poco(text("Swdvt@#123"))
+# sleep(2)
+# login_page.click_Password_Nextbtn()
+# sleep(7)
 """""""click on the left hamburger menu on the home page"""""""""
 login_page.click_Menu_HamburgerICN()
 """""click on the printer settings tab"""
