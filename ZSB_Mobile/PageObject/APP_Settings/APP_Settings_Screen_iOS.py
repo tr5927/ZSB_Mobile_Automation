@@ -15,15 +15,9 @@ class App_Settings_Screen_iOS:
         self.poco = poco
 
         self.Printer_Settings_Btn = "Printer Settings"
-        self.PrinterName_In_Printer_Settings = Template(os.path.join(os.path.expanduser('~'),
-                                                                     "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                                     "tpl1708331710258.png"),
-                                                        record_pos=(0.148, -0.726), resolution=(1170, 2532))
+        self.PrinterName_In_Printer_Settings = "ZSB-DP12\nTab 2 of 2"
 
-        self.WiFi_Tab = Template(os.path.join(os.path.expanduser('~'),
-                                              "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                              "tpl1705401064196.png"), record_pos=(0.232, -0.579),
-                                 resolution=(1170, 2532))
+        self.WiFi_Tab = "Wi-Fi\nTab 2 of 2"
         self.Current_Network_Txt = "Current Network"
         self.Network_Name_Txt = "NESTWIFI"
         self.Network_Status_Txt = "Network Status"
@@ -293,6 +287,7 @@ class App_Settings_Screen_iOS:
         self.Network_Password = (Template(r"tpl1706793220189.png", record_pos=(0.006, 0.003), resolution=(1080, 2400)))
         self.Network_UserName = "android.widget.EditText"
         self.Added_Network = "android.view.View"
+        self.Search_Bar = "com.google.android.documentsui:id/searchbar_title"
 
         # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -520,8 +515,13 @@ class App_Settings_Screen_iOS:
         deleted_network = self.poco(self.Deleted_Network)
         deleted_network.click()
 
+    # def click_Three_Dot_On_Workspace(self):
+    #     touch(self.Threedot_On_Workspace)
+
     def click_Three_Dot_On_Workspace(self):
-        touch(self.Threedot_On_Workspace)
+        sleep(4)
+        self.poco("MW\nMy Workspace").child("android.widget.Button").click()
+        sleep(2)
 
     def get_text_Edit_Txt(self):
         edit_txt = self.poco(self.Edit_Txt)
@@ -812,7 +812,10 @@ class App_Settings_Screen_iOS:
         edit_workspace_back_icon.click()
 
     def Is_Present_Workspace_Name(self):
-        assert_exists(self.Previous_Workspace_Name, "Previous Workspace name is displaying")
+        Previous_Workspace_Name = self.poco(text="My First Workspace")
+        Previous_Workspace_Name.get_text()
+        sleep(1)
+        return Previous_Workspace_Name
 
     def Update_Workspace_Name_With_Space(self):
         workspace_name = self.poco(self.Workspace_Name_Text_Field)
@@ -1514,3 +1517,8 @@ class App_Settings_Screen_iOS:
     def click_UsePhoto_Option(self):
         UsePhoto_Option = self.poco(self.UsePhoto_Option)
         UsePhoto_Option.click()
+
+    def click_On_First_Image_SearchBar(self):
+            Search_Bar = self.poco(self.Search_Bar)
+            Search_Bar.click()
+            sleep(2)

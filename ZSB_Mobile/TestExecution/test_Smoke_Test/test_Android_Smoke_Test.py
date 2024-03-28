@@ -11,7 +11,7 @@ from ZSB_Mobile.PageObject.Smoke_Test.Smoke_Test_Android import Smoke_Test_Andro
 from ZSB_Mobile.PageObject.Others import Others
 
 
-class Android_App_Settings:
+class Android_Smoke_Test:
     pass
 
 
@@ -32,7 +32,7 @@ data_sources_page = Data_Sources_Screen(poco)
 others = Others(poco)
 
 
-# def test_AppSettings_TestcaseID_45875():
+# def test_Smoke_Test_TestcaseID_45875():
 #     """	Fresh Install the app with apk/or from Google Store (Android) or from test flight/Apple Store (iOS)."""
 #
 #
@@ -51,7 +51,7 @@ others = Others(poco)
 
 
 
-# def test_AppSettings_TestcaseID_45876():
+# def test_Smoke_Test_TestcaseID_45876():
 #     """	Check basic functions work well after upgrading"""
 #
 #
@@ -105,7 +105,7 @@ others = Others(poco)
 # #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45878():
+def test_Smoke_Test_TestcaseID_45878():
     """	Verify sign in as zebra, check link and delete one/google drive file works well"""
 
 
@@ -132,7 +132,7 @@ common_method.Stop_The_App()
 
 ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45879():
+def test_Smoke_Test_TestcaseID_45879():
     """Verify sign in as non-zebra, check link and delete one/google drive file works well"""
 
 
@@ -170,7 +170,7 @@ common_method.Stop_The_App()
 ## """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45880():
+def test_Smoke_Test_TestcaseID_45880():
     """Verify sign in with non-zebra account, check the design linked different format file from local can be printed out successfully"""
 
 
@@ -195,7 +195,7 @@ common_method.Stop_The_App()
 ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45881():
+def test_Smoke_Test_TestcaseID_45881():
     """Verify sign in with social account, check the design linked different format file from Google Drive can be printed out successfully"""
 
 
@@ -240,7 +240,7 @@ common_method.Stop_The_App()
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_AppSettings_TestcaseID_45882():
+# def test_Smoke_Test_TestcaseID_45882():
 #     """Verify sign in with non-Zebra account, check the design linked different format file from One Drive can be printed out successfully"""
 #
 #
@@ -265,7 +265,7 @@ common_method.Stop_The_App()
 # # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_AppSettings_TestcaseID_45883():
+# def test_Smoke_Test_TestcaseID_45883():
 #     """Verify sign in sign out with registered social accounts in Mobile App."""
 #
 #
@@ -309,7 +309,7 @@ common_method.Stop_The_App()
 ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_AppSettings_TestcaseID_45884():
+# def test_Smoke_Test_TestcaseID_45884():
 #     """Add a printer- Out of the box user experience"""
 #
 #
@@ -366,7 +366,7 @@ common_method.Stop_The_App()
 
 
 ## """""""""""""""""""""""""""new testcases""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-def test_AppSettings_TestcaseID_45885():
+def test_Smoke_Test_TestcaseID_45885():
     """Add a printer- use a printer which has ever been registered before and require a decommission."""
 
 
@@ -416,7 +416,7 @@ common_method.Stop_The_App()
 ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45886():
+def test_Smoke_Test_TestcaseID_45886():
     """Check Mobile App can display correct printer status and notifications when printer status updates"""
 
 
@@ -446,7 +446,7 @@ common_method.Start_The_App()
 
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45887():
+def test_Smoke_Test_TestcaseID_45887():
     """	User modify the printer's darkness setting and perform test print"""
 
 
@@ -482,7 +482,7 @@ stop_app("com.zebra.soho_app")
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45888():
+def test_Smoke_Test_TestcaseID_45888():
     """	Check user can delete a printer from Mobile App"""
 
 
@@ -512,7 +512,7 @@ stop_app("com.zebra.soho_app")
 
 ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45889():
+def test_Smoke_Test_TestcaseID_45889():
     """	Check user can upload or link file to My Data"""
 
 
@@ -552,7 +552,7 @@ common_method.Stop_The_App()
 
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45890():
+def test_Smoke_Test_TestcaseID_45890():
     """	Print template with static information in Recently Printed Template list"""
 
 
@@ -595,7 +595,7 @@ common_method.Stop_The_App()
 
 # #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45891():
+def test_Smoke_Test_TestcaseID_45891():
     """	Print multiple copies of template with variable data in Workspace"""
 
 
@@ -647,7 +647,7 @@ common_method.Stop_The_App()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45900():
+def test_Smoke_Test_TestcaseID_45900():
     """Update Auto label feed setting(enable), check setting sync in mobile and web portal, open and close printer cover, then print a test label"""
 
 """start the app"""
@@ -681,7 +681,7 @@ common_method.Stop_The_App()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45892():
+def test_Smoke_Test_TestcaseID_45892():
     """	Delete template in Workspace"""
 
 
@@ -703,7 +703,7 @@ common_method.Stop_The_App()
 
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45893():
+def test_Smoke_Test_TestcaseID_45893():
     """	To Verify View Zebra defined categories in Common Designs"""
 
 
@@ -727,7 +727,7 @@ common_method.Stop_The_App()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45894():
+def test_Smoke_Test_TestcaseID_45894():
     """	View list of Zebra templates in Common Designs"""
 
 
@@ -759,7 +759,7 @@ common_method.Stop_The_App()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45895():
+def test_Smoke_Test_TestcaseID_45895():
     """Print Zebra templates after Copy the template which needs to upload a picture from Library to Workspace (eg: Address->AddressWithIcon; Small Multipurpose->pickImage)"""
 
 
@@ -801,7 +801,7 @@ common_method.Stop_The_App()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def test_AppSettings_TestcaseID_45896():
+def test_Smoke_Test_TestcaseID_45896():
     """Print a label from Common Design."""
 
 common_method.Start_The_App()
@@ -816,7 +816,7 @@ add_a_printer_screen.click_Print_Button()
 common_method.Stop_The_App()
 # #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45897():
+def test_Smoke_Test_TestcaseID_45897():
     """Adding New network: Add Essids by using another phone."""
 
 
@@ -861,7 +861,7 @@ common_method.Stop_The_App()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 # # """""" Could not Automate Test casde ID 45898 & 45899, Needs to be verified Manually"""""""""""""""""""""
-def test_AppSettings_TestcaseID_45901():
+def test_Smoke_Test_TestcaseID_45901():
     """Update Auto label feed setting(disable), check setting sync in mobile and web portal, open and close printer cover, then print a test label"""
 
 """start the app"""
@@ -894,7 +894,7 @@ common_method.Stop_The_App()
 """""""web portal part needs to be verified Manually"""""""
 # #""""""""""""""""""""""""""""End"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def test_AppSettings_TestcaseID_45877():
+def test_Smoke_Test_TestcaseID_45877():
     """	Verify create a brand new user with unregistered user in Mobile App."""
 
 

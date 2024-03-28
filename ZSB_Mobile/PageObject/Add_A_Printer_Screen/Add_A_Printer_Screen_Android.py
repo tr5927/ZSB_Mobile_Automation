@@ -301,6 +301,7 @@ class Add_A_Printer_Screen:
             pass
 
     def Enter_Password_To_Join_Network(self):
+        sleep(2)
         poco(text("123456789"))
 
     def click_Submit_Button_ON_Join_Network(self):
