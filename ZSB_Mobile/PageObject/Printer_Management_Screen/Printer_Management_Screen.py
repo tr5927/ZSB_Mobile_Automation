@@ -25,6 +25,7 @@ class Printer_Management_Screen:
         self.Yes_Delete = "Yes, Delete"
         self.Drop_Down_Menu_Icon = Template(r"tpl1705382553515.png", record_pos=(0.334, 0.155), resolution=(1080, 2340))
         self.Drop_Down_Menu_Info = "1.\nOpen your mobile device Settings\n2.\nSelect Bluetooth\n3.\nEnable Bluetooth if it's OFF\n4.\nSelect Device info ZSB-DP14-C66CB7 from My Devices\n5.\nSelect Forget This Device"
+        """name = drop_down_info.split("\n")[-3][19:-16]"""
         self.Buy_More_Labels = "Buy More Labels"
         self.NameOfDecommissioningPrinter = ""
 
@@ -45,7 +46,7 @@ class Printer_Management_Screen:
 
     def clickThreeDotMenu(self):
         touch(self.Three_Dot_Menu)
-        printer_details = poco("android.widget.ScrollView").child().child().child().child()[0].get_name()
+        printer_details = self.poco("android.widget.ScrollView").child().child().child().child()[0].get_name()
         if printer_details[0:6] == "Online":
             self.NameOfDecommissioningPrinter += printer_details[6:len(printer_details) - 45]
         else:
@@ -80,6 +81,7 @@ class Printer_Management_Screen:
         touch(self.Drop_Down_Menu_Icon)
 
     def checkDropDownMenuInfo(self):
+        """change this"""
         dropdowninfo = self.poco("android.view.View")[4].child().get_name()[197:]
         if dropdowninfo == self.Drop_Down_Menu_Info:
             return
@@ -118,3 +120,22 @@ class Printer_Management_Screen:
     def openBluetoothSettings(self):
         os.system('adb shell am start -a android.settings.BLUETOOTH_SETTINGS')
 
+    def unpair_bluetooth_device(self, device_name):
+        while not self.poco(text="AVAILABLE DEVICES"):
+            if self.poco(text=device_name).exists():
+                connected_device = len(self.poco("com.android.settings:id/recycler_view").child())
+                for i in range(connected_device):
+                    curr_device = self.poco("android:id/title")[i].get_text()
+                    print(self.poco("android:id/title")[i].get_text())
+
+                    if curr_device == device_name:
+                        if self.poco("com.android.settings:id/preference_detail")[i].exists():
+                            self.poco("com.android.settings:id/preference_detail")[i].click()
+                        if self.poco("com.android.settings:id/settings_button")[i].exists():
+                            self.poco("com.android.settings:id/settings_button")[i].click()
+                break
+            self.poco.scroll()
+        if self.poco(text="Unpair").exists():
+            self.poco(text="Unpair").click()
+        if self.poco(text="Forget").exists():
+            self.poco(text="Forget").click()

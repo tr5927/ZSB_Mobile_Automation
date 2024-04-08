@@ -10,6 +10,7 @@ import time
 from pipes import Template
 from platform import platform
 from time import sleep
+import traceback
 
 import package_name
 from airtest.core.api import swipe, exists, touch, keyevent, shell, start_app, stop_app, uninstall, install
@@ -1010,3 +1011,18 @@ class Common_Method():
         sleep(2)
         start_app(app_package)
         sleep(2)
+
+    def savePassResult(self, error_array, test_number):
+        error_array.append(f"Test {test_number} passed\n")
+
+    def saveError(self, error_array, e):
+        error = "An exception occurred in test-45789: " + str(e)
+        error += "\n" + traceback.format_exc()
+        error_array.append(error)
+
+    def printExceptionIfPresent(self, error_array):
+        print("\n")
+        for error in error_array:
+            if "exception" in error:
+                print('\n'.join(map(str, error_array)))
+                raise Exception(error_array)
