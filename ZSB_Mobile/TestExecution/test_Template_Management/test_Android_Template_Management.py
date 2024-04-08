@@ -4002,7 +4002,7 @@ def test_Template_Management_TestcaseID_46013():
 #     template_management.wait_for_element_appearance_name_matches_all(text)
 #     template_management.click_element_name_matches_all(text,0)
 #
-#     template_management.wait_until_designs_load_after_clicking_categories()
+    # template_management.wait_until_designs_load_after_clicking_categories()
 #
 #     all_designs = template_management.get_all_designs_in_my_designs()
 #     all_names = template_management.get_names_of_design_in_search_designs(all_designs)
