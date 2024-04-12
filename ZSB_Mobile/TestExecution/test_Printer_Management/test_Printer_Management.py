@@ -29,10 +29,93 @@ help_page = Help_Screen(poco)
 printer_management_page = Printer_Management_Screen(poco)
 
 
+def test_PrinterManagement_TestcaseID_47785():
+    """""""""test"""""
+
+
+common_method.Start_The_App()
+"""Click three dot menu of target printer"""
+printer_management_page.clickThreeDotMenu()
+sleep(5)
+"""Click on delete printer"""
+printer_management_page.clickDelete()
+sleep(2)
+"""Verify first Delete dialog pop up window"""
+printer_management_page.checkDeletePopUp(1)
+sleep(2)
+"""Choose delete option"""
+printer_management_page.clickDelete()
+sleep(2)
+"""Verify second Delete dialog pop up window"""
+printer_management_page.checkDeletePopUp(2)
+sleep(2)
+"""Click Yes Delete option"""
+printer_management_page.clickYesDelete()
+sleep(2)
+"""Verify Message box prompt appears "Unpair Bluetooth From Printer" along printer MAC address"""
+printer_management_page.checkUnpairBluetoothPopUp()
+"""Message box Does not contain MAC address"""
+"""Click Drop Down option"""
+printer_management_page.clickDropDownMenuIcon()
+sleep(2)
+"""Check if Done option is greyed out"""
+printer_management_page.clickDoneOption()
+printer_management_page.checkUnpairBluetoothPopUp()
+"""Unpair device in bluetooth settings"""
+printer_management_page.unpair_bluetooth_device()
+"""Click Done"""
+printer_management_page.clickDoneOption()
+printer_management_page.checkBuyMoreLabelsOptionPresent()
+"""Check if printer is decommissioned"""
+printer_management_page.checkIfPrinterIsDecommissioned()
+common_method.Stop_The_App()
+
+
+def test_PrinterManagement_TestcaseID_47882():
+    """""""""test"""""
+
+
+common_method.Start_The_App()
+"""Click three dot menu of target printer"""
+printer_management_page.clickThreeDotMenu()
+sleep(5)
+"""Click on delete printer"""
+printer_management_page.clickDelete()
+sleep(2)
+"""Verify first Delete dialog pop up window"""
+printer_management_page.checkDeletePopUp(1)
+sleep(2)
+"""Choose delete option"""
+printer_management_page.clickDelete()
+sleep(2)
+"""Verify second Delete dialog pop up window"""
+printer_management_page.checkDeletePopUp(2)
+sleep(2)
+"""Click Yes Delete option"""
+printer_management_page.clickYesDelete()
+sleep(2)
+"""Verify if there is a pop up: Unpair Printer From Bluetooth"""
+printer_management_page.checkUnpairBluetoothPopUp()
+sleep(2)
+"""Verify if the pop up has Drop Down option"""
+printer_management_page.checkDropDownMenuIconIsPresent()
+sleep(2)
+"""Click Drop Down option"""
+printer_management_page.clickDropDownMenuIcon()
+sleep(2)
+"""Verify if the info in the Drop Down matches with the expected info"""
+printer_management_page.checkDropDownMenuInfo()
+sleep(2)
+"""Click Done"""
+printer_management_page.clickDoneOption()
+common_method.Stop_The_App()
+
+
 def test_PrinterManagement_TestcaseID_47920():
     """""""""test"""""
 
 
+common_method.Start_The_App()
 # """""""""click on the login button"""""""""""
 # login_page.click_loginBtn()
 # sleep(2)
@@ -62,7 +145,7 @@ login_page.click_Menu_HamburgerICN()
 sleep(2)
 """Swipe up"""
 scroll_view = poco("android.widget.ScrollView")
-# Set the maximum number of swipes to avoid an infinite loop
+"""Set the maximum number of swipes to avoid an infinite loop"""
 # max_swipes = 1
 # for _ in range(max_swipes):
 #     # Swipe up on the ScrollView
@@ -81,82 +164,6 @@ sleep(2)
 """Unable to verify due to BUG"""
 printer_management_page.verifyPrinterNameAfterRenaming("ZSB-DP12")
 sleep(2)
+common_method.Stop_The_App()
 
-
-def test_PrinterManagement_TestcaseID_47882():
-    """""""""test"""""
-
-
-"""Click three dot menu of target printer"""
-printer_management_page.clickThreeDotMenu()
-sleep(5)
-"""Click on delete printer"""
-printer_management_page.clickDelete()
-sleep(2)
-"""Verify first Delete dialog pop up window"""
-printer_management_page.checkDeletePopUp(1)
-sleep(2)
-"""Choose delete option"""
-printer_management_page.clickDelete()
-sleep(2)
-"""Verify second Delete dialog pop up window"""
-printer_management_page.checkDeletePopUp(2)
-sleep(2)
-"""Click Yes Delete option"""
-printer_management_page.clickYesDelete()
-sleep(2)
-"""Verify if there is a pop up: Unpair Printer From Bluetooth"""
-printer_management_page.checkUnpairBluetoothPopUp()
-sleep(2)
-"""Verify if the pop up has Drop Down option"""
-printer_management_page.checkDropDownMenuIconIsPresent()
-sleep(2)
-"""Click Drop Down option"""
-printer_management_page.clickDropDownMenuIcon()
-sleep(2)
-"""Verify if the info in the Drop DOwn matches with the expected info"""
-printer_management_page.checkDropDownMenuInfo()
-sleep(2)
-"""Unpair device in blueetooth settings"""
-"""Click Done"""
-printer_management_page.clickDoneOption()
-
-
-def test_PrinterManagement_TestcaseID_47785():
-    """""""""test"""""
-
-
-"""Click three dot menu of target printer"""
-printer_management_page.clickThreeDotMenu()
-sleep(5)
-"""Click on delete printer"""
-printer_management_page.clickDelete()
-sleep(2)
-"""Verify first Delete dialog pop up window"""
-printer_management_page.checkDeletePopUp(1)
-sleep(2)
-"""Choose delete option"""
-printer_management_page.clickDelete()
-sleep(2)
-"""Verify second Delete dialog pop up window"""
-printer_management_page.checkDeletePopUp(2)
-sleep(2)
-"""Click Yes Delete option"""
-printer_management_page.clickYesDelete()
-sleep(2)
-"""Verify Message box prompt appears "Unpair Bluetooth From Printer" along printer MAC address"""
-printer_management_page.checkUnpairBluetoothPopUp()
-"""Message box Does not contain MAC address"""
-"""Click Drop Down option"""
-printer_management_page.clickDropDownMenuIcon()
-sleep(2)
-"""Check if Done option is greyed out"""
-printer_management_page.clickDoneOption()
-printer_management_page.checkUnpairBluetoothPopUp()
-"""Unpair device in blueetooth settings"""
-"""Click Done"""
-printer_management_page.clickDoneOption()
-printer_management_page.checkBuyMoreLabelsOptionPresent()
-"""Check if printer is decommissioned"""
-printer_management_page.checkIfPrinterIsDecommissioned()
 
