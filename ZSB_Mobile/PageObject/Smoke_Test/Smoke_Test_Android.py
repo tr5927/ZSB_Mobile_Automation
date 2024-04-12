@@ -66,6 +66,7 @@ class Smoke_Test_Android:
         self.Copy_To_My_Design_Text = "Copy to My Designs"
         self.Email_Text_Field = "i0116"
         self.Next_Button = "Next"
+        self.Print_button = "Print"
 
     # #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     def Verify_SignIn_With_Text_Is_Present(self):
@@ -300,3 +301,32 @@ class Smoke_Test_Android:
         Next_Button = self.poco(self.Next_Button)
         Next_Button.click()
         sleep(2)
+
+    def check_printer_online_status(self):
+        child_names = [child.get_name() for child in
+                       self.poco("android.widget.FrameLayout").offspring("android.widget.FrameLayout").child(
+                           "android.view.View").child("android.view.View").child("android.view.View").offspring(
+                           "android.widget.ScrollView").child("android.view.View")[0].child("android.view.View").child(
+                           "android.view.View")[0].children()]
+        modified_list = [item.split('\n') for item in child_names]
+
+        return modified_list[0][0]
+
+    def select_first_label_from_home(self):
+        first_label = \
+            self.poco("android.widget.ScrollView").child("android.view.View")[1].child("android.view.View").child()[0]
+        first_label.click()
+
+    def click_print_button(self):
+        print_btn = self.poco(self.Print_button)
+        print_btn.click()
+
+    def check_error_print_preview(self):
+        a = self.poco("Error\nCould not fetch the Print Preview")
+        if a:
+            self.poco("Cancel").click()
+        else:
+            pass
+
+    def click_left_arrow(self):
+        self.poco("android.widget.Button").click()

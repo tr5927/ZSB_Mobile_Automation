@@ -3,12 +3,13 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
 from ZSB_Mobile.Common_Method import Common_Method
 from ZSB_Mobile.PageObject.APP_Settings.APP_Settings_Screen_Android import App_Settings_Screen
+from ZSB_Mobile.PageObject.APS_Testcases.APS_Notification_Android import APS_Notification
 from ZSB_Mobile.PageObject.Add_A_Printer_Screen.Add_A_Printer_Screen_Android import Add_A_Printer_Screen
 from ZSB_Mobile.PageObject.Data_Source_Screen.Data_Sources_Screen import Data_Sources_Screen
 from ZSB_Mobile.PageObject.Login_Screen.Login_Screen_Android import Login_Screen
 from ZSB_Mobile.PageObject.Registration_Screen.Registration_Screen import Registration_Screen
 from ZSB_Mobile.PageObject.Smoke_Test.Smoke_Test_Android import Smoke_Test_Android
-from ZSB_Mobile.PageObject.Others import Others
+
 
 
 class Android_Smoke_Test:
@@ -18,8 +19,9 @@ class Android_Smoke_Test:
 poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
 
 connect_device("Android:///")
-start_app("com.zebra.soho_app")
-sleep(2.0)
+# start_app("com.zebra.soho_app")
+# stop_app("com.zebra.soho_app")
+# sleep(2.0)
 
 """""""""Create the object for Login page & Common_Method page to reuse the methods"""""""""""
 login_page = Login_Screen(poco)
@@ -29,80 +31,83 @@ common_method = Common_Method(poco)
 smoke_test_android = Smoke_Test_Android(poco)
 registration_page = Registration_Screen(poco)
 data_sources_page = Data_Sources_Screen(poco)
-others = Others(poco)
+aps_notification = APS_Notification(poco)
 
 
-# def test_Smoke_Test_TestcaseID_45875():
-#     """	Fresh Install the app with apk/or from Google Store (Android) or from test flight/Apple Store (iOS)."""
+def test_Smoke_Test_TestcaseID_45875():
+    """	Fresh Install the app with apk/or from Google Store (Android) or from test flight/Apple Store (iOS)."""
+
+
+"""Freshly install the app"""
+"""start the app"""""
 #
-#
-# """Freshly install the app"""
-# """start the app"""""
-#
-# common_method.Start_The_App()
-# common_method.Stop_The_App()
-# common_method.uninstall_app()
-# common_method.install_app()
-# common_method.Start_The_App()
-# login_page.click_loginBtn()
-# app_settings_page.Home_text_is_present_on_homepage()
-# common_method.Stop_The_App()
-# #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+common_method.tearDown()
+common_method.Stop_The_App()
+common_method.uninstall_app()
+common_method.install_app()
+common_method.Start_The_App()
+login_page.click_LoginAllow_Popup()
+login_page.click_Allow_ZSB_Series_Popup()
+login_page.click_loginBtn()
+login_page.click_Loginwith_Google()
+app_settings_page.Home_text_is_present_on_homepage()
+common_method.Stop_The_App()
+#""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 
-# def test_Smoke_Test_TestcaseID_45876():
-#     """	Check basic functions work well after upgrading"""
-#
-#
-# """"Setup:
-# 1. The previous version has already been installed in test device
-# 2. Sign in the test account, with 1 printer added
-# 3. There is at least one design in My designs"""""
-#
-# """"Manually verify these below 3 steps as"""
-# """start the app"""""
-# common_method.Start_The_App()
-# """"Upgrade the app, this needs to be executed manually"""
-# """""""Verify the Already added Printer"""
-# app_settings_page.Verify_Printer_is_already_added()
-# login_page.click_Menu_HamburgerICN()
-# app_settings_page.click_My_Design()
-# add_a_printer_screen.click_FirstOne_In_MyDesign()
-# add_a_printer_screen.click_Print_Option()
-# add_a_printer_screen.click_Print_Button()
-# """"Verify manually it should print successfully"""
-# add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
-# login_page.click_Menu_HamburgerICN()
-# add_a_printer_screen.click_Common_Design_Tab()
-# add_a_printer_screen.click_FirstOne_Design_In_Common_Design()
-# add_a_printer_screen.click_FirstOne_In_Common_Design()
-# add_a_printer_screen.click_Print_Option()
-# add_a_printer_screen.click_Print_Button()
-# """Verify manually it should print successfully"""
-# add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
-# add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
-# login_page.click_Menu_HamburgerICN()
-# app_settings_page.click_Printer_Settings()
-# app_settings_page.click_PrinterName_On_Printersettings()
-# app_settings_page.click_Printer_Name_Text_Field()
-# app_settings_page.Update_PrinterName_With_Different_Valid_Name()
-# app_settings_page.verify_Printer_Name_Updated_Message()
-# app_settings_page.click_PrinterName_On_Printersettings()
-# app_settings_page.click_Printer_Name_Text_Field()
-# app_settings_page.Update_PrinterName()
-# common_method.Stop_The_App()
-
-# #"""""The below steps need to be verified manually""""""""""""""
-# 6.Open any PDF file, then share to ZSB Series, print the file
-# Check the file can be printed out successfully
-# 7. Open printer cover
-# Check the status on home page is shown as "Cover Open"
-# 8. Close the printer cover
-# Check the status back to "Online"""""""""
+def test_Smoke_Test_TestcaseID_45876():
+    """	Check basic functions work well after upgrading"""
 
 
-# #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""Setup:
+1. The previous version has already been installed in test device
+2. Sign in the test account, with 1 printer added
+3. There is at least one design in My designs"""""
+
+""""Manually verify these below 3 steps as"""
+"""start the app"""""
+common_method.Start_The_App()
+""""Upgrade the app, this needs to be executed manually"""
+"""""""Verify the Already added Printer"""
+app_settings_page.Verify_Printer_is_already_added()
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_My_Design()
+add_a_printer_screen.click_FirstOne_In_MyDesign()
+add_a_printer_screen.click_Print_Option()
+add_a_printer_screen.click_Print_Button()
+""""Verify manually it should print successfully"""
+add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
+login_page.click_Menu_HamburgerICN()
+add_a_printer_screen.click_Common_Design_Tab()
+add_a_printer_screen.click_FirstOne_Design_In_Common_Design()
+add_a_printer_screen.click_FirstOne_In_Common_Design()
+add_a_printer_screen.click_Print_Option()
+add_a_printer_screen.click_Print_Button()
+"""Verify manually it should print successfully"""
+add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
+add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_Printer_Settings()
+app_settings_page.click_PrinterName_On_Printersettings()
+app_settings_page.click_Printer_Name_Text_Field()
+app_settings_page.Update_PrinterName_With_Different_Valid_Name()
+app_settings_page.verify_Printer_Name_Updated_Message()
+app_settings_page.click_PrinterName_On_Printersettings()
+app_settings_page.click_Printer_Name_Text_Field()
+app_settings_page.Update_PrinterName()
+common_method.Stop_The_App()
+
+"""""The below steps need to be verified manually""""""""""""""
+6.Open any PDF file, then share to ZSB Series, print the file
+Check the file can be printed out successfully
+7. Open printer cover
+Check the status on home page is shown as "Cover Open"
+8. Close the printer cover
+Check the status back to "Online"""""""""
+
+
+#""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 def test_Smoke_Test_TestcaseID_45878():
@@ -128,23 +133,20 @@ login_page.click_loginBtn()
 login_page.click_LoginAllow_Popup()
 login_page.click_Loginwith_Google()
 common_method.Stop_The_App()
-
-
-## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+# ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#
 def test_Smoke_Test_TestcaseID_45879():
     """Verify sign in as non-zebra, check link and delete one/google drive file works well"""
 
 
 common_method.Start_The_App()
+common_method.tearDown()
 login_page.click_Menu_HamburgerICN()
 app_settings_page.click_pen_Icon_near_UserName()
 app_settings_page.Scroll_till_Delete_Account()
 app_settings_page.click_Logout_Btn()
 login_page.click_loginBtn()
 login_page.click_Login_With_Email_Tab()
-login_page.click_UserName_TextField()
-login_page.Enter_Zebra_UserName()
 login_page.click_Password_TextField()
 login_page.Enter_Zebra_Password()
 app_settings_page.click_Keyboard_back_Icon()
@@ -166,15 +168,15 @@ login_page.click_LoginAllow_Popup()
 login_page.click_Loginwith_Google()
 common_method.Stop_The_App()
 
-
-## """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+#
+# ## """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#
+#
 def test_Smoke_Test_TestcaseID_45880():
     """Verify sign in with non-zebra account, check the design linked different format file from local can be printed out successfully"""
 
 
-"""""Sign in the same account on Web portal, create design1, add text object, and link Local file with csv format. 
+"""""Sign in the same account on Web portal, create design1, add text object, and link Local file with csv format.
 Create design2, add text object, and link local file with xlsx format"""
 
 common_method.Start_The_App()
@@ -240,132 +242,132 @@ common_method.Stop_The_App()
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_Smoke_Test_TestcaseID_45882():
-#     """Verify sign in with non-Zebra account, check the design linked different format file from One Drive can be printed out successfully"""
-#
-#
-# common_method.Start_The_App()
-# login_page.click_Menu_HamburgerICN()
-# app_settings_page.click_My_Design()
-# add_a_printer_screen.click_FirstOne_In_MyDesign()
-# add_a_printer_screen.click_Print_Option()
-# add_a_printer_screen.Verify_Design_Preview_Screen_With_Details()
-# add_a_printer_screen.click_Print_Button()
-# """"Verify manually it should print successfully"""
-# add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
-# add_a_printer_screen.click_SecondOne_In_MyDesign()
-# add_a_printer_screen.click_Print_Option()
-# add_a_printer_screen.click_Print_Button()
-# """"Verify manually it should print successfully"""
-# common_method.Stop_The_App()
-# """""The below step needs to be verified manually"""
-# """"""""""2. Sign in the same account on Web portal, create design1, add text object, and link One Drive file with xlsx format. Create design2, add text object, and link One Drive file with csv format"""""""""
-#
-
-# # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+def test_Smoke_Test_TestcaseID_45882():
+    """Verify sign in with non-Zebra account, check the design linked different format file from One Drive can be printed out successfully"""
 
 
-# def test_Smoke_Test_TestcaseID_45883():
-#     """Verify sign in sign out with registered social accounts in Mobile App."""
-#
-#
-# """start the app"""
-# common_method.Start_The_App()
-# sleep(3)
-# login_page.click_Menu_HamburgerICN()
-# app_settings_page.click_pen_Icon_near_UserName()
-# app_settings_page.Scroll_till_Delete_Account()
-# app_settings_page.click_Logout_Btn()
-# login_page.click_loginBtn()
-# login_page.click_LoginAllow_Popup()
-# """""""""" check the 3 links at the bottom all can work ("copyright", "Terms & Conditions" and "Privacy Policy")"""""""""""
-# smoke_test_android.Verify_SignIn_With_Text_Is_Present()
-# smoke_test_android.click_Continue_With_Facebook_Option()
-# """""due to some issue, it is directly login to the facebook account without asking for password"""
-# login_page.click_Menu_HamburgerICN()
-# smoke_test_android.Verify_Facebook_UserName_Is_Displaying()
-# app_settings_page.click_pen_Icon_near_UserName()
-# app_settings_page.Scroll_till_Delete_Account()
-# app_settings_page.click_Logout_Btn()
-# login_page.click_loginBtn()
-# login_page.click_LoginAllow_Popup()
-# smoke_test_android.click_Continue_With_Apple_Option()
-# smoke_test_android.click_Continue_With_Password_ForApple_Login()
-# smoke_test_android.click_On_Password_Textfield()
-# poco(text("Testing@123"))
-# smoke_test_android.click_On_Sign_In_Option()
-# login_page.click_Menu_HamburgerICN()
-# smoke_test_android.Verify_Apple_UserName_Is_Displaying()
-# app_settings_page.click_pen_Icon_near_UserName()
-# app_settings_page.Scroll_till_Delete_Account()
-# app_settings_page.click_Logout_Btn()
-# login_page.click_loginBtn()
-# login_page.click_LoginAllow_Popup()
-# login_page.click_Loginwith_Google()
-# smoke_test_android.Verify_Google_UserName_Is_Displaying()
-# common_method.Stop_The_App()
+common_method.Start_The_App()
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_My_Design()
+add_a_printer_screen.click_FirstOne_In_MyDesign()
+add_a_printer_screen.click_Print_Option()
+add_a_printer_screen.Verify_Design_Preview_Screen_With_Details()
+add_a_printer_screen.click_Print_Button()
+""""Verify manually it should print successfully"""
+add_a_printer_screen.click_The_Back_Icon_Of_Print_Review_Screen()
+add_a_printer_screen.click_SecondOne_In_MyDesign()
+add_a_printer_screen.click_Print_Option()
+add_a_printer_screen.click_Print_Button()
+""""Verify manually it should print successfully"""
+common_method.Stop_The_App()
+"""""The below step needs to be verified manually"""
+""""""""""2. Sign in the same account on Web portal, create design1, add text object, and link One Drive file with xlsx format. Create design2, add text object, and link One Drive file with csv format"""""""""
 
 
-## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_Smoke_Test_TestcaseID_45884():
-#     """Add a printer- Out of the box user experience"""
-#
-#
-# """""Test steps:
-# 1. Turn off the testing printer, then use a toothpick to press the button on the printer back for about 10s, turn on the printer(Keep hold pressing the printer back button for about 20s)
-# Check during this process, the power button is flashing white light, then flashing blue light and will auto feed the barcode info label. """""""""""
-#
-# """start the app"""
-# common_method.Start_The_App()
-# sleep(3)
-# """"verify home text is displaying on the home screen"""
-# app_settings_page.Home_text_is_present_on_homepage()
-# """click on the hamburger icon"""
-# login_page.click_Menu_HamburgerICN()
-# """"click on Add printer tab"""""
-# add_a_printer_screen.click_Add_A_Printer()
-# """"click on the start button"""
-# add_a_printer_screen.click_Start_Button()
-# """"Verify searching for your printer text"""
-# add_a_printer_screen.Verify_Searching_for_your_printer_Text()
-# """"verify select your printer text"""
-# add_a_printer_screen.Verify_Select_your_printer_Text()
-# """"select 2nd printer which you want to add"""
-# add_a_printer_screen.click_2nd_Printer_Details_To_Add()
-# """""click on select button"""
-# add_a_printer_screen.click_Select_Button_On_Select_Your_Printer_Screen()
-# """"verify pairing your printer text"""
-# add_a_printer_screen.Verify_Pairing_Your_Printer_Text()
-# """"accept Bluetooth pairing popup 1"""
-# add_a_printer_screen.Accept_Bluetooth_pairing_Popup1()
-# """"accept Bluetooth pairing popup 2"""
-# add_a_printer_screen.Accept_Bluetooth_pairing_Popup2()
-# """Verify Connect Wi-fi Network Text"""
-# add_a_printer_screen.Verify_Connect_Wifi_Network_Text()
-# """"click on connect button on connect wifi network screen"""
-# add_a_printer_screen.click_Connect_Btn_On_Connect_Wifi_Network_Screen()
-# """""""click password field on join network"""
-# add_a_printer_screen.click_Password_Field_On_Join_Network()
-# """"click submit button on join network"""
-# add_a_printer_screen.click_Submit_Button_ON_Join_Network()
-# """verify connecting to wifi network text"""
-# add_a_printer_screen.Verify_Connecting_to_WiFi_Network_Text()
-# """"verify need the printer driver text"""
-# add_a_printer_screen.Verify_Need_the_Printer_Driver_Text()
-# """""verify registering your printer text"""
-# add_a_printer_screen.Verify_Registering_your_Printer_Text()
-# """"click on finish setup button"""
-# add_a_printer_screen.click_Finish_Setup_Button()
-# app_settings_page.Verify_Printer_is_already_added()
-# """stop the app"""
-# common_method.Stop_The_App()
-
-## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+def test_Smoke_Test_TestcaseID_45883():
+    """Verify sign in sign out with registered social accounts in Mobile App."""
 
 
-## """""""""""""""""""""""""""new testcases""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""start the app"""
+common_method.Start_The_App()
+sleep(3)
+login_page.click_Menu_HamburgerICN()
+app_settings_page.click_pen_Icon_near_UserName()
+app_settings_page.Scroll_till_Delete_Account()
+app_settings_page.click_Logout_Btn()
+login_page.click_loginBtn()
+login_page.click_LoginAllow_Popup()
+"""""""""" check the 3 links at the bottom all can work ("copyright", "Terms & Conditions" and "Privacy Policy")"""""""""""
+smoke_test_android.Verify_SignIn_With_Text_Is_Present()
+smoke_test_android.click_Continue_With_Facebook_Option()
+"""""due to some issue, it is directly login to the facebook account without asking for password"""
+login_page.click_Menu_HamburgerICN()
+smoke_test_android.Verify_Facebook_UserName_Is_Displaying()
+app_settings_page.click_pen_Icon_near_UserName()
+app_settings_page.Scroll_till_Delete_Account()
+app_settings_page.click_Logout_Btn()
+login_page.click_loginBtn()
+login_page.click_LoginAllow_Popup()
+smoke_test_android.click_Continue_With_Apple_Option()
+smoke_test_android.click_Continue_With_Password_ForApple_Login()
+smoke_test_android.click_On_Password_Textfield()
+poco(text("Testing@123"))
+smoke_test_android.click_On_Sign_In_Option()
+login_page.click_Menu_HamburgerICN()
+smoke_test_android.Verify_Apple_UserName_Is_Displaying()
+app_settings_page.click_pen_Icon_near_UserName()
+app_settings_page.Scroll_till_Delete_Account()
+app_settings_page.click_Logout_Btn()
+login_page.click_loginBtn()
+login_page.click_LoginAllow_Popup()
+login_page.click_Loginwith_Google()
+smoke_test_android.Verify_Google_UserName_Is_Displaying()
+common_method.Stop_The_App()
+
+
+# """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+def test_Smoke_Test_TestcaseID_45884():
+    """Add a printer- Out of the box user experience"""
+
+
+"""""Test steps:
+1. Turn off the testing printer, then use a toothpick to press the button on the printer back for about 10s, turn on the printer(Keep hold pressing the printer back button for about 20s)
+Check during this process, the power button is flashing white light, then flashing blue light and will auto feed the barcode info label. """""""""""
+
+"""start the app"""
+common_method.Start_The_App()
+sleep(3)
+""""verify home text is displaying on the home screen"""
+app_settings_page.Home_text_is_present_on_homepage()
+"""click on the hamburger icon"""
+login_page.click_Menu_HamburgerICN()
+""""click on Add printer tab"""""
+add_a_printer_screen.click_Add_A_Printer()
+""""click on the start button"""
+add_a_printer_screen.click_Start_Button()
+""""Verify searching for your printer text"""
+add_a_printer_screen.Verify_Searching_for_your_printer_Text()
+""""verify select your printer text"""
+add_a_printer_screen.Verify_Select_your_printer_Text()
+""""select 2nd printer which you want to add"""
+add_a_printer_screen.click_2nd_Printer_Details_To_Add()
+"""""click on select button"""
+add_a_printer_screen.click_Select_Button_On_Select_Your_Printer_Screen()
+""""verify pairing your printer text"""
+add_a_printer_screen.Verify_Pairing_Your_Printer_Text()
+""""accept Bluetooth pairing popup 1"""
+add_a_printer_screen.Accept_Bluetooth_pairing_Popup1()
+""""accept Bluetooth pairing popup 2"""
+add_a_printer_screen.Accept_Bluetooth_pairing_Popup2()
+"""Verify Connect Wi-fi Network Text"""
+add_a_printer_screen.Verify_Connect_Wifi_Network_Text()
+""""click on connect button on connect wifi network screen"""
+add_a_printer_screen.click_Connect_Btn_On_Connect_Wifi_Network_Screen()
+"""""""click password field on join network"""
+add_a_printer_screen.click_Password_Field_On_Join_Network()
+""""click submit button on join network"""
+add_a_printer_screen.click_Submit_Button_ON_Join_Network()
+"""verify connecting to wifi network text"""
+add_a_printer_screen.Verify_Connecting_to_WiFi_Network_Text()
+""""verify need the printer driver text"""
+add_a_printer_screen.Verify_Need_the_Printer_Driver_Text()
+"""""verify registering your printer text"""
+add_a_printer_screen.Verify_Registering_your_Printer_Text()
+""""click on finish setup button"""
+add_a_printer_screen.click_Finish_Setup_Button()
+app_settings_page.Verify_Printer_is_already_added()
+"""stop the app"""
+common_method.Stop_The_App()
+
+# """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+# """""""""""""""""""""""""""new testcases""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 def test_Smoke_Test_TestcaseID_45885():
     """Add a printer- use a printer which has ever been registered before and require a decommission."""
 
@@ -411,39 +413,37 @@ add_a_printer_screen.click_Finish_Setup_Button()
 app_settings_page.Verify_Printer_is_already_added()
 """stop the app"""
 common_method.Stop_The_App()
-
-
-## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+# ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#
+#
 def test_Smoke_Test_TestcaseID_45886():
     """Check Mobile App can display correct printer status and notifications when printer status updates"""
 
 
 common_method.Start_The_App()
-res = others.check_printer_online_status()
+res = smoke_test_android.check_printer_online_status()
 if res == "Online":
     print("ok")
 else:
     raise Exception("Printer is not in Online state")
 
-others.select_first_label_from_home()
-others.click_print_button()
+smoke_test_android.select_first_label_from_home()
+smoke_test_android.click_print_button()
 sleep(3)
-others.check_error_print_preview()
+smoke_test_android.check_error_print_preview()
 
-others.click_print_button()
+smoke_test_android.click_print_button()
 sleep(4)
-others.click_left_arrow()
+smoke_test_android.click_left_arrow()
 
-res = others.check_printer_online_status()
+res = smoke_test_android.check_printer_online_status()
 if res == "Cover Open":
     print("ok")
 else:
     raise Exception("Printer is not in Cover Open state")
 common_method.Start_The_App()
 
-
+#
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def test_Smoke_Test_TestcaseID_45887():
@@ -478,26 +478,26 @@ app_settings_page.click_toggle_button()
 """"stop the app"""
 stop_app("com.zebra.soho_app")
 
-
-# #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+# # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#
+#
 def test_Smoke_Test_TestcaseID_45888():
     """	Check user can delete a printer from Mobile App"""
 
 
 """start the app"""
-common_method.Start_The_App()
+common_method.tearDown()
 """"verify home text is displaying on the home screen"""
 app_settings_page.Home_text_is_present_on_homepage()
 """click on three dot on added printer on home page"""
+app_settings_page.Verify_Printer_Text()
 app_settings_page.click_Three_Dot_On_Added_Printer_On_HomePage()
 """""click on delete printer button"""
 app_settings_page.click_Delete_Printer_Button()
-""""verify final delete printer text"""
-app_settings_page.Verify_Final_Delete_Printer_Text()
 """verify delete printer page"""
 app_settings_page.Verify_Delete_Printer_Page()
+app_settings_page.Click_Cancel_On_Delete_Printer_Page()
+app_settings_page.click_Three_Dot_On_Added_Printer_On_HomePage()
 """"click delete printer button"""
 app_settings_page.click_Delete_Printer_Button()
 """"click yes delete button"""
@@ -506,11 +506,10 @@ app_settings_page.click_Yes_Delete_Button()
 app_settings_page.Verify_And_click_Unpair_Bluetooth_dropdown_list()
 """"verify UI of unpair bluetooth dropdown list """
 app_settings_page.Verify_UI_Of_Unpair_Bluetooth_dropdown_list()
-""""stop the app"""
-stop_app("com.zebra.soho_app")
+app_settings_page.Verify_Printer_is_already_added()
+common_method.tearDown()
+# ## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-## """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def test_Smoke_Test_TestcaseID_45889():
     """	Check user can upload or link file to My Data"""
@@ -549,8 +548,7 @@ sleep(2)
 data_sources_page.clickGoogleDrive()
 common_method.Stop_The_App()
 
-
-# #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def test_Smoke_Test_TestcaseID_45890():
     """	Print template with static information in Recently Printed Template list"""
@@ -969,6 +967,4 @@ login_page.click_loginBtn()
 login_page.click_LoginAllow_Popup()
 login_page.click_Loginwith_Google()
 common_method.Stop_The_App()
-
-
-## """"""""""""""""""""""""""""""End"""""""""""""""""""""""""""""""""""""""""""""""""""
+# ## """"""""""""""""""""""""""""""End"""""""""""""""""""""""""""""""""""""""""""""""""""

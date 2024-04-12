@@ -25,8 +25,7 @@ class Login_Screen:
         self.Bluetooth_Allow = "android:id/button1"
         self.Google_Login = "Continue with Google"
         self.Enter_GoogleID_Field = "SWDVT IDC test account"
-        self.Google_UserID = "identifierId"
-        self.Emailid_Nextbtn = "identifierNext"
+        self.Google_UserID = "android.widget.EditText"
         self.Google_Password = "android.widget.TextView"
         self.Next_LoginBtn = "Next"
         self.Google_MailID = "Use another account"
@@ -34,13 +33,9 @@ class Login_Screen:
         self.Password_Nextbtn = "passwordNext "
         self.Menu_Hamburger_Icn = "Open navigation menu"
         self.Login_With_Email = "android.widget.Button"
-        self.UserName = "username"
-        self.Password_Field = "password"
-        self.SignIn_Button = "submit_id"
-        self.Login_With_ZebraEmail = Template(os.path.join(os.path.expanduser('~'),
-                                                           "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                           "tpl1707302769907.png"), record_pos=(-0.018, 0.215),
-                                              resolution=(1080, 2400))
+        self.Password_Field = "android.widget.EditText"
+        self.Sign_In_Button = Template(r"tpl1712903719748.png", record_pos=(0.007, -0.493), resolution=(1080, 2400))
+
 
     # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -84,23 +79,26 @@ class Login_Screen:
 
     def Enter_Google_UserID(self):
         sleep(3)
-
         enter_googleid = self.poco(self.Google_UserID)
         if enter_googleid.exists():
             enter_googleid.click()
+            sleep(1)
             enter_googleid.set_text("soho.swdvt.01@gmail.com")
         else:
             print("field is not present to enter the email id, , proceeding with the next part of the code.")
 
     def click_GooglemailId(self):
         sleep(3)
+        added_account = self.poco(self.Enter_GoogleID_Field)
         google_mailid = self.poco(self.Google_MailID)
-        if google_mailid.exists():
+
+        if added_account.exists():
+            added_account.click()
+        elif google_mailid.exists():
             google_mailid.click()
+            sleep(7)
         else:
-            google_emailid = self.poco(self.Google_Email_ID)
-            google_emailid.click()
-            sleep(2)
+            pass
 
     def Enter_Google_Password(self):
         enter_google_password = self.poco(self.Google_Password)
@@ -113,15 +111,14 @@ class Login_Screen:
 
     def click_Emailid_Nextbtn(self):
         sleep(2)
-        emailid_nextbtn = self.poco(self.Emailid_Nextbtn)
+        emailid_nextbtn = self.poco(text="Next")
         if emailid_nextbtn.exists():
             emailid_nextbtn.click()
+            sleep(5)
+            poco(text("Swdvt@#123"))
         else:
            print("Next button is not present, proceeding with the next part of the code.")
 
-    def Enter_Password_To_Login(self):
-         sleep(1)
-         poco(text("Swdvt@#123"))
 
     def click_Password_Nextbtn(self):
         sleep(2)
@@ -152,44 +149,45 @@ class Login_Screen:
     #     else:
     #         print("Fail")
 
-    def Verify_LoginAllow_Popup_IS_Not_Displaying(self):
+    def Verify_LoginAllow_Popup_IS_Displaying(self):
         sleep(2)
         if self.poco(self.LoginAllow_Popup).exists():
-            print("Fail")
-        else:
             print("Pass")
+        else:
+            print("Login Allow Pop up is not displaying")
 
     def click_Login_With_Email_Tab(self):
         sleep(7)
-        touch(self.Login_With_ZebraEmail)
-        # login_with_email = self.poco(self.Login_With_Email)
-        # # login_with_email.click()
-        # if login_with_email.exists():
-        # login_with_email.click()
-        # else:
-        #     print("Login with email element not found.")
+        zebra_login= self.poco(text="Sign In with your email")
+        zebra_login.click()
+        sleep(2)
+        poco(text(""))
+        poco(text("Zebra01.swdvt@icloud.com"))
+        sleep(1)
 
     def click_UserName_TextField(self):
-        username = self.poco(self.UserName)
+        username = self.poco(text="Continue with Google")
         username.click()
-
+    #
     def Enter_UserName(self):
-        username = self.poco(self.UserName)
+        username = self.poco(text="Continue with Google")
         username.set_text("soho.swdvt.01@gmail.com")
 
     def click_Password_TextField(self):
+        sleep(1)
+        poco.scroll()
         password = self.poco(self.Password_Field)
         password.click()
 
     def Enter_Password(self):
         password = self.poco(self.Password_Field)
         sleep(2)
-        password.set_text("Swdvt@#123")
+        password.set_text("Testing@1234")
 
     def click_SignIn_Button(self):
-        signin = self.poco(self.SignIn_Button)
-        signin.click()
-        sleep(7)
+        sleep(1)
+        touch(self.Sign_In_Button)
+        sleep(9)
 
     def Check_loginBtn_IS_Present(self):
         sleep(5)
@@ -203,11 +201,7 @@ class Login_Screen:
             print("Login Button is not enabled.")
             return False
 
-    def Enter_Zebra_UserName(self):
-        sleep(2)
-        username = self.poco(self.UserName)
-        username.set_text("Zebra01.swdvt@icloud.com")
 
     def Enter_Zebra_Password(self):
         password = self.poco(self.Password_Field)
-        password.set_text("Testing@1234")
+        password.set_text("Testing@12345")

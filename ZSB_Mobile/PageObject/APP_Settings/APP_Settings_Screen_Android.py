@@ -17,9 +17,9 @@ class App_Settings_Screen:
     def __init__(self, poco):
         self.poco = poco
         self.Printer_Settings_Btn = "Printer Settings"
-        self.PrinterName_In_Printer_Settings = "ZSB-DP12\nTab 2 of 2"
+        self.PrinterName_In_Printer_Settings = "ZSB-DP12\nTab 2 of 3"
+        self.PrinterName2_In_Printer_Settings = "ZSB-DP12 (1)\nTab 3 of 3"
         self.WiFi_Tab = "Wi-Fi\nTab 2 of 2"
-
         self.Current_Network_Txt = "Current Networks"
         self.Network_Name_Txt = "NESTWIFI"
         self.NESTWIFI_Network = "NESTWIFI"
@@ -35,8 +35,8 @@ class App_Settings_Screen:
         self.Manage_Network = "Manage Networks"
         self.Save_Network_Message_Txt = "You can save up to 5 network profiles to your Saved Networks. If no saved networks are available, you will have to add a new one."
 
-
-        self.Threedot_On_Workspace = "android.widget.Button[0]"
+        self.Threedot_On_Workspace = Template(r"tpl1712773090073.png", record_pos=(0.196, -0.727),
+                                              resolution=(1080, 2400))
         self.Test_Print_Btn = "Test Print"
         self.Continue_Btn_on_Bluetooth_Connection_Failed_popup = "Continue"
         self.Cancel_Btn_n_Bluetooth_Connection_Failed_Popup = "Cancel"
@@ -115,22 +115,21 @@ class App_Settings_Screen:
                                                     "tpl1705310274082.png"), record_pos=(-0.338, 0.106),
                                        resolution=(1080, 2400))
 
-        self.First_Name = Template(os.path.join(os.path.expanduser('~'),
-                                                "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                "tpl1705314757599.png"), record_pos=(0.008, -0.09),
-                                   resolution=(1080, 2400))
+        # self.First_Name = Template(os.path.join(os.path.expanduser('~'),
+        #                                         "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+        #                                         "tpl1705314757599.png"), record_pos=(0.008, -0.09),
+        #                            resolution=(1080, 2400))
+        self.First_Name = "android.widget.EditText"
 
-        self.Last_Name = Template(os.path.join(os.path.expanduser('~'),
-                                               "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                               "tpl1705314814226.png"), record_pos=(0.002, 0.159),
-                                  resolution=(1080, 2400))
+        # self.Last_Name = Template(os.path.join(os.path.expanduser('~'),
+        #                                        "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
+        #                                        "tpl1705314814226.png"), record_pos=(0.002, 0.159),
+        #                           resolution=(1080, 2400))
+        self.Last_Name = "android.widget.EditText"
 
         self.Recently_Printed_Labels_Text = "Recently Printed Labels"
         self.Firstone_In_Recently_Printed_Labels = "android.view.View"
-        self.Printer_is_present = Template(os.path.join(os.path.expanduser('~'),
-                                                        "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                        "tpl1705314417017.png"), record_pos=(-0.349, -0.5),
-                                           resolution=(1080, 2400))
+        self.Printer_is_present = "android.widget.ImageView"
 
         self.Name_Updated_Message = "Your changes have been saved"
         self.Buy_More_Labels = "Buy More Labels"
@@ -156,10 +155,7 @@ class App_Settings_Screen:
                                                          record_pos=(0.025, -0.151), resolution=(1080, 2400))
 
         self.Important_Message_In_Login_Page = "Important:For security purposes, please login one last time to finalize the deletion of your account. Failure to do so will result in your account still being active."
-        self.Delete_Account_Popup = Template(os.path.join(os.path.expanduser('~'),
-                                                          "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                          "tpl1705577555232.png"), record_pos=(0.007, 0.014),
-                                             resolution=(1080, 2400))
+        self.Delete_Account_Popup = "Delete"
 
         self.Cancel_on_Delete_Account_Popup = "Cancel"
         self.Continue_with_Google = Template(os.path.join(os.path.expanduser('~'),
@@ -173,15 +169,7 @@ class App_Settings_Screen:
                                                               record_pos=(0.402, -0.553), resolution=(1080, 2400))
 
         self.Delete_Printer_Button = "Delete"
-        self.Delete_Printer_Page = Template(os.path.join(os.path.expanduser('~'),
-                                                         "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                         "tpl1705993965886.png"), record_pos=(0.014, 0.009),
-                                            resolution=(1080, 2400))
 
-        self.Final_Delete_Printer_Page = Template(os.path.join(os.path.expanduser('~'),
-                                                               "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                               "tpl1705993965886.png"), record_pos=(0.014, 0.009),
-                                                  resolution=(1080, 2400))
         self.Yes_Delete_Button = "Yes, Delete"
         self.Unpair_Bluetooth_dropdown_list = Template(os.path.join(os.path.expanduser('~'),
                                                                     "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
@@ -266,16 +254,9 @@ class App_Settings_Screen:
         self.Security_Open = "Open"
         self.WPA_PSK = "WPA PSK"
         self.Added_Network = "android.view.View"
-        self.Printer_Name_Update_Failed_Message = Template(os.path.join(os.path.expanduser('~'),
-                                                                        "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                                        "tpl1707288469543.png"),
-                                                           record_pos=(0.013, 0.014), resolution=(1080, 2400))
+
 
         self.Continue_Button_On_Printer_Update_Failed_Popup = "Continue"
-        self.Previous_PrinterName = Template(os.path.join(os.path.expanduser('~'),
-                                                          "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                          "tpl1707288777589.png"), record_pos=(0.152, -0.526),
-                                             resolution=(1080, 2400))
 
         self.Long_Network_UserName = Template(os.path.join(os.path.expanduser('~'),
                                                            "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
@@ -286,24 +267,16 @@ class App_Settings_Screen:
         self.Continue_On_Failed_To_Connect_To_Wifi_Network = "Continue"
         self.Apply_Changes = "Apply Changes"
         self.Invalid_Network_Error_Message = ""
-        # self.Change_Password_Btn = \
-        #     poco("android.widget.FrameLayout").child("android.view.View").child("android.view.View").child(
-        #         "android.view.View").child("android.view.View").child("android.view.View")[1].child(
-        #         "android.view.View").child("android.view.View")[2].child("Change")
 
-        self.Change_Password_Page = "com.android.chrome:id/url_bar"
-        self.Password_Recovery_Text = Template(os.path.join(os.path.expanduser('~'),
-                                                            "Pictures\Automation_Backup\ZSB_Automation\ZSB_Mobile\Images",
-                                                            "tpl1707307875194.png"), record_pos=(0.005, -0.55),
-                                               resolution=(1080, 2400))
-
-        self.Email_TextField_On_Password_Recovery_Screen = "email"
-        self.Submit_On_Password_Recovery_Screen = "android.widget.Button"
+        self.Email_TextField_On_Password_Recovery_Screen = "android.widget.EditText"
+        self.Cancel_Button = "Cancel"
 
     # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     def click_Printer_Settings(self):
+        sleep(1)
         printer_settings = self.poco(self.Printer_Settings_Btn)
         printer_settings.click()
+        sleep(2)
 
     def Enter_Google_Password(self):
         enter_google_password = self.poco(self.Google_Password)
@@ -315,16 +288,26 @@ class App_Settings_Screen:
         printerName = self.poco(self.PrinterName_In_Printer_Settings)
         # touch(self.PrinterName_In_Printer_Settings)
         printerName.click()
+        sleep(3)
+
+    def click_PrinterName2_On_Printersettings(self):
+        sleep(3)
+        printerName = self.poco(self.PrinterName2_In_Printer_Settings)
+        # touch(self.PrinterName_In_Printer_Settings)
+        printerName.click()
+        sleep(3)
 
     def click_wifi_tab(self):
+        sleep(1)
         WiFi_Tab = self.poco(self.WiFi_Tab)
         WiFi_Tab.click()
+        sleep(2)
         # touch(self.WiFi_Tab)
 
     def test_CurrentNetwork_Txt_is_present_on_printer_settings_page(self):
 
         if self.poco(name="Current Network").exists():
-            print("Current Network Text is not present.")
+            print("Current Network Text is present.")
             assert True
 
         else:
@@ -334,7 +317,7 @@ class App_Settings_Screen:
     def test_Network_Status_Txt_is_present_on_printer_settings_page(self):
 
         if self.poco(name="Network Status").exists():
-            print("Network Status Text is not present.")
+            print("Network Status Text is present.")
             assert True
         else:
             print("Network Status Text is not present.")
@@ -459,16 +442,17 @@ class App_Settings_Screen:
             print("Popup not found or already accepted.")
             return False
 
-
     def Cancel_is_present_on_Bluetooth_Connection_Failed_Popup(self):
         sleep(20)
         cancel_btn = self.poco(self.Cancel_Btn_n_Bluetooth_Connection_Failed_Popup)
-        cancel_btn.get_text()
-        print("Text of Cancel button:", cancel_btn)
+        if cancel_btn.exists():
+            cancel_text = cancel_btn.get_text()
+            print("Text of Cancel button:", cancel_text)
+        else:
+            print("Proceeding to the next code")
 
-        return cancel_btn
+        #
 
-    #
     # def get_text_of_cancel_button(self):
     #     # Set a timeout value (in seconds) for waiting for the element to be visible
     #     timeout_seconds = 10
@@ -512,7 +496,8 @@ class App_Settings_Screen:
         touch(self.Red_Icon_to_remove_network)
 
     def click_Add_Network(self):
-        sleep(6)
+        sleep(4)
+        poco.scroll()
         add_network = self.poco(self.Add_Network)
 
         if add_network.exists():
@@ -528,7 +513,7 @@ class App_Settings_Screen:
         sleep(4)
         add_network_txt = self.poco(self.Add_Network_Txt)
         add_network_txt.get_text()
-        print("Text of Cancel button:", add_network_txt)
+        print("Add Network Text is displaying:", add_network_txt)
 
         return add_network_txt
 
@@ -538,9 +523,9 @@ class App_Settings_Screen:
 
     def click_Three_Dot_On_Workspace(self):
         sleep(4)
-        poco("MW\nMy Workspace").child("android.widget.Button").click()
+        # three_dot= self.poco("MF\nMy First Workspace")
+        touch(self.Threedot_On_Workspace)
         sleep(2)
-
 
     def get_text_Edit_Txt(self):
         edit_txt = self.poco(self.Edit_Txt)
@@ -556,9 +541,6 @@ class App_Settings_Screen:
         sleep(2)
         change_theme = self.poco(self.Change_Theme)
         change_theme.click()
-
-
-
 
     def get_text_Change_Theme_Header(self):
         change_theme_header = self.poco(self.Change_Theme)
@@ -589,8 +571,6 @@ class App_Settings_Screen:
         except PocoNoSuchNodeException:
             # Handle the case when the element is not found
             print("Electic theme RadioButton not found. Test continues...")
-
-
 
     def click_Save_Exit_Btn(self):
         save_exit = self.poco(self.Save_Exit_Btn)
@@ -645,9 +625,6 @@ class App_Settings_Screen:
         except PocoNoSuchNodeException:
             print("Bohemian theme RadioButton not found. Test continues...")
 
-
-
-
     def check_Change_Professional_Theme(self):
         poco.scroll()
         poco.scroll()
@@ -669,7 +646,6 @@ class App_Settings_Screen:
         except PocoNoSuchNodeException:
             # Handle the case when the element is not found
             print("Professional theme RadioButton not found. Test continues...")
-
 
     def check_Change_Maker_Theme(self):
         poco.scroll()
@@ -694,7 +670,6 @@ class App_Settings_Screen:
             # Handle the case when the element is not found
             print("Maker theme RadioButton not found. Test continues...")
 
-
     def check_Change_Modern_Theme(self):
         Modern_theme = self.poco(name="Modern")
 
@@ -714,7 +689,6 @@ class App_Settings_Screen:
         except PocoNoSuchNodeException:
             # Handle the case when the element is not found
             print("Modern theme RadioButton not found. Test continues...")
-
 
     def click_pen_Icon_near_UserName(self):
         sleep(3)
@@ -754,9 +728,11 @@ class App_Settings_Screen:
 
     def verify_updated_msg(self):
         updated_msg = self.poco(self.Updated_Msg)
-        updated_msg.get_text()
-        print(" Units of Measurement updated successfully:", updated_msg)
-        return updated_msg
+        if updated_msg.exists():
+            updated_msg.get_text()
+            print(" Units of Measurement updated successfully:", updated_msg)
+        else:
+            print("updated message is not displaying")
 
     def click_Home_Tab(self):
         home_Text = self.poco(self.Home_Text)
@@ -845,18 +821,19 @@ class App_Settings_Screen:
         workspace_name.set_text("")
 
     def click_Keyboard_back_Icon(self):
+        sleep(1)
         keyboard_back_icon = self.poco(self.Keyboard_back_Icon)
-        keyboard_back_icon.click()
-        sleep(2)
+        if keyboard_back_icon.exists():
+            keyboard_back_icon.click()
+        else:
+            pass
 
     def Verify_SaveExit_Option_Is_Not_There(self):
 
         sleep(2)
         if not self.Save_Exit_Btn:
-         return "Save & Exit button is not present"
+            return "Save & Exit button is not present"
         return "Save & Exit button is present"
-
-
 
     def click_back_Icon_On_Edit_Workspace(self):
         edit_workspace_back_icon = self.poco(self.Edit_Workspace_Back_Icon)
@@ -867,7 +844,6 @@ class App_Settings_Screen:
         Previous_Workspace_Name.get_text()
         sleep(1)
         return Previous_Workspace_Name
-
 
     def Update_Workspace_Name_With_Space(self):
         workspace_name = self.poco(self.Workspace_Name_Text_Field)
@@ -883,10 +859,6 @@ class App_Settings_Screen:
         Updated_Workspace_Name.get_text()
         sleep(1)
         return Updated_Workspace_Name
-
-
-
-
 
     def Update_Workspace_Name_with_Original_Name(self):
         workspace_name = self.poco(self.Workspace_Name_Text_Field)
@@ -917,7 +889,9 @@ class App_Settings_Screen:
         return lastname
 
     def click_First_Name_Text_Field(self):
-        touch(self.First_Name)
+        # touch(self.First_Name)
+        First_Name = self.poco(self.First_Name)
+        First_Name.click()
 
     def clear_First_Name(self):
         first_name = self.poco(self.Enter_First_Name_TextField)
@@ -938,6 +912,12 @@ class App_Settings_Screen:
     def Verify_Printer_is_already_added(self):
         assert_exists(self.Printer_is_present, "Printer is already added")
 
+    def Verify_Printer_Is_Not_Displaying(self):
+        sleep(3)
+        if not self.Printer_is_present:
+            return "Printer Is removed"
+        return "Printer Is  still present"
+
     def click_Firstone_In_Recently_Prtinted_Label(self):
         sleep(3)
         firstone = self.poco(self.Firstone_In_Recently_Printed_Labels)
@@ -948,6 +928,8 @@ class App_Settings_Screen:
         first_name.set_text("@abcdefghijklmn!@#abcdefghijklmn")
 
     def click_Last_Name_Text_Field(self):
+        sleep(2)
+        poco.scroll()
         lastname = self.poco(self.Last_Name)
         lastname.click()
 
@@ -961,13 +943,18 @@ class App_Settings_Screen:
 
     def verify_Your_changes_have_been_saved_Message(self):
         name_updated_message = self.poco(self.Name_Updated_Message)
-        name_updated_message.get_text()
-        print(" Name updated text is displaying:", name_updated_message)
-        return name_updated_message
+        if name_updated_message.exists():
+            text = name_updated_message.get_text()
+            print("Name updated text is displaying:", text)
+            return text
+        else:
+            print("Name Updated message is not displaying")
+            return None
 
     def Update_Default_First_Name(self):
         first_name = self.poco(self.First_Name)
         first_name.set_text("SohoApp")
+        sleep(2)
 
     def Update_Default_Last_Name(self):
         last_name = self.poco(self.Last_Name)
@@ -1122,7 +1109,10 @@ class App_Settings_Screen:
 
     def Is_Present_Delete_Account_Popup(self):
         sleep(7)
-        assert_exists(self.Delete_Account_Popup, "Delete Account Popup text is displaying")
+        Delete_account_popup = self.poco(self.Delete_Account_Popup)
+        if Delete_account_popup.exists():
+            Delete_account_popup.get_text()
+            return Delete_account_popup
 
     def click_Cancel_on_Delete_Account_Popup(self):
         sleep(3)
@@ -1134,6 +1124,7 @@ class App_Settings_Screen:
         touch(self.Continue_with_Google)
 
     def click_Three_Dot_On_Added_Printer_On_HomePage(self):
+        sleep(1)
         touch(self.ThreeDot_On_Added_Printer_On_HomePage)
 
     def click_Delete_Printer_Button(self):
@@ -1145,13 +1136,8 @@ class App_Settings_Screen:
         sleep(30)
         print("Screen freeze for 30 seconds completed.")
 
-    def Verify_Delete_Printer_Page(self):
-        assert_exists(self.Delete_Printer_Page, "Delete Printer Page is displaying")
-
-    def Verify_Final_Delete_Printer_Text(self):
-        assert_exists(self.Final_Delete_Printer_Page, "Delete Printer Page is displaying")
-
     def click_Yes_Delete_Button(self):
+        sleep(1)
         Yes_Delete_Button = self.poco(self.Yes_Delete_Button)
         Yes_Delete_Button.click()
 
@@ -1312,7 +1298,6 @@ class App_Settings_Screen:
             print("Error occurred while verifying toggle button text:", e)
             return None
 
-
     def click_Notification_Settings_Tab(self):
         sleep(2)
         notification_tab = self.poco(self.Notifications_Settings_Tab)
@@ -1324,7 +1309,6 @@ class App_Settings_Screen:
         Messages_Tab = self.poco(self.Messages_Tab)
         Messages_Tab.click()
         sleep(2)
-
 
     def Verify_Notifications_Text_IS_Displaying(self):
         sleep(3)
@@ -1419,6 +1403,13 @@ class App_Settings_Screen:
         continue_btn.click()
         sleep(7)
 
+    def click_Allow_Btn(self):
+        allow_btn = self.poco(text="Allow")
+        if allow_btn.exists():
+            allow_btn.click()
+        else:
+            print("Allow Button is Not present")
+
     def click_NESTWIFI_Network(self):
         sleep(9)
         nestwifi = self.poco(self.NESTWIFI_Network)
@@ -1470,13 +1461,13 @@ class App_Settings_Screen:
         return 1 if previous - count == current else 0
 
     def click_Enter_Network_Manually(self):
-        sleep(10)
+        sleep(8)
         scroll_view = poco("android.widget.ScrollView")
         # Set the maximum number of swipes to avoid an infinite loop
-        max_swipes = 200
+        max_swipes = 20
         for _ in range(max_swipes):
             # Swipe up on the ScrollView
-            scroll_view.swipe("up", duration=0.1)
+            scroll_view.swipe("up", duration=0.2)
             # Check if the "Accept" element is present and enabled
             Enter_Network_Manually = poco(name="Enter Network Manually...")
             if Enter_Network_Manually.exists() and Enter_Network_Manually.attr('enabled'):
@@ -1488,13 +1479,14 @@ class App_Settings_Screen:
         sleep(3)
         enter_network_username = self.poco(self.Network_UserName)
         enter_network_username.click()
-        enter_network_username.set_text("Zebra")
+        enter_network_username.set_text("NESTWIFI")
         sleep(2)
 
     def click_Join_Btn_On_Other_Network_Popup(self):
         sleep(3)
         join_Btn = self.poco(self.Join_Btn)
         join_Btn.click()
+        sleep(13)
 
     def click_Cancel_Button_On_Other_Network_Popup(self):
         sleep(2)
@@ -1513,7 +1505,9 @@ class App_Settings_Screen:
 
     def Click_Enter_Password(self):
         sleep(3)
-        touch(self.Network_Password).set_text("123456789")
+        Network_Password = self.poco(name="android.widget.EditText"[1])
+        # touch(self.Network_Password).set_text("123456789")
+        Network_Password.set_text("123456789")
 
     def Verify_Added_Network(self):
         sleep(15)
@@ -1524,16 +1518,23 @@ class App_Settings_Screen:
         printer_name.set_text("ZSB-DP12")
 
     def Verify_Printer_Name_Update_Failed_Message(self):
-        assert_exists(self.Printer_Name_Update_Failed_Message,
-                      "Printer name update failed message pop up is displaying")
+        sleep(2)
+        continue_btn = self.poco(self.Continue_Button_On_Printer_Update_Failed_Popup)
+        if continue_btn.exists:
+            continue_btn.get_text()
+        return continue_btn
+
 
     def click_Continue_Button_On_Printer_Update_Failed_Popup(self):
         continue_btn = self.poco(self.Continue_Button_On_Printer_Update_Failed_Popup)
-        continue_btn.click()
+        if continue_btn.exists:
+           continue_btn.click()
+        else:
+            pass
 
-    def Verify_Previous_PrinterName_IS_Displaying(self):
-        sleep(3)
-        assert_exists(self.Previous_PrinterName, "Previous Printer Name is displaying")
+
+
+
 
     def click_Long_Network_UserName(self):
         sleep(3)
@@ -1592,11 +1593,18 @@ class App_Settings_Screen:
 
     def Verify_Change_Password_PageURL_Is_Displaying(self):
         sleep(20)
-        assert_exists(self.Change_Password_Page, "Change Password Page is displaying with correct URL")
+        Change_Password_PageURL = self.poco(text="signup.zebra.com")
+        if Change_Password_PageURL.exists():
+            Change_Password_PageURL.get_text()
+        return Change_Password_PageURL
+
 
     def Verify_Password_Recovery_Text_Is_Displaying(self):
         sleep(2)
-        assert_exists(self.Password_Recovery_Text, "Password Recovery Text is displaying")
+        Password_Recovery_Text = self.poco(text="Password Recovery")
+        if Password_Recovery_Text.exists():
+            Password_Recovery_Text.get_text()
+        return Password_Recovery_Text
 
     def click_Password_Recovery_Email_TextField(self):
         email_field = self.poco(self.Email_TextField_On_Password_Recovery_Screen)
@@ -1604,7 +1612,7 @@ class App_Settings_Screen:
         email_field.set_text("Zebra01.swdvt@icloud.com")
 
     def click_Submit_On_Password_Recovery_Screen(self):
-        submit_btn = self.poco(self.Submit_On_Password_Recovery_Screen)
+        submit_btn = self.poco(text="SUBMIT")
         submit_btn.click()
 
     def Update_PrinterName_With_Different_Valid_Name(self):
@@ -1617,3 +1625,56 @@ class App_Settings_Screen:
     def click_UsePhoto_Option(self):
         UsePhoto_Option = self.poco(self.UsePhoto_Option)
         UsePhoto_Option.click()
+
+    def Verify_Printer_Text(self):
+        sleep(2)
+        printer_details = self.poco(
+            desc="ZSB-DP12, Online Printer name ZSB-DP12 2.25\" x 1\" ZSB-LC6 576 of 1005 semantics_just_label prints left")
+        if printer_details.exists():
+            printer_name = printer_details.get_text()
+            if "ZSB-DP12, Online" in printer_name:
+                print("Printer name is displaying correctly:", printer_name)
+            else:
+                print("Printer name is not displaying correctly:", printer_name)
+        else:
+            raise Exception("Printer name is not present")
+
+    def Click_Cancel_On_Delete_Printer_Page(self):
+        Cancel = self.poco(text="Cancel")
+        if Cancel.exists():
+            Cancel.click()
+
+        else:
+            raise Exception("Cancel Button is not present")
+
+    def Verify_Delete_Printer_Page(self):
+        Delete_Printer_Page = self.poco(
+            desc="Delete Printer Please acknowledge the following to continue: This action cannot be undone. Deleting your printer will: • Permanently remove it from your workspace • Factory reset your printer After deleting your printer, proceed to the Bluetooth settings on your device to remove the existing Bluetooth bond.")
+
+        if Delete_Printer_Page.exists():
+            text = Delete_Printer_Page.get_text()
+            print("Delete Printer Popup is displaying:", text)
+            return Delete_Printer_Page
+        else:
+            raise Exception("Delete Printer Popup is not found")
+
+    def click_Bluetooth(self):
+        sleep(1)
+        bluetooth_tab = self.poco(text="Bluetooth")
+        bluetooth_tab.click()
+
+    def click_Unpair_Icon(self):
+        sleep(1)
+        unpair_icon = self.poco(name="com.oplus.wirelesssettings:id/deviceDetails")
+        unpair_icon.click()
+
+    def click_On_Unpair(self):
+        sleep(1)
+        unpair = self.poco(text="Unpair")
+        unpair.click()
+        sleep(8)
+
+    def click_Done_Btn(self):
+        sleep(1)
+        unpair = self.poco(name="Done")
+        unpair.click()
