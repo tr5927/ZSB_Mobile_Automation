@@ -168,8 +168,8 @@ aps_notification = APS_Notification(poco)
 # """"5.Recover printer
 # Check the labels will be printed out successfully manually"""
 # # ##"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+#
+#
 # def test_APS_Notification_TestcaseID_50267():
 #     """ Check user will get notification when user is logged out from the ZSB app and tried to use APS"""
 #
@@ -221,10 +221,10 @@ aps_notification = APS_Notification(poco)
 # aps_notification.click_Turn_ON_ZSB_Series_Printer()
 # aps_notification.click_Turn_ON_ZSB_Series_Printer()
 # aps_notification.Verify_Notification_To_Login()
-
+#
 # # # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+#
+#
 # def test_APS_Notification_TestcaseID_50498():
 #     """ Check it will notify user need login when share a file on APS if user not login ZSB series"""
 #
@@ -262,7 +262,7 @@ aps_notification = APS_Notification(poco)
 # aps_notification.click_Print_Option()
 # aps_notification.Verify_Notification_To_Login()
 # # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+#
 # def test_APS_Notification_TestcaseID_50499():
 #     """ Check user can receive the notification also even previously had received once, if the user is not logged into the ZSB series when sharing a file to print in APS"""
 #
@@ -297,7 +297,7 @@ aps_notification = APS_Notification(poco)
 # aps_notification.click_Print_Option()
 # aps_notification.Verify_Notification_To_Login()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+#
 # def test_APS_Notification_TestcaseID_50500():
 #     """ Check it will notify user need login to search printers when share another file via APS if user not login ZSB series and a print preview has been opened"""
 #
@@ -332,9 +332,9 @@ aps_notification = APS_Notification(poco)
 # aps_notification.click_Print_Option()
 # aps_notification.Verify_Notification_To_Login()
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-
+#
+#
+#
 # def test_APS_Notification_TestcaseID_50501():
 #     """  Check user would not receive the login notifications if the user remains logged in to the ZSB series during the operation in APS"""
 #
@@ -375,7 +375,7 @@ aps_notification = APS_Notification(poco)
 # aps_notification.click_Print_Option()
 # aps_notification.Verify_Notification_Is_Not_Displaying()
 # #""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+#
 # def test_APS_Notification_TestcaseID_50502():
 #     """Check the notification will dismiss when user click on the login notification and login successful"""
 #
@@ -404,9 +404,9 @@ aps_notification = APS_Notification(poco)
 # login_page.click_Loginwith_Google()
 # common_method.Stop_The_App()
 # aps_notification.Verify_Notification_Is_Not_Displaying()
-
+#
 # ##"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+#
 # def test_APS_Notification_TestcaseID_50503():
 #     """Check that the notification would not be dismissed after force quit the ZSB printer service or the print preview via APS"""
 #
