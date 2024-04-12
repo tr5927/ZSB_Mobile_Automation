@@ -1037,7 +1037,7 @@ def test_AppSettings_TestcaseID_47917():
 
 # #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 #
-#
+
 def test_AppSettings_TestcaseID_47924():
       """Verify Should not allow same printer name in all the clients.."""
 
