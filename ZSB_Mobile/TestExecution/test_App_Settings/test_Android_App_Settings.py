@@ -1,8 +1,9 @@
 from airtest.core.api import *
 from compose import errors
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from setuptools import logging
-
+# from setuptools import logging
+from ZSB_Mobile.PageObject.Robofinger import test_robo_finger
+from collections.abc import Mapping
 from ZSB_Mobile.Common_Method import Common_Method
 from ZSB_Mobile.PageObject.APP_Settings.APP_Settings_Screen_Android import App_Settings_Screen
 from ZSB_Mobile.PageObject.APS_Testcases.APS_Notification_Android import APS_Notification
@@ -29,32 +30,32 @@ aps_notification = APS_Notification(poco)
 # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# def test_AppSettings_TestcaseID_47918():
-#  """	Verify ZSB app permission works fine."""
-# """Freshly Install the latest stage/production app on the phone & printer should be added"""
-#
-# # try:
-# common_method.uninstall_app()
-# common_method.install_app()
-# common_method.Start_The_App()
-# """ Allow pop up before login for the fresh installation"""
-# login_page.click_LoginAllow_Popup()
-# login_page.click_loginBtn()
-# """for the first installation click on the zsb series popup"""
-# login_page.click_Allow_ZSB_Series_Popup()
-# """Relaunch the app"""
-# common_method.relaunch_app()
-# """ Allow pop up before login for the fresh installation"""
-# login_page.click_LoginAllow_Popup()
-# """for the first installation click on the zsb series popup"""
-# login_page.click_Allow_ZSB_Series_Popup()
-# """Relaunch the app"""
-# common_method.relaunch_app()
-# """Permission is not displaying due to SMBM-1242"""
-# login_page.Verify_LoginAllow_Popup_IS_Displaying()
-#     # common_method.savePassResult(errors, "47918")
-# # except Exception as e:
-# #     common_method.saveError(errors, str(e))
+def test_AppSettings_TestcaseID_47918():
+ """	Verify ZSB app permission works fine."""
+"""Freshly Install the latest stage/production app on the phone & printer should be added"""
+
+# try:
+common_method.uninstall_app()
+common_method.install_app()
+common_method.Start_The_App()
+""" Allow pop up before login for the fresh installation"""
+login_page.click_LoginAllow_Popup()
+login_page.click_loginBtn()
+"""for the first installation click on the zsb series popup"""
+login_page.click_Allow_ZSB_Series_Popup()
+"""Relaunch the app"""
+common_method.relaunch_app()
+""" Allow pop up before login for the fresh installation"""
+login_page.click_LoginAllow_Popup()
+"""for the first installation click on the zsb series popup"""
+login_page.click_Allow_ZSB_Series_Popup()
+"""Relaunch the app"""
+common_method.relaunch_app()
+"""Permission is not displaying due to SMBM-1242"""
+login_page.Verify_LoginAllow_Popup_IS_Displaying()
+    # common_method.savePassResult(errors, "47918")
+# except Exception as e:
+#     common_method.saveError(errors, str(e))
 # ##"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -127,10 +128,10 @@ aps_notification = APS_Notification(poco)
 # app_settings_page.click_Network_UserName()
 # app_settings_page.click_Join_Btn_On_Other_Network_Popup()
 # """""test case 7 to 10 need to check on Web portal manually"""
-# # common_method.savePassResult(errors, "45688")
-# # except Exception as e:
-# # common_method.saveError(errors, e)
-# # """stop the app"""
+# common_method.savePassResult(errors, "45688")
+# except Exception as e:
+# common_method.saveError(errors, e)
+# """stop the app"""
 # # common_method.Stop_The_App()
 #
 # # ##""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1046,6 +1047,9 @@ def test_AppSettings_TestcaseID_47924():
 # try:
 """start the app"""
 common_method.tearDown()
+sleep(4)
+# test_robo_finger()
+sleep(7)
 """"verify home text is displaying on the home screen"""
 app_settings_page.Home_text_is_present_on_homepage()
 """click on the hamburger icon"""

@@ -12,13 +12,12 @@ import traceback
 from pipes import Template
 from platform import platform
 from time import sleep
-<<<<<<< HEAD
+
 from poco.exceptions import PocoNoSuchNodeException
 from pocoui_lib.android.kotoComponent import poco
-=======
+
 import traceback
 
->>>>>>> 25a18062434b2ecbb0e884ec27d66da722986992
 import package_name
 from airtest.core.api import swipe, exists, touch, keyevent, shell, start_app, stop_app, uninstall, install
 from airtest.core.assertions import assert_true
@@ -1020,7 +1019,7 @@ class Common_Method():
         start_app(app_package)
         sleep(2)
 
-<<<<<<< HEAD
+
     def savePassResult(self, error_array, test_number):
         error_array.append(f"Test {test_number} passed\n")
 
@@ -1035,7 +1034,6 @@ class Common_Method():
             if "exception" in error:
                 print('\n'.join(map(str, error_array)))
                 raise Exception(error_array)
-=======
     def uninstall_iOS_app(self):
         sleep(3)
         app_package = "com.zebra.soho"
@@ -1058,7 +1056,7 @@ class Common_Method():
     def install_app(self):
         sleep(1)
         apk_path = r"C:\Users\rk1277\Downloads"
-        apk_filename = "ZsbMobile-production-5293.apk"
+        apk_filename = "ZsbMobile-production-5339.apk"
         packageName = "com.zebra.soho_app"
         target_apk_path = os.path.join(apk_path, apk_filename)
         try:
@@ -1067,7 +1065,6 @@ class Common_Method():
             self.triggerError('Install app failed: ' + str(e))
         sleep(2)
 
-<<<<<<< HEAD
     def install_app_From_PlayStore(self):
         sleep(2)
         self.apk_path = r"C:\Users\rk1277\Downloads\ZsbMobile-production-5197.apk"  # Use 'r' before the string to treat it as a raw string
@@ -1126,16 +1123,16 @@ class Common_Method():
             if "exception" in error:
                 print('\n'.join(map(str, error_array)))
                 raise Exception(error_array)
-=======
-    # def install_app(self):
-    #     sleep(4)
-    #     # app_package = "com.zebra.soho_app"
-    #     # install(app_package)
-    #
-    #     # apk_path = "C:\Users\rk1277\Pictures\Android App\ZsbMobile-stage-NEW 4619.apk"
-    #
-    #     # Install the app
-    #     install(apk_path)
-    #     sleep(10)
->>>>>>> 721951240ba3cc205fcd8de796bdc9b3a12e3f63
->>>>>>> 25a18062434b2ecbb0e884ec27d66da722986992
+# =======
+#     # def install_app(self):
+#     #     sleep(4)
+#     #     # app_package = "com.zebra.soho_app"
+#     #     # install(app_package)
+#     #
+#     #     # apk_path = "C:\Users\rk1277\Pictures\Android App\ZsbMobile-stage-NEW 4619.apk"
+#     #
+#     #     # Install the app
+#     #     install(apk_path)
+#     #     sleep(10)
+# >>>>>>> 721951240ba3cc205fcd8de796bdc9b3a12e3f63
+# >>>>>>> 25a18062434b2ecbb0e884ec27d66da722986992
